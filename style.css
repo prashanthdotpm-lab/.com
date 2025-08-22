@@ -1,0 +1,150 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background: #fff;
+  box-shadow: 0 2px 8px #e1e7ef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+nav h1 {
+  color: #2563eb;
+  font-size: 2rem;
+  margin: 0;
+}
+
+nav div a {
+  margin-left: 2rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav div a:hover {
+  color: #2563eb;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.hero {
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 24px #2563eb22;
+  max-width: 700px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  transition: background 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-btn:hover {
+  background: #1e40af;
+}
+
+.features {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features div {
+  background: #fff;
+  box-shadow: 0 2px 8px #e1e7ef;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 250px;
+  text-align: center;
+}
+
+.form-section {
+  background: #fff;
+  box-shadow: 0 2px 8px #e1e7ef;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 350px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-section form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form-section form input,
+.form-section form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.2rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #f1f5f9;
+  box-sizing: border-box;
+}
+
+.form-section form textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.consent-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+footer {
+  background: #2563eb;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto;
+  font-size: 1rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
