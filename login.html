@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Login | Consent Management Portal</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Login - Multi-Sector Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <h1>Consent Management Portal</h1>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="register.html">Register</a>
-    </div>
-  </nav>
-  <main>
-    <section class="form-section">
-      <h2>Login</h2>
-      <form>
-        <label>
-          Email
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" required />
-        </label>
-        <button type="submit" class="cta-btn">Login</button>
-      </form>
-      <p>
-        Don't have an account? <a href="register.html">Register</a>
-      </p>
-    </section>
-  </main>
-  <footer>
-    © 2025 Consent Portal. All rights reserved.
-  </footer>
+    <nav>
+        <div class="logo">Sector Portal</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html" class="active">Login</a></li>
+            <li>
+                <select id="theme-selector" onchange="changeTheme()">
+                    <option value="banking">Banking</option>
+                    <option value="retail">Retail</option>
+                    <option value="telco">Telco</option>
+                    <option value="govt">Govt</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Login</h1>
+        <form class="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2025 Multi-Sector Portal. All rights reserved.
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
