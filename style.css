@@ -1,190 +1,72 @@
-:root {
-    --primary-color: #004085;
-    --secondary-color: #e2e6ea;
-    --accent-color: #17a2b8;
-    --font-family: 'Segoe UI', Arial, sans-serif;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-}
-
-/* Banking Theme */
-body.banking {
-    --primary-color: #004085;
-    --accent-color: #17a2b8;
-    --secondary-color: #e2e6ea;
-}
-
-/* Retail Theme */
-body.retail {
-    --primary-color: #e83e8c;
-    --accent-color: #fd7e14;
-    --secondary-color: #fff3cd;
-}
-
-/* Telco Theme */
-body.telco {
-    --primary-color: #6610f2;
-    --accent-color: #6f42c1;
-    --secondary-color: #d6d8e7;
-}
-
-/* Govt Theme */
-body.govt {
-    --primary-color: #155724;
-    --accent-color: #ffc107;
-    --secondary-color: #f8f9fa;
-}
-
 body {
-    margin: 0;
-    font-family: var(--font-family);
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    transition: all 0.3s;
-}
-
-nav {
-    background: var(--primary-color);
-    color: #fff;
-    padding: 0.5em 2em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-nav .logo {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 1em;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5em 0.9em;
-    border-radius: var(--border-radius);
-    transition: background 0.2s;
-}
-
-nav ul li a.active, nav ul li a:hover {
-    background: var(--accent-color);
-}
-
-nav ul li select {
-    padding: 0.3em;
-    border-radius: var(--border-radius);
-    border: none;
-    background: var(--accent-color);
-    color: #fff;
-    font-size: 1em;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
 header {
-    text-align: center;
-    padding: 3em 1em 2em 1em;
-    background: var(--primary-color);
-    color: #fff;
+  background-color: #004080;
+  color: white;
+  padding: 1em;
+  text-align: center;
 }
 
-.sectors {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 2em 0;
-}
-
-.sector {
-    background: #fff;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    flex: 1 1 20%;
-    margin: 1em;
-    padding: 2em 1em;
-    min-width: 220px;
-    transition: border 0.2s;
-    border: 2px solid var(--accent-color);
-}
-
-.sector h2 {
-    color: var(--primary-color);
-    margin-top: 0;
+nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 main {
-    max-width: 600px;
-    margin: 2em auto;
-    background: #fff;
-    padding: 2em;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-top: 1em;
-    margin-bottom: 0.3em;
-    color: var(--primary-color);
-}
-
-form input, form select, form textarea, form button {
-    font-family: var(--font-family);
-    padding: 0.6em;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--accent-color);
-    margin-bottom: 0.7em;
-}
-
-form button {
-    background: var(--accent-color);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 1em;
-    transition: background 0.2s;
-}
-
-form button:hover {
-    background: var(--primary-color);
+  padding: 2em;
 }
 
 footer {
-    text-align: center;
-    padding: 1em;
-    background: var(--primary-color);
-    color: #fff;
-    margin-top: 2em;
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
+  text-align: center;
+  padding: 1em;
+  background-color: #ddd;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .sectors {
-        flex-direction: column;
-        align-items: center;
-    }
-    .sector {
-        width: 80%;
-        min-width: 180px;
-    }
-    main {
-        width: 95%;
-        padding: 1em;
-    }
+form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
+
+form input, form textarea, form select {
+  margin-bottom: 1em;
+  padding: 0.7em;
+  font-size: 1em;
+}
+
+form button {
+  padding: 0.7em;
+  background-color: #004080;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.themes {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 200px;
+  padding: 1em;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.card.banking { background-color: #0072ce; }
+.card.retail { background-color: #d17b00; }
+.card.telco { background-color: #009688; }
+.card.govt { background-color: #5d4037; }
