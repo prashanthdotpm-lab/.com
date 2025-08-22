@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Consent Management Portal</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Multi-Sector Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <h1>Consent Management Portal</h1>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="register.html">Register</a>
-      <a href="login.html">Login</a>
-      <a href="contact.html">Contact Us</a>
-    </div>
-  </nav>
-  <main>
-    <section class="hero">
-      <h2>Universal Consent & Cookie Management</h2>
-      <p>
-        Take control of your privacy. Manage your cookie consents and universal privacy preferences in one place.
-      </p>
-      <a class="cta-btn" href="register.html">Get Started</a>
+    <nav>
+        <div class="logo">Sector Portal</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li>
+                <select id="theme-selector" onchange="changeTheme()">
+                    <option value="banking">Banking</option>
+                    <option value="retail">Retail</option>
+                    <option value="telco">Telco</option>
+                    <option value="govt">Govt</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Welcome to the Multi-Sector Portal</h1>
+        <p>Select your sector for a tailored experience.</p>
+    </header>
+    <section class="sectors">
+        <div class="sector banking">
+            <h2>Banking</h2>
+            <p>Secure, reliable, and innovative banking solutions.</p>
+        </div>
+        <div class="sector retail">
+            <h2>Retail</h2>
+            <p>Shop, manage, and grow your retail business.</p>
+        </div>
+        <div class="sector telco">
+            <h2>Telco</h2>
+            <p>Connect, communicate, and collaborate with telco services.</p>
+        </div>
+        <div class="sector govt">
+            <h2>Government</h2>
+            <p>Transparent, accessible, and citizen-centric government services.</p>
+        </div>
     </section>
-    <section class="features">
-      <div>
-        <h3>Cookie Consent</h3>
-        <p>Easily approve or reject cookies with full transparency.</p>
-      </div>
-      <div>
-        <h3>Universal Consent</h3>
-        <p>Set your privacy preferences for all connected services and websites.</p>
-      </div>
-      <div>
-        <h3>Support</h3>
-        <p>Contact our privacy experts for any questions or concerns.</p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    © 2025 Consent Portal. All rights reserved.
-  </footer>
+    <footer>
+        &copy; 2025 Multi-Sector Portal. All rights reserved.
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
