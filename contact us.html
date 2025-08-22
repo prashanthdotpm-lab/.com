@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Contact Us | Consent Management Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <h1>Consent Management Portal</h1>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+  <main>
+    <section class="form-section">
+      <h2>Contact Us</h2>
+      <form>
+        <label>
+          Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" required></textarea>
+        </label>
+        <label class="consent-checkbox">
+          <input type="checkbox" name="consent" required />
+          I consent to the processing of my information for the purpose of this inquiry.
+        </label>
+        <button type="submit" class="cta-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    © 2025 Consent Portal. All rights reserved.
+  </footer>
+</body>
+</html>
