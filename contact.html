@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Acme</title>
+  <meta name="description" content="Consumer-friendly demo website template" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/logo.svg">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" alt="Acme logo">
+        <span>Acme</span>
+      </a>
+      <button class="btn menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav id="menu" class="nav-links">
+        <a href="index.html" >Home</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a href="register.html" >Register</a>
+        <a href="login.html" >Log in</a>
+        <a class="btn btn-primary" href="register.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  
+<main class="section">
+  <div class="container">
+    <h1>Contact us</h1>
+    <p class="help">We typically reply within a few hours.</p>
+
+    <div class="card form-card">
+      <form class="form" action="#" method="post" data-validate="true" novalidate>
+        <div>
+          <label class="label" for="name">Full name</label>
+          <input class="input" id="name" name="name" type="text" placeholder="Jane Doe" data-required="true" />
+          <div class="error">Please enter your name.</div>
+        </div>
+
+        <div>
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" placeholder="you@example.com" data-required="true" />
+          <div class="error">A valid email is required.</div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label class="label" for="topic">Topic</label>
+            <select class="select" id="topic" name="topic">
+              <option>Sales</option>
+              <option>Support</option>
+              <option>Billing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="order">Order # (optional)</label>
+            <input class="input" id="order" name="order" type="text" placeholder="ACME-123456" />
+          </div>
+        </div>
+
+        <div>
+          <label class="label" for="message">How can we help?</label>
+          <textarea class="textarea" id="message" name="message" placeholder="Write your message..."></textarea>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input id="agree" type="checkbox" data-required="true" />
+          <label for="agree" class="help">I agree to the processing of my data as per the privacy policy.</label>
+        </div>
+        <div class="error">Please accept the privacy policy.</div>
+
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button class="btn" type="reset">Clear</button>
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div>© 2025 Acme Inc. • <a href="#" style="color:#2563eb;text-decoration:none;">Privacy</a></div>
+        <div>Made for demos • Accessible • Responsive</div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
