@@ -1,107 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pacchi's Sector Sites</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/custom.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bank — Pacchi's Sector Sites</title>
+<style>
+  :root{--bg1:#3b0df6;--bg2:#95c9ff;--accent:#ffd369;--card:#fff;--muted:#6a6f85;--ring:rgba(74,144,226,.35);--text:#0f1222}
+  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6f8ff;color:var(--text)}
+  .navbar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#4b2c82,#3a74d1);padding:12px 18px;display:flex;align-items:center;gap:12px;color:#fff}
+  .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px;transition:.2s}
+  .navbar a:hover{background-color:rgba(255,255,255,.12)} .spacer{flex:1}.actions{display:flex;gap:8px;flex-wrap:wrap}
+  .wrap{max-width:1100px;margin:0 auto;padding:18px}
+  .banner{height:220px;border-radius:22px;background:linear-gradient(135deg,#3b0df6,#95c9ff);display:flex;align-items:center;justify-content:center;color:#fff;font-size:clamp(22px,3.5vw,36px);font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.1);position:relative;overflow:hidden}
+  .banner:after{content:"";position:absolute;inset:0;background:radial-gradient(700px 260px at 80% 0%,rgba(255,255,255,.18),transparent 60%)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border-radius:16px;padding:16px;border:1px solid #eef0ff;box-shadow:0 8px 24px rgba(16,24,40,.06)}
+  .card h3{margin:0 0 6px 0}
+  .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:#eef2ff;color:#334;cursor:pointer;font-weight:700;border:none}
+  .btn.primary{background:linear-gradient(135deg,#4b2c82,#3a74d1);color:#fff}
+  /* Modals */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
+  .modal.show{display:flex}
+  .sheet{width:min(620px,96vw);background:#fff;border-radius:16px;padding:18px 18px;box-shadow:0 18px 40px rgba(0,0,0,.25);position:relative}
+  .close{position:absolute;right:14px;top:10px;font-size:22px;cursor:pointer;color:#777}
+  form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:640px){form .row{grid-template-columns:1fr}}
+  input,select,textarea{width:100%;padding:10px;border:1px solid #e3e8ff;border-radius:10px;outline:none;font-size:14px}
+  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);border-color:#c9d9ff}
+  .muted{color:var(--muted)}
+</style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark gradient-bg fixed-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">Pacchi's Sector Sites</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="bank.html">Bank</a></li>
-        <li class="nav-item"><a class="nav-link" href="retail.html">Retail</a></li>
-        <li class="nav-item"><a class="nav-link" href="telco.html">Telco</a></li>
-        <li class="nav-item"><a class="nav-link" href="govt.html">Govt</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>
-      </ul>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="bank.html">Bank</a>
+    <a href="retail.html">Retail</a>
+    <a href="telco.html">Telco</a>
+    <a href="govt.html">Govt</a>
+
+    <!-- Sector-specific actions -->
+    <a href="#" onclick="openModal('ccModal')">Apply Credit Card</a>
+    <a href="#" onclick="openModal('loanModal')">Apply Loan</a>
+    <a href="#" onclick="openModal('acctModal')">Open Account</a>
+
+    <div class="spacer"></div>
+    <!-- Universal actions -->
+    <div class="actions">
+      <a href="#" onclick="openModal('loginModal')">Login</a>
+      <a href="#" onclick="openModal('registerModal')">Register</a>
+      <a href="#" onclick="openModal('contactModal')">Contact</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="banner">Banking • Cards • Loans • Accounts</div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Credit Card</h3>
+        <p class="muted">Low rates, rewards, and instant approval journey.</p>
+        <button class="btn primary" onclick="openModal('ccModal')">Apply Now</button>
+      </div>
+      <div class="card">
+        <h3>Personal Loan</h3>
+        <p class="muted">Flexible terms with quick disbursal.</p>
+        <button class="btn primary" onclick="openModal('loanModal')">Apply Now</button>
+      </div>
+      <div class="card">
+        <h3>Open Account</h3>
+        <p class="muted">Savings, current, and youth accounts.</p>
+        <button class="btn primary" onclick="openModal('acctModal')">Open Account</button>
+      </div>
     </div>
   </div>
-</nav>
-<div style="margin-top:80px">
 
-    <div class="container text-center">
-      <h2 class="my-4">Bank Services</h2>
+  <!-- Sector modals -->
+  <div id="ccModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('ccModal')">×</span>
+    <h2>Apply for Credit Card</h2>
+    <form onsubmit="demoSubmit(event)">
+      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
+      <div class="row"><input type="email" placeholder="Email" required /><input type="tel" placeholder="Phone" required /></div>
       <div class="row">
-    <div class='col-md-4' data-aos='fade-up'>
-      <div class='card p-3 shadow hover-card'>
-        <i class='fa-solid fa-building-columns fa-2x text-gradient'></i>
-        <h5 class='mt-2'>Apply Credit Card</h5>
-        <button class='btn btn-gradient mt-2' data-bs-toggle='modal' data-bs-target='#ApplyCreditCardModal'>Apply</button>
+        <select id="countryCC" onchange="toggleIDs('CC')" required>
+          <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
+        </select>
+        <select required>
+          <option value="">Card Type</option><option>Platinum</option><option>Gold</option><option>Classic</option>
+        </select>
       </div>
-    </div>
-    
-    <div class='col-md-4' data-aos='fade-up'>
-      <div class='card p-3 shadow hover-card'>
-        <i class='fa-solid fa-building-columns fa-2x text-gradient'></i>
-        <h5 class='mt-2'>Apply Loan</h5>
-        <button class='btn btn-gradient mt-2' data-bs-toggle='modal' data-bs-target='#ApplyLoanModal'>Apply</button>
-      </div>
-    </div>
-    
-    <div class='col-md-4' data-aos='fade-up'>
-      <div class='card p-3 shadow hover-card'>
-        <i class='fa-solid fa-building-columns fa-2x text-gradient'></i>
-        <h5 class='mt-2'>Open Account</h5>
-        <button class='btn btn-gradient mt-2' data-bs-toggle='modal' data-bs-target='#OpenAccountModal'>Apply</button>
-      </div>
-    </div>
-    </div>
-    </div>
-    
-    <div class="modal fade" id="ApplyCreditCardModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header gradient-bg text-white"><h5 class="modal-title">Apply Credit Card</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body"><form><input class="form-control mb-2" placeholder="Name"><input class="form-control mb-2" placeholder="Email"><button class="btn btn-gradient w-100">Submit</button></form></div>
-    </div></div></div>
-    
-    <div class="modal fade" id="ApplyLoanModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header gradient-bg text-white"><h5 class="modal-title">Apply Loan</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body"><form><input class="form-control mb-2" placeholder="Name"><input class="form-control mb-2" placeholder="Email"><button class="btn btn-gradient w-100">Submit</button></form></div>
-    </div></div></div>
-    
-    <div class="modal fade" id="OpenAccountModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-      <div class="modal-header gradient-bg text-white"><h5 class="modal-title">Open Account</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body"><form><input class="form-control mb-2" placeholder="Name"><input class="form-control mb-2" placeholder="Email"><button class="btn btn-gradient w-100">Submit</button></form></div>
-    </div></div></div>
-    
-    
-</div>
-<footer class="text-center text-white gradient-bg py-3 mt-5">
-  <p class="mb-0">© 2025 Pacchi's Sector Sites</p>
-</footer>
+      <div id="ksaIdCC" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdCC" style="display:none"><input placeholder="UAE ID" /></div>
+      <div id="qatarIdCC" style="display:none"><input placeholder="Qatar ID" /></div>
+      <div class="row"><input placeholder="Employer" /><input type="number" placeholder="Monthly Income (USD)" /></div>
+      <button class="btn primary" type="submit">Submit Application</button>
+    </form>
+  </div></div>
 
-<!-- Modals (Login, Register, Contact) -->
-<div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-<div class="modal-header gradient-bg text-white"><h5 class="modal-title">Login</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-<div class="modal-body"><form><input class="form-control mb-2" placeholder="Email"><input type="password" class="form-control mb-2" placeholder="Password"><button class="btn btn-gradient w-100">Login</button></form></div>
-</div></div></div>
-
-<div class="modal fade" id="registerModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-<div class="modal-header gradient-bg text-white"><h5 class="modal-title">Register</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-<div class="modal-body"><form><input class="form-control mb-2" placeholder="Name"><input class="form-control mb-2" placeholder="Email"><input type="password" class="form-control mb-2" placeholder="Password"><button class="btn btn-gradient w-100">Register</button></form></div>
-</div></div></div>
-
-<div class="modal fade" id="contactModal" tabindex="-1"><div class="modal-dialog"><div class="modal-content">
-<div class="modal-header gradient-bg text-white"><h5 class="modal-title">Contact Us</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-<div class="modal-body"><form><input class="form-control mb-2" placeholder="Name"><input class="form-control mb-2" placeholder="Email"><textarea class="form-control mb-2" placeholder="Message"></textarea><button class="btn btn-gradient w-100">Send</button></form></div>
-</div></div></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="assets/js/main.js"></script>
-</body></html>
+  <div id="loanModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('loanModal')">×</span>
+    <h2>Apply for Loan</h2>
+    <form onsubmit="demoSubmit(event)">
+      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
+      <div class="row"><inp
