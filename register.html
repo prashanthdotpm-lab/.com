@@ -1,59 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Register - Multi-Sector Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
+  <header>
+    <h1>Register</h1>
     <nav>
-        <div class="logo">Sector Portal</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="register.html" class="active">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li>
-                <select id="theme-selector" onchange="changeTheme()">
-                    <option value="banking">Banking</option>
-                    <option value="retail">Retail</option>
-                    <option value="telco">Telco</option>
-                    <option value="govt">Govt</option>
-                </select>
-            </li>
-        </ul>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
     </nav>
-    <main>
-        <h1>Registration</h1>
-        <form class="register-form">
-            <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="sector">Sector:</label>
-            <select id="sector" name="sector">
-                <option value="banking">Banking</option>
-                <option value="retail">Retail</option>
-                <option value="telco">Telco</option>
-                <option value="govt">Govt</option>
-            </select>
-            
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Register</button>
-        </form>
-    </main>
-    <footer>
-        &copy; 2025 Multi-Sector Portal. All rights reserved.
-    </footer>
-    <script src="script.js"></script>
+  </header>
+  <main>
+    <form>
+      <label for="fullname">Full Name:</label><input type="text" id="fullname" required />
+      <label for="email">Email:</label><input type="email" id="email" required />
+      <label for="password">Password:</label><input type="password" id="password" required />
+      <label for="sector">Sector:</label>
+      <select id="sector">
+        <option>Banking</option>
+        <option>Retail</option>
+        <option>Telecom</option>
+        <option>Government</option>
+      </select>
+      <button type="submit">Register</button>
+    </form>
+  </main>
+  <footer>&copy; 2025 Multi-Sector Platform</footer>
 </body>
 </html>
