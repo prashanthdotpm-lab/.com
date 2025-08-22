@@ -103,4 +103,87 @@
     <h2>Apply for Loan</h2>
     <form onsubmit="demoSubmit(event)">
       <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
-      <div class="row"><inp
+      <div class="row"><input type="email" placeholder="Email" required /><input type="tel" placeholder="Phone" required /></div>
+      <div class="row">
+        <select id="countryLN" onchange="toggleIDs('LN')" required>
+          <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
+        </select>
+        <select required><option value="">Loan Type</option><option>Personal</option><option>Auto</option><option>Home</option></select>
+      </div>
+      <div id="ksaIdLN" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdLN" style="display:none"><input placeholder="UAE ID" /></div>
+      <div id="qatarIdLN" style="display:none"><input placeholder="Qatar ID" /></div>
+      <div class="row"><input type="number" placeholder="Loan Amount (USD)" required /><input type="number" placeholder="Monthly Income (USD)" required /></div>
+      <input placeholder="Employer" />
+      <button class="btn primary" type="submit">Submit Application</button>
+    </form>
+  </div></div>
+
+  <div id="acctModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('acctModal')">×</span>
+    <h2>Open Bank Account</h2>
+    <form onsubmit="demoSubmit(event)">
+      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
+      <div class="row"><input type="email" placeholder="Email" required /><input type="tel" placeholder="Phone" required /></div>
+      <div class="row">
+        <select id="countryAC" onchange="toggleIDs('AC')" required>
+          <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
+        </select>
+        <select required><option value="">Account Type</option><option>Savings</option><option>Current</option><option>Youth</option></select>
+      </div>
+      <div id="ksaIdAC" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdAC" style="display:none"><input placeholder="UAE ID" /></div>
+      <div id="qatarIdAC" style="display:none"><input placeholder="Qatar ID" /></div>
+      <div class="row"><input type="number" placeholder="Initial Deposit (USD)" /><input placeholder="City" /></div>
+      <input placeholder="Address" />
+      <button class="btn primary" type="submit">Open Account</button>
+    </form>
+  </div></div>
+
+  <!-- Universal Modals -->
+  <div id="loginModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('loginModal')">×</span>
+    <h2>Login</h2>
+    <form onsubmit="demoSubmit(event)"><input type="email" placeholder="Email" required /><input type="password" placeholder="Password" required /><button class="btn primary">Login</button></form>
+  </div></div>
+
+  <div id="registerModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('registerModal')">×</span>
+    <h2>Register</h2>
+    <form onsubmit="demoSubmit(event)">
+      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
+      <div class="row"><input type="tel" placeholder="Phone" required /><input type="email" placeholder="Email" required /></div>
+      <div class="row">
+        <select id="countryBank" onchange="toggleIDs('Bank')" required>
+          <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
+        </select><div></div>
+      </div>
+      <div id="ksaIdBank" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdBank" style="display:none"><input placeholder="UAE ID" /></div>
+      <div id="qatarIdBank" style="display:none"><input placeholder="Qatar ID" /></div>
+      <div class="row"><input type="password" id="pwdBank" placeholder="Password" required /><input type="password" id="cpwdBank" oninput="matchPwd('Bank')" placeholder="Confirm Password" required /></div>
+      <small id="pmBank" class="muted"></small><br />
+      <button class="btn primary" type="submit">Create Account</button>
+    </form>
+  </div></div>
+
+  <div id="contactModal" class="modal"><div class="sheet">
+    <span class="close" onclick="closeModal('contactModal')">×</span>
+    <h2>Contact Us</h2>
+    <form onsubmit="demoSubmit(event)">
+      <div class="row"><input placeholder="Full Name" required /><input type="email" placeholder="Email" required /></div>
+      <input placeholder="Subject" required /><textarea placeholder="Message" required></textarea>
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+  </div></div>
+
+<script>
+  function openModal(id){document.getElementById(id).classList.add('show')}
+  function closeModal(id){document.getElementById(id).classList.remove('show')}
+  window.addEventListener('click',e=>{const m=e.target.closest('.sheet');const modal=e.target.classList?.contains('modal')?e.target:null;if(!m&&modal){modal.classList.remove('show')}})
+  function toggleIDs(s){const c=document.getElementById('country'+s).value;['ksa','uae','qatar'].forEach(k=>document.getElementById(k+'Id'+s).style.display='none');if(c==='KSA')document.getElementById('ksaId'+s).style.display='block';else if(c==='UAE')document.getElementById('uaeId'+s).style.display='block';else if(c==='Qatar')document.getElementById('qatarId'+s).style.display='block'}
+  function matchPwd(s){const p=document.getElementById('pwd'+s),cp=document.getElementById('cpwd'+s),m=document.getElementById('pm'+s); if(cp.value&&p.value!==cp.value){m.textContent='Passwords do not match';m.style.color='#c00'}else{m.textContent=''}}
+  function demoSubmit(e){e.preventDefault();alert('Submitted (demo).')}
+</script>
+</body>
+</html>
