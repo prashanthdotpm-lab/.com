@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Register | Consent Management Portal</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Register - Multi-Sector Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <h1>Consent Management Portal</h1>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-    </div>
-  </nav>
-  <main>
-    <section class="form-section">
-      <h2>Create Account</h2>
-      <form>
-        <label>
-          Name
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" required />
-        </label>
-        <button type="submit" class="cta-btn">Register</button>
-      </form>
-      <p>
-        Already have an account? <a href="login.html">Login</a>
-      </p>
-    </section>
-  </main>
-  <footer>
-    © 2025 Consent Portal. All rights reserved.
-  </footer>
+    <nav>
+        <div class="logo">Sector Portal</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="active">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li>
+                <select id="theme-selector" onchange="changeTheme()">
+                    <option value="banking">Banking</option>
+                    <option value="retail">Retail</option>
+                    <option value="telco">Telco</option>
+                    <option value="govt">Govt</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Registration</h1>
+        <form class="register-form">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="sector">Sector:</label>
+            <select id="sector" name="sector">
+                <option value="banking">Banking</option>
+                <option value="retail">Retail</option>
+                <option value="telco">Telco</option>
+                <option value="govt">Govt</option>
+            </select>
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Register</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2025 Multi-Sector Portal. All rights reserved.
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
