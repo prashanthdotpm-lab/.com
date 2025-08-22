@@ -9,7 +9,7 @@
     header { background:linear-gradient(90deg, #4b0082, #4169e1); padding:15px; color:white; }
     nav { display:flex; justify-content:space-between; align-items:center; }
     nav a { color:white; text-decoration:none; margin:0 10px; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
+    nav a:hover { text-decoration:underline; cursor:pointer; }
 
     .banner {
       text-align:center; padding:50px 20px;
@@ -56,9 +56,9 @@
       <a href="govt.html">Govt</a>
     </div>
     <div>
-      <a href="#" onclick="openModal('loginModal')">Login</a> |
-      <a href="#" onclick="openModal('registerModal')">Register</a> |
-      <a href="#" onclick="openModal('contactModal')">Contact</a>
+      <a onclick="openModal('loginModal')">Login</a> |
+      <a onclick="openModal('registerModal')">Register</a> |
+      <a onclick="openModal('contactModal')">Contact</a>
     </div>
   </nav>
 </header>
@@ -75,7 +75,7 @@
   <div class="card" onclick="openModal('citizenModal')">Citizen Services</div>
 </section>
 
-<!-- Modals -->
+<!-- Visa Renewal Modal -->
 <div id="visaModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('visaModal')">&times;</span>
@@ -83,13 +83,14 @@
     <form>
       <input type="text" placeholder="Full Name" required>
       <input type="text" placeholder="Passport Number" required>
-      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
+      <input type="text" placeholder="National ID" required>
       <input type="email" placeholder="Email" required>
       <button type="submit">Submit</button>
     </form>
   </div>
 </div>
 
+<!-- Bills Modal -->
 <div id="billsModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('billsModal')">&times;</span>
@@ -110,6 +111,7 @@
   </div>
 </div>
 
+<!-- Jobs Modal -->
 <div id="jobsModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('jobsModal')">&times;</span>
@@ -119,13 +121,13 @@
       <input type="text" placeholder="Last Name" required>
       <input type="text" placeholder="Phone Number" required>
       <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
       <input type="file" accept=".pdf,.doc" required>
       <button type="submit">Apply</button>
     </form>
   </div>
 </div>
 
+<!-- Citizen Services Modal -->
 <div id="citizenModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('citizenModal')">&times;</span>
@@ -139,7 +141,7 @@
   </div>
 </div>
 
-<!-- Universal Modals -->
+<!-- Login Modal -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('loginModal')">&times;</span>
@@ -152,6 +154,7 @@
   </div>
 </div>
 
+<!-- Register Modal -->
 <div id="registerModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('registerModal')">&times;</span>
@@ -161,7 +164,6 @@
       <input type="text" placeholder="Last Name" required>
       <input type="text" placeholder="Phone Number" required>
       <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
       <input type="password" placeholder="Password" required>
       <input type="password" placeholder="Confirm Password" required>
       <button type="submit">Register</button>
@@ -169,6 +171,7 @@
   </div>
 </div>
 
+<!-- Contact Modal -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('contactModal')">&times;</span>
@@ -184,11 +187,18 @@
 </div>
 
 <script>
-  function openModal(id) { document.getElementById(id).style.display='block'; }
-  function closeModal(id) { document.getElementById(id).style.display='none'; }
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+  // Close modal when clicking outside
   window.onclick = function(event) {
     document.querySelectorAll('.modal').forEach(modal => {
-      if(event.target == modal){ modal.style.display="none"; }
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
     });
   }
 </script>
