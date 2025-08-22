@@ -1,102 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Govt — Pacchi's Sector Sites</title>
-<style>
-  :root{--bg1:#522fa0;--bg2:#3a74d1;--text:#0f1222;--card:#fff;--ring:rgba(74,144,226,.35);--muted:#6a6f85}
-  *{box-sizing:border-box} 
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6f8ff;color:var(--text)}
-  .navbar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#4b2c82,#3a74d1);padding:12px 18px;display:flex;align-items:center;gap:12px;color:#fff}
-  .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px;transition:.2s}
-  .navbar a:hover{background-color:rgba(255,255,255,.12)} 
-  .spacer{flex:1}.actions{display:flex;gap:8px;flex-wrap:wrap}
-  .wrap{max-width:1100px;margin:0 auto;padding:18px}
-  .banner{height:220px;border-radius:22px;background:linear-gradient(135deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:clamp(22px,3.5vw,36px);font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.1)}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-  @media (max-width:900px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--card);border-radius:16px;padding:16px;border:1px solid #eef0ff;box-shadow:0 8px 24px rgba(16,24,40,.06)}
-  .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,#4b2c82,#3a74d1);color:#fff;cursor:pointer;font-weight:700;border:none}
-  /* Modals */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
-  .modal.show{display:flex}
-  .sheet{width:min(620px,96vw);background:#fff;border-radius:16px;padding:18px;box-shadow:0 18px 40px rgba(0,0,0,.25);position:relative}
-  .close{position:absolute;right:14px;top:10px;font-size:22px;cursor:pointer;color:#777}
-  form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media (max-width:640px){form .row{grid-template-columns:1fr}}
-  input,select,textarea{width:100%;padding:10px;border:1px solid #e3e8ff;border-radius:10px;outline:none;font-size:14px}
-  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);border-color:#c9d9ff}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacchi's Govt Services</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f4f6fb; color:#333; }
+    header { background:linear-gradient(90deg, #4b0082, #4169e1); padding:15px; color:white; }
+    nav { display:flex; justify-content:space-between; align-items:center; }
+    nav a { color:white; text-decoration:none; margin:0 10px; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+
+    .banner {
+      text-align:center; padding:50px 20px;
+      background:linear-gradient(135deg, #6a5acd, #9370db); color:white;
+    }
+    .banner h1 { margin:0; font-size:2.5rem; }
+
+    .services { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:30px; }
+    .card {
+      background:white; border-radius:10px; padding:20px; text-align:center;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1); cursor:pointer; transition:0.3s;
+    }
+    .card:hover { transform:translateY(-5px); background:#f0f0ff; }
+
+    /* Modal styles */
+    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); }
+    .modal-content {
+      background:white; margin:10% auto; padding:20px; border-radius:10px;
+      width:90%; max-width:500px; position:relative; animation:fadeIn 0.5s;
+    }
+    .close { position:absolute; right:15px; top:10px; font-size:20px; cursor:pointer; }
+    form { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+    input, select, textarea {
+      padding:10px; border:1px solid #ccc; border-radius:5px; width:100%;
+    }
+    button {
+      padding:10px; border:none; border-radius:5px;
+      background:linear-gradient(90deg, #4b0082, #4169e1); color:white; font-weight:bold; cursor:pointer;
+    }
+    button:hover { opacity:0.9; }
+
+    @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="bank.html">Bank</a>
-    <a href="retail.html">Retail</a>
-    <a href="telco.html">Telco</a>
-    <a href="govt.html">Govt</a>
 
-    <!-- Sector-specific actions -->
-    <a href="#" onclick="openModal('govJob')">Apply Job</a>
-    <a href="#" onclick="openModal('citizen')">Citizen Services</a>
-    <a href="#" onclick="openModal('visa')">Visa Renewal</a>
-    <a href="#" onclick="openModal('bills')">Pay Bills</a>
-
-    <div class="spacer"></div>
-    <!-- Universal actions -->
-    <div class="actions">
-      <a href="#" onclick="openModal('loginModal')">Login</a>
-      <a href="#" onclick="openModal('registerModal')">Register</a>
+<header>
+  <nav>
+    <div>
+      <a href="index.html">Home</a> |
+      <a href="bank.html">Bank</a> |
+      <a href="retail.html">Retail</a> |
+      <a href="telco.html">Telco</a> |
+      <a href="govt.html">Govt</a>
+    </div>
+    <div>
+      <a href="#" onclick="openModal('loginModal')">Login</a> |
+      <a href="#" onclick="openModal('registerModal')">Register</a> |
       <a href="#" onclick="openModal('contactModal')">Contact</a>
     </div>
   </nav>
+</header>
 
-  <div class="wrap">
-    <div class="banner">Government • Services • Payments</div>
+<section class="banner">
+  <h1>Government Services</h1>
+  <p>Access all your citizen services in one place</p>
+</section>
 
-    <div class="grid">
-      <div class="card"><h3>Visa Renewal</h3><p>Extend stay with a simple online process.</p><button class="btn" onclick="openModal('visa')">Apply</button></div>
-      <div class="card"><h3>Pay Bills</h3><p>Utility, traffic fines, and other government payments.</p><button class="btn" onclick="openModal('bills')">Pay Now</button></div>
-      <div class="card"><h3>Citizen Services</h3><p>Certificates, permits, and service requests.</p><button class="btn" onclick="openModal('citizen')">Request</button></div>
-      <div class="card"><h3>Govt Jobs</h3><p>Find and apply to public sector positions.</p><button class="btn" onclick="openModal('govJob')">Apply</button></div>
-    </div>
+<section class="services">
+  <div class="card" onclick="openModal('visaModal')">Apply Visa Renewal</div>
+  <div class="card" onclick="openModal('billsModal')">Pay Bills (Utilities, Traffic fines)</div>
+  <div class="card" onclick="openModal('jobsModal')">Apply for Govt Jobs</div>
+  <div class="card" onclick="openModal('citizenModal')">Citizen Services</div>
+</section>
+
+<!-- Modals -->
+<div id="visaModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('visaModal')">&times;</span>
+    <h2>Visa Renewal</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="Passport Number" required>
+      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
+      <input type="email" placeholder="Email" required>
+      <button type="submit">Submit</button>
+    </form>
   </div>
+</div>
 
-  <!-- (All your modals exactly as you pasted, unchanged for Visa, Bills, Citizen, Jobs, Login, Register, Contact) -->
+<div id="billsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('billsModal')">&times;</span>
+    <h2>Pay Bills</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <select required>
+        <option value="">Select Bill Type</option>
+        <option>Electricity</option>
+        <option>Water</option>
+        <option>Traffic Fine</option>
+        <option>Other</option>
+      </select>
+      <input type="text" placeholder="Account / Reference Number" required>
+      <input type="number" placeholder="Amount" required>
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+<div id="jobsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('jobsModal')">&times;</span>
+    <h2>Government Jobs Application</h2>
+    <form>
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="text" placeholder="Phone Number" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
+      <input type="file" accept=".pdf,.doc" required>
+      <button type="submit">Apply</button>
+    </form>
+  </div>
+</div>
+
+<div id="citizenModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('citizenModal')">&times;</span>
+    <h2>Citizen Services</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="National ID" required>
+      <textarea placeholder="Describe your request"></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</div>
+
+<!-- Universal Modals -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('loginModal')">&times;</span>
+    <h2>Login</h2>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('registerModal')">&times;</span>
+    <h2>Register</h2>
+    <form>
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="text" placeholder="Phone Number" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="KSA ID / UAE ID / Qatar ID" required>
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('contactModal')">&times;</span>
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Subject" required>
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
 
 <script>
-  function openModal(id){document.getElementById(id).classList.add('show')}
-  function closeModal(id){document.getElementById(id).classList.remove('show')}
-  window.addEventListener('click',e=>{
-    const m=e.target.closest('.sheet');
-    const modal=e.target.classList?.contains('modal')?e.target:null;
-    if(!m && modal){modal.classList.remove('show')}
-  })
-  function toggleIDs(s){
-    const c=document.getElementById('country'+s).value;
-    ['ksa','uae','qatar'].forEach(k=>{
-      document.getElementById(k+'Id'+s).style.display='none'
+  function openModal(id) { document.getElementById(id).style.display='block'; }
+  function closeModal(id) { document.getElementById(id).style.display='none'; }
+  window.onclick = function(event) {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if(event.target == modal){ modal.style.display="none"; }
     });
-    if(c==='KSA')document.getElementById('ksaId'+s).style.display='block';
-    else if(c==='UAE')document.getElementById('uaeId'+s).style.display='block';
-    else if(c==='Qatar')document.getElementById('qatarId'+s).style.display='block';
-  }
-  function matchPwd(s){
-    const p=document.getElementById('pwd'+s),
-          cp=document.getElementById('cpwd'+s),
-          msg=document.getElementById('pm'+s);
-    if(cp.value!==p.value){
-      msg.textContent="Passwords do not match!";
-    } else {
-      msg.textContent="";
-    }
-  }
-  function demoSubmit(e){
-    e.preventDefault();
-    alert("Form submitted successfully (demo only).");
-    e.target.closest('.modal').classList.remove('show');
   }
 </script>
+
 </body>
 </html>
