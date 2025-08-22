@@ -1,55 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Multi-Sector Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multi-Theme Website - Home</title>
+  <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
+  <header>
+    <h1>Welcome to Our Multi-Sector Platform</h1>
     <nav>
-        <div class="logo">Sector Portal</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li>
-                <select id="theme-selector" onchange="changeTheme()">
-                    <option value="banking">Banking</option>
-                    <option value="retail">Retail</option>
-                    <option value="telco">Telco</option>
-                    <option value="govt">Govt</option>
-                </select>
-            </li>
-        </ul>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
     </nav>
-    <header>
-        <h1>Welcome to the Multi-Sector Portal</h1>
-        <p>Select your sector for a tailored experience.</p>
-    </header>
-    <section class="sectors">
-        <div class="sector banking">
-            <h2>Banking</h2>
-            <p>Secure, reliable, and innovative banking solutions.</p>
-        </div>
-        <div class="sector retail">
-            <h2>Retail</h2>
-            <p>Shop, manage, and grow your retail business.</p>
-        </div>
-        <div class="sector telco">
-            <h2>Telco</h2>
-            <p>Connect, communicate, and collaborate with telco services.</p>
-        </div>
-        <div class="sector govt">
-            <h2>Government</h2>
-            <p>Transparent, accessible, and citizen-centric government services.</p>
-        </div>
+  </header>
+  
+  <main>
+    <section class="themes">
+      <h2>Select a Sector</h2>
+      <div class="card banking">Banking Sector</div>
+      <div class="card retail">Retail Sector</div>
+      <div class="card telco">Telecom Sector</div>
+      <div class="card govt">Government Sector</div>
     </section>
-    <footer>
-        &copy; 2025 Multi-Sector Portal. All rights reserved.
-    </footer>
-    <script src="script.js"></script>
+  </main>
+
+  <footer>&copy; 2025 Multi-Sector Platform</footer>
 </body>
 </html>
