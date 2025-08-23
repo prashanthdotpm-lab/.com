@@ -1,127 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Retail — Pacchi's Sector Sites</title>
-<style>
-  :root{--bg1:#6a11cb;--bg2:#2575fc;--text:#0f1222;--card:#fff;--ring:rgba(74,144,226,.35);--muted:#6a6f85}
-  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6f8ff;color:var(--text)}
-  .navbar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,#4b2c82,#3a74d1);padding:12px 18px;display:flex;align-items:center;gap:12px;color:#fff}
-  .navbar a{color:#fff;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px;transition:.2s}
-  .navbar a:hover{background-color:rgba(255,255,255,.12)} .spacer{flex:1}.actions{display:flex;gap:8px;flex-wrap:wrap}
-  .wrap{max-width:1100px;margin:0 auto;padding:18px}
-  .banner{height:220px;border-radius:22px;background:linear-gradient(135deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:clamp(22px,3.5vw,36px);font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.1);position:relative;overflow:hidden}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-  @media (max-width:900px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--card);border-radius:16px;padding:16px;border:1px solid #eef0ff;box-shadow:0 8px 24px rgba(16,24,40,.06)}
-  .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,#4b2c82,#3a74d1);color:#fff;cursor:pointer;font-weight:700;border:none}
-  /* Modals */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
-  .modal.show{display:flex}
-  .sheet{width:min(620px,96vw);background:#fff;border-radius:16px;padding:18px;box-shadow:0 18px 40px rgba(0,0,0,.25);position:relative}
-  .close{position:absolute;right:14px;top:10px;font-size:22px;cursor:pointer;color:#777}
-  form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media (max-width:640px){form .row{grid-template-columns:1fr}}
-  input,select,textarea{width:100%;padding:10px;border:1px solid #e3e8ff;border-radius:10px;outline:none;font-size:14px}
-  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);border-color:#c9d9ff}
-</style>
-</head>
-<body>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="bank.html">Bank</a>
-    <a href="retail.html">Retail</a>
-    <a href="telco.html">Telco</a>
-    <a href="govt.html">Govt</a>
-
-    <!-- Sector-specific actions -->
-    <a href="#" onclick="openModal('jobModal')">Apply Job</a>
-
-    <div class="spacer"></div>
-    <!-- Universal actions -->
-    <div class="actions">
-      <a href="#" onclick="openModal('loginModal')">Login</a>
-      <a href="#" onclick="openModal('registerModal')">Register</a>
-      <a href="#" onclick="openModal('contactModal')">Contact</a>
+<div id="registerModal" class="modal"><div class="sheet">
+  <span class="close" onclick="closeModal('registerModal')">×</span>
+  <h2>Register</h2>
+  <form onsubmit="demoSubmit(event)">
+    <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
+    <div class="row"><input type="tel" placeholder="Phone" required /><input type="email" placeholder="Email" required /></div>
+    <div class="row">
+      <select id="countryRetail" onchange="toggleIDs('Retail')" required>
+        <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
+      </select>
+      <div></div>
     </div>
-  </nav>
-
-  <div class="wrap">
-    <div class="banner">Retail • Offers • Careers</div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Careers</h3>
-        <p>Join our dynamic retail teams across sales, ops, and support.</p>
-        <button class="btn" onclick="openModal('jobModal')">Apply for Job</button>
-      </div>
-      <div class="card">
-        <h3>Loyalty</h3>
-        <p>Earn points and exclusive benefits with our loyalty program.</p>
-        <button class="btn" onclick="openModal('registerModal')">Join Program</button>
-      </div>
+    <div id="ksaIdRetail" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+    <div id="uaeIdRetail" style="display:none"><input placeholder="UAE ID" /></div>
+    <div id="qatarIdRetail" style="display:none"><input placeholder="Qatar ID" /></div>
+    <div class="row">
+      <input type="password" id="pwdRetail" placeholder="Password" required />
+      <input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required />
     </div>
-  </div>
+    <small id="pmRetail" style="color:#c00"></small><br/>
 
-  <!-- Sector modal -->
-  <div id="jobModal" class="modal"><div class="sheet">
-    <span class="close" onclick="closeModal('jobModal')">×</span>
-    <h2>Retail Job Application</h2>
-    <form onsubmit="demoSubmit(event)">
-      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
-      <div class="row"><input type="email" placeholder="Email" required /><input type="tel" placeholder="Phone" required /></div>
-      <div class="row">
-        <select id="countryRT" onchange="toggleIDs('RT')" required>
-          <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
-        </select>
-        <input placeholder="Position (e.g., Store Manager)" required />
-      </div>
-      <div id="ksaIdRT" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRT" style="display:none"><input placeholder="UAE ID" /></div>
-      <div id="qatarIdRT" style="display:none"><input placeholder="Qatar ID" /></div>
-      <div class="row"><input type="number" placeholder="Experience (years)" /><input type="number" placeholder="Expected Salary (USD)" /></div>
-      <button class="btn" type="submit">Submit Application</button>
-    </form>
-  </div></div>
+    <!-- Marketing Consent (optional) -->
+    <fieldset style="border:1px solid #e3e8ff;border-radius:10px;padding:10px;margin-top:10px">
+      <legend style="font-weight:600;color:#333">Marketing Consent (Optional)</legend>
+      <label><input type="checkbox" name="consent_email" /> I agree to receive marketing emails</label><br/>
+      <label><input type="checkbox" name="consent_sms" /> I agree to receive marketing SMS</label><br/>
+      <label><input type="checkbox" name="consent_call" /> I agree to receive marketing phone calls</label><br/>
+      <label><input type="checkbox" name="consent_whatsapp" /> I agree to receive WhatsApp notifications</label><br/>
+      <small style="color:#666;font-size:12px">
+        By checking these boxes, you consent to receive promotional communications.  
+        Consent is optional and you may withdraw at any time.  
+      </small>
+    </fieldset>
 
-  <!-- Universal Modals -->
-  <div id="loginModal" class="modal"><div class="sheet">
-    <span class="close" onclick="closeModal('loginModal')">×</span>
-    <h2>Login</h2>
-    <form onsubmit="demoSubmit(event)"><input type="email" placeholder="Email" required /><input type="password" placeholder="Password" required /><button class="btn">Login</button></form>
-  </div></div>
+    <!-- Terms & Conditions (mandatory) -->
+    <div style="margin-top:12px">
+      <label>
+        <input type="checkbox" id="acceptTnc" required />
+        I have read and accept the <a href="#" style="color:#2575fc">Terms & Conditions</a> and <a href="#" style="color:#2575fc">Privacy Policy</a>.
+      </label>
+    </div>
 
-  <div id="registerModal" class="modal"><div class="sheet">
-    <span class="close" onclick="closeModal('registerModal')">×</span>
-    <h2>Register</h2>
-    <form onsubmit="demoSubmit(event)">
-      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
-      <div class="row"><input type="tel" placeholder="Phone" required /><input type="email" placeholder="Email" required /></div>
-      <div class="row"><select id="countryRetail" onchange="toggleIDs('Retail')" required>
-        <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option></select><div></div></div>
-      <div id="ksaIdRetail" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRetail" style="display:none"><input placeholder="UAE ID" /></div>
-      <div id="qatarIdRetail" style="display:none"><input placeholder="Qatar ID" /></div>
-      <div class="row"><input type="password" id="pwdRetail" placeholder="Password" required /><input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
-      <small id="pmRetail" style="color:#c00"></small><br/>
-      <button class="btn" type="submit">Create Account</button>
-    </form>
-  </div></div>
-
-  <div id="contactModal" class="modal"><div class="sheet">
-    <span class="close" onclick="closeModal('contactModal')">×</span>
-    <h2>Contact Us</h2>
-    <form onsubmit="demoSubmit(event)"><div class="row"><input placeholder="Full Name" required /><input type="email" placeholder="Email" required /></div><input placeholder="Subject" required /><textarea placeholder="Message" required></textarea><button class="btn" type="submit">Send</button></form>
-  </div></div>
-
-<script>
-  function openModal(id){document.getElementById(id).classList.add('show')}
-  function closeModal(id){document.getElementById(id).classList.remove('show')}
-  window.addEventListener('click',e=>{const m=e.target.closest('.sheet');const modal=e.target.classList?.contains('modal')?e.target:null;if(!m&&modal){modal.classList.remove('show')}})
-  function toggleIDs(s){const c=document.getElementById('country'+s).value;['ksa','uae','qatar'].forEach(k=>document.getElementById(k+'Id'+s).style.display='none');if(c==='KSA')document.getElementById('ksaId'+s).style.display='block';else if(c==='UAE')document.getElementById('uaeId'+s).style.display='block';else if(c==='Qatar')document.getElementById('qatarId'+s).style.display='block'}
-  function matchPwd(s){const p=document.getElementById('pwd'+s),cp=document.getElementById('cpwd'+s),m=document.getElementById('pm'+s); if(cp.value&&p.value!==cp.value){m.textContent='Passwords do not match'}else{m.textContent=''}}
-  function demoSubmit(e){e.preventDefault();alert('Submitted (demo).')}
-</script>
-</body>
-</html>
+    <br/>
+    <button class="btn" type="submit">Create Account</button>
+  </form>
+</div></div>
