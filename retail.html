@@ -5,42 +5,38 @@
     <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
     <div class="row"><input type="tel" placeholder="Phone" required /><input type="email" placeholder="Email" required /></div>
     <div class="row">
-      <select id="countryRetail" onchange="toggleIDs('Retail')" required>
+      <select id="countryGovt" onchange="toggleIDs('Govt')" required>
         <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
-      </select>
-      <div></div>
+      </select><div></div>
     </div>
-    <div id="ksaIdRetail" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-    <div id="uaeIdRetail" style="display:none"><input placeholder="UAE ID" /></div>
-    <div id="qatarIdRetail" style="display:none"><input placeholder="Qatar ID" /></div>
+    <div id="ksaIdGovt" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
+    <div id="uaeIdGovt" style="display:none"><input placeholder="UAE ID" /></div>
+    <div id="qatarIdGovt" style="display:none"><input placeholder="Qatar ID" /></div>
     <div class="row">
-      <input type="password" id="pwdRetail" placeholder="Password" required />
-      <input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required />
+      <input type="password" id="pwdGovt" placeholder="Password" required />
+      <input type="password" id="cpwdGovt" oninput="matchPwd('Govt')" placeholder="Confirm Password" required />
     </div>
-    <small id="pmRetail" style="color:#c00"></small><br/>
+    <small id="pmGovt" class="muted"></small><br />
 
-    <!-- Marketing Consent (optional) -->
+    <!-- GDPR Consents -->
     <fieldset style="border:1px solid #e3e8ff;border-radius:10px;padding:10px;margin-top:10px">
       <legend style="font-weight:600;color:#333">Marketing Consent (Optional)</legend>
-      <label><input type="checkbox" name="consent_email" /> I agree to receive marketing emails</label><br/>
-      <label><input type="checkbox" name="consent_sms" /> I agree to receive marketing SMS</label><br/>
-      <label><input type="checkbox" name="consent_call" /> I agree to receive marketing phone calls</label><br/>
-      <label><input type="checkbox" name="consent_whatsapp" /> I agree to receive WhatsApp notifications</label><br/>
-      <small style="color:#666;font-size:12px">
-        By checking these boxes, you consent to receive promotional communications.  
-        Consent is optional and you may withdraw at any time.  
-      </small>
+      <label><input type="checkbox" /> I agree to receive marketing emails</label><br/>
+      <label><input type="checkbox" /> I agree to receive SMS notifications</label><br/>
+      <label><input type="checkbox" /> I agree to receive phone calls</label><br/>
+      <label><input type="checkbox" /> I agree to receive WhatsApp updates</label><br/>
+      <small class="muted">Consent is optional and can be withdrawn at any time.</small>
     </fieldset>
 
-    <!-- Terms & Conditions (mandatory) -->
+    <!-- Mandatory T&C -->
     <div style="margin-top:12px">
       <label>
-        <input type="checkbox" id="acceptTnc" required />
-        I have read and accept the <a href="#" style="color:#2575fc">Terms & Conditions</a> and <a href="#" style="color:#2575fc">Privacy Policy</a>.
+        <input type="checkbox" required />
+        I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
       </label>
     </div>
 
-    <br/>
-    <button class="btn" type="submit">Create Account</button>
+    <br />
+    <button class="btn primary" type="submit">Create Account</button>
   </form>
 </div></div>
