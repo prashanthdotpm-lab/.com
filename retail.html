@@ -75,25 +75,27 @@
   <div id="jobModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('jobModal')">×</span>
     <h2>Retail Job Application</h2>
-    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
-      <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
-      <div class="row"><input type="email" name="Email" placeholder="Email" required /><input type="tel" name="Phone" placeholder="Phone" required /></div>
+    <form action="https://formspree.io/f/maypwnqd" method="POST">
+      <div class="row"><input name="first_name" placeholder="First Name" required /><input name="last_name" placeholder="Last Name" required /></div>
+      <div class="row"><input type="email" name="email" placeholder="Email" required /><input type="tel" name="phone" placeholder="Phone" required /></div>
       <div class="row">
-        <select id="countryRT" name="Country" onchange="toggleIDs('RT')" required>
+        <select id="countryRT" name="country" onchange="toggleIDs('RT')" required>
           <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
         </select>
-        <input name="Position" placeholder="Position (e.g., Store Manager)" required />
+        <input name="position" placeholder="Position (e.g., Store Manager)" required />
       </div>
-      <div id="ksaIdRT" style="display:none"><input name="KSA ID" placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRT" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
-      <div id="qatarIdRT" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
-      <div class="row"><input type="number" name="Experience" placeholder="Experience (years)" /><input type="number" name="Expected Salary" placeholder="Expected Salary (USD)" /></div>
+      <div id="ksaIdRT" style="display:none"><input name="ksa_id" placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdRT" style="display:none"><input name="uae_id" placeholder="UAE ID" /></div>
+      <div id="qatarIdRT" style="display:none"><input name="qatar_id" placeholder="Qatar ID" /></div>
+      <div class="row"><input type="number" name="experience" placeholder="Experience (years)" /><input type="number" name="salary" placeholder="Expected Salary (USD)" /></div>
 
-      <!-- Careers Consent -->
+      <!-- GDPR-consent section -->
       <fieldset>
-        <legend>Careers Consent (Optional)</legend>
-        <label><input type="checkbox" name="Consent Job Updates" /> I agree to be contacted for future job opportunities</label><br/>
-        <label><input type="checkbox" name="Consent Resume Store" /> I agree my resume/application can be stored</label><br/>
+        <legend>Consent (Optional)</legend>
+        <label><input type="checkbox" name="consent_marketing" /> I agree to receive marketing emails</label><br/>
+        <label><input type="checkbox" name="consent_sms" /> I agree to receive SMS notifications</label><br/>
+        <label><input type="checkbox" name="consent_phone" /> I agree to receive phone calls</label><br/>
+        <label><input type="checkbox" name="consent_whatsapp" /> I agree to receive WhatsApp updates</label><br/>
         <small>Consent is optional and can be withdrawn anytime.</small>
       </fieldset>
 
@@ -105,9 +107,9 @@
   <div id="loginModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('loginModal')">×</span>
     <h2>Login</h2>
-    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
-      <input type="email" name="Email" placeholder="Email" required />
-      <input type="password" name="Password" placeholder="Password" required />
+    <form onsubmit="demoSubmit(event)">
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
       <button class="btn" type="submit">Login</button>
     </form>
   </div></div>
@@ -115,27 +117,27 @@
   <div id="registerModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('registerModal')">×</span>
     <h2>Register</h2>
-    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
-      <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
-      <div class="row"><input type="tel" name="Phone" placeholder="Phone" required /><input type="email" name="Email" placeholder="Email" required /></div>
+    <form action="https://formspree.io/f/maypwnqd" method="POST">
+      <div class="row"><input name="first_name" placeholder="First Name" required /><input name="last_name" placeholder="Last Name" required /></div>
+      <div class="row"><input type="tel" name="phone" placeholder="Phone" required /><input type="email" name="email" placeholder="Email" required /></div>
       <div class="row">
-        <select id="countryRetail" name="Country" onchange="toggleIDs('Retail')" required>
+        <select id="countryRetail" name="country" onchange="toggleIDs('Retail')" required>
           <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
         </select><div></div>
       </div>
-      <div id="ksaIdRetail" style="display:none"><input name="KSA ID" placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRetail" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
-      <div id="qatarIdRetail" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
-      <div class="row"><input type="password" id="pwdRetail" name="Password" placeholder="Password" required /><input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
+      <div id="ksaIdRetail" style="display:none"><input name="ksa_id" placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdRetail" style="display:none"><input name="uae_id" placeholder="UAE ID" /></div>
+      <div id="qatarIdRetail" style="display:none"><input name="qatar_id" placeholder="Qatar ID" /></div>
+      <div class="row"><input type="password" id="pwdRetail" name="password" placeholder="Password" required /><input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
       <small id="pmRetail" style="color:#c00"></small><br/>
 
       <!-- GDPR-consent section -->
       <fieldset>
         <legend>Marketing Consent (Optional)</legend>
-        <label><input type="checkbox" name="Consent Marketing Emails" /> I agree to receive marketing emails</label><br/>
-        <label><input type="checkbox" name="Consent SMS" /> I agree to receive SMS notifications</label><br/>
-        <label><input type="checkbox" name="Consent Phone Calls" /> I agree to receive phone calls</label><br/>
-        <label><input type="checkbox" name="Consent WhatsApp" /> I agree to receive WhatsApp updates</label><br/>
+        <label><input type="checkbox" name="consent_marketing" /> I agree to receive marketing emails</label><br/>
+        <label><input type="checkbox" name="consent_sms" /> I agree to receive SMS notifications</label><br/>
+        <label><input type="checkbox" name="consent_phone" /> I agree to receive phone calls</label><br/>
+        <label><input type="checkbox" name="consent_whatsapp" /> I agree to receive WhatsApp updates</label><br/>
         <small>Consent is optional and can be withdrawn anytime.</small>
       </fieldset>
 
@@ -155,10 +157,10 @@
   <div id="contactModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('contactModal')">×</span>
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
-      <div class="row"><input name="Full Name" placeholder="Full Name" required /><input type="email" name="Email" placeholder="Email" required /></div>
-      <input name="Subject" placeholder="Subject" required />
-      <textarea name="Message" placeholder="Message" required></textarea>
+    <form action="https://formspree.io/f/maypwnqd" method="POST">
+      <div class="row"><input name="full_name" placeholder="Full Name" required /><input type="email" name="email" placeholder="Email" required /></div>
+      <input name="subject" placeholder="Subject" required />
+      <textarea name="message" placeholder="Message" required></textarea>
       <button class="btn" type="submit">Send</button>
     </form>
   </div></div>
@@ -185,6 +187,7 @@
     if(cp.value && p.value!==cp.value){m.textContent='Passwords do not match'}
     else{m.textContent=''}
   }
+  function demoSubmit(e){e.preventDefault();alert('Submitted (demo).')}
 </script>
 </body>
 </html>
