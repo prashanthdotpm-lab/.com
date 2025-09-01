@@ -75,7 +75,7 @@
   <div id="jobModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('jobModal')">×</span>
     <h2>Retail Job Application</h2>
-    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
       <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
       <div class="row"><input type="email" name="Email" placeholder="Email" required /><input type="tel" name="Phone" placeholder="Phone" required /></div>
       <div class="row">
@@ -88,51 +88,34 @@
       <div id="uaeIdRT" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
       <div id="qatarIdRT" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
       <div class="row"><input type="number" name="Experience" placeholder="Experience (years)" /><input type="number" name="Expected Salary" placeholder="Expected Salary (USD)" /></div>
-      
-      <!-- GDPR-consent section for Careers -->
+
+      <!-- Careers Consent -->
       <fieldset>
-        <legend>Marketing Consent (Optional)</legend>
-        <label><input type="checkbox" name="Marketing Emails" /> I agree to receive marketing emails</label><br/>
-        <label><input type="checkbox" name="SMS Notifications" /> I agree to receive SMS notifications</label><br/>
-        <label><input type="checkbox" name="Phone Calls" /> I agree to receive phone calls</label><br/>
-        <label><input type="checkbox" name="WhatsApp Updates" /> I agree to receive WhatsApp updates</label><br/>
+        <legend>Careers Consent (Optional)</legend>
+        <label><input type="checkbox" name="Consent Job Updates" /> I agree to be contacted for future job opportunities</label><br/>
+        <label><input type="checkbox" name="Consent Resume Store" /> I agree my resume/application can be stored</label><br/>
+        <small>Consent is optional and can be withdrawn anytime.</small>
       </fieldset>
 
-      <!-- Data Retention Consent -->
-      <fieldset>
-        <legend>Data Retention Consent (Optional)</legend>
-        <label><input type="checkbox" name="Data Retention" /> I agree that my application/CV may be stored for future job opportunities</label><br/>
-      </fieldset>
-
-      <!-- Mandatory T&C -->
-      <div style="margin-top:12px">
-        <label>
-          <input type="checkbox" required name="Terms & Privacy" />
-          I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
-        </label>
-      </div>
-
-      <br/>
       <button class="btn" type="submit">Submit Application</button>
     </form>
   </div></div>
 
-  <!-- Login Modal -->
+  <!-- Universal Modals -->
   <div id="loginModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('loginModal')">×</span>
     <h2>Login</h2>
-    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
       <input type="email" name="Email" placeholder="Email" required />
       <input type="password" name="Password" placeholder="Password" required />
       <button class="btn" type="submit">Login</button>
     </form>
   </div></div>
 
-  <!-- Register Modal -->
   <div id="registerModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('registerModal')">×</span>
     <h2>Register</h2>
-    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
       <div class="row"><input name="First Name" placeholder="First Name" required /><input name="Last Name" placeholder="Last Name" required /></div>
       <div class="row"><input type="tel" name="Phone" placeholder="Phone" required /><input type="email" name="Email" placeholder="Email" required /></div>
       <div class="row">
@@ -143,22 +126,23 @@
       <div id="ksaIdRetail" style="display:none"><input name="KSA ID" placeholder="KSA ID (Iqama)" /></div>
       <div id="uaeIdRetail" style="display:none"><input name="UAE ID" placeholder="UAE ID" /></div>
       <div id="qatarIdRetail" style="display:none"><input name="Qatar ID" placeholder="Qatar ID" /></div>
-      <div class="row"><input type="password" id="pwdRetail" name="Password" placeholder="Password" required /><input type="password" id="cpwdRetail" name="Confirm Password" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
+      <div class="row"><input type="password" id="pwdRetail" name="Password" placeholder="Password" required /><input type="password" id="cpwdRetail" oninput="matchPwd('Retail')" placeholder="Confirm Password" required /></div>
       <small id="pmRetail" style="color:#c00"></small><br/>
 
       <!-- GDPR-consent section -->
       <fieldset>
         <legend>Marketing Consent (Optional)</legend>
-        <label><input type="checkbox" name="Marketing Emails" /> I agree to receive marketing emails</label><br/>
-        <label><input type="checkbox" name="SMS Notifications" /> I agree to receive SMS notifications</label><br/>
-        <label><input type="checkbox" name="Phone Calls" /> I agree to receive phone calls</label><br/>
-        <label><input type="checkbox" name="WhatsApp Updates" /> I agree to receive WhatsApp updates</label><br/>
+        <label><input type="checkbox" name="Consent Marketing Emails" /> I agree to receive marketing emails</label><br/>
+        <label><input type="checkbox" name="Consent SMS" /> I agree to receive SMS notifications</label><br/>
+        <label><input type="checkbox" name="Consent Phone Calls" /> I agree to receive phone calls</label><br/>
+        <label><input type="checkbox" name="Consent WhatsApp" /> I agree to receive WhatsApp updates</label><br/>
+        <small>Consent is optional and can be withdrawn anytime.</small>
       </fieldset>
 
       <!-- Mandatory T&C -->
       <div style="margin-top:12px">
         <label>
-          <input type="checkbox" required name="Terms & Privacy" />
+          <input type="checkbox" required />
           I accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
         </label>
       </div>
@@ -168,11 +152,10 @@
     </form>
   </div></div>
 
-  <!-- Contact Modal -->
   <div id="contactModal" class="modal"><div class="sheet">
     <span class="close" onclick="closeModal('contactModal')">×</span>
     <h2>Contact Us</h2>
-    <form action="https://formsubmit.co/prashanthdotpm@gmail.com" method="POST">
+    <form action="https://formspree.io/f/your-endpoint-id" method="POST">
       <div class="row"><input name="Full Name" placeholder="Full Name" required /><input type="email" name="Email" placeholder="Email" required /></div>
       <input name="Subject" placeholder="Subject" required />
       <textarea name="Message" placeholder="Message" required></textarea>
