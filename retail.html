@@ -188,5 +188,17 @@
     else{m.textContent=''}
   }
 </script>
+  
+                                <script src='https://cdn-prod.securiti.ai/consent/form-consent-sdk.js'></script>
+                                <script>window.addEventListener('load', function() {
+    FormConsentSDK.initialize({
+        codeGenMetadata:{"formPropertyId":"147","formSelector":"[method*=\"POST\"]","subjectIdentifiers":[{"name":"first_name","selector":"[name = \"first_name\"]","isPrimary":false},{"name":"last_name","selector":"[name = \"last_name\"]","isPrimary":false},{"name":"email","selector":"[name = \"email\"]","isPrimary":true},{"name":"phone","selector":"[name = \"phone\"]","isPrimary":false},{"name":"position","selector":"[name = \"position\"]","isPrimary":false},{"name":"ksa_id","selector":"[name = \"ksa_id\"]","isPrimary":false},{"name":"uae_id","selector":"[name = \"uae_id\"]","isPrimary":false},{"name":"qatar_id","selector":"[name = \"qatar_id\"]","isPrimary":false},{"name":"experience","selector":"[name = \"experience\"]","isPrimary":false},{"name":"salary","selector":"[name = \"salary\"]","isPrimary":false},{"name":"country","selector":"[name = \"country\"]","isPrimary":false}],"consentIdentifiers":[{"type":"checkbox","name":"consent_email","selector":"[name = \"consent_email\"]","propertyId":391032,"consentValue":"checked"},{"type":"checkbox","name":"consent_sms","selector":"[name = \"consent_sms\"]","propertyId":391033,"consentValue":"checked"},{"type":"checkbox","name":"consent_calls","selector":"[name = \"consent_calls\"]","propertyId":391034,"consentValue":"checked"},{"type":"checkbox","name":"consent_whatsapp","selector":"[name = \"consent_whatsapp\"]","propertyId":391035,"consentValue":"checked"}],"consentTrigger":{"action":"submit","selector":"[class = \"btn\"]"}},
+        url: 'https://app.securiti.ai/privaci/v1/',
+        authToken:'6f1a45b9-4852-4960-9056-de91de6edb8a',
+        orgId:'1',
+        onConsentSuccess: null,
+        onConsentFailure: null
+    })
+})</script>
 </body>
 </html>
