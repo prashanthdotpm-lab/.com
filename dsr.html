@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Data Subject Request</title>
-  <style>
-    body {
-      margin: 0; 
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f6f8ff;
-      color: #0f1222;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-    header {
-      background: linear-gradient(90deg, #4b2c82, #3a74d1);
-      color: white;
-      padding: 16px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    iframe {
-      flex-grow: 1;
-      border: none;
-      width: 100%;
-      min-height: 600px;
-    }
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 12px;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    a.back {
-      color: #3a74d1;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a.back:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Data Subject Request</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    padding: 2rem;
+    background: #f6f8ff;
+    color: #0f1222;
+    text-align: center;
+  }
+  a.dsr-link {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #4b2c82;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+  a.dsr-link:hover {
+    background: #3a2370;
+  }
+</style>
 </head>
 <body>
-  <header>Data Subject Request</header>
-  <iframe src="https://privacy-central.securiti.ai/dsr-embed/52029378-3e61-4f3d-9058-7d507a8ce9b2"></iframe>
-  <footer>
-    <a class="back" href="index.html">← Back to Home</a>
-  </footer>
+  <h1>Data Subject Request</h1>
+  <p>Click the button below to manage your Data Subject Requests securely.</p>
+  <a
+    class="dsr-link"
+    href="https://privacy-central.securiti.ai/dsr-embed/52029378-3e61-4f3d-9058-7d507a8ce9b2"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Open Data Subject Request Portal
+  </a>
+  <p style="margin-top: 3rem;">
+    <a href="index.html">← Back to Home</a>
+  </p>
 </body>
 </html>
