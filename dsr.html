@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Data Subject Request</title>
-<style>
-  body {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    padding: 2rem;
-    background: #f6f8ff;
-    color: #0f1222;
-    text-align: center;
-  }
-  a.dsr-link {
-    display: inline-block;
-    padding: 14px 30px;
-    background: #4b2c82;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 12px;
-    margin-top: 2rem;
-    font-size: 1.2rem;
-  }
-  a.dsr-link:hover {
-    background: #3a2370;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Subject Request</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f8ff;
+      color: #0f1222;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 2rem;
+      font-size: 28px;
+      color: #4b2c82;
+    }
+    iframe {
+      width: 80%;
+      height: 1000px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .back-link {
+      display: inline-block;
+      margin: 2rem 0;
+      font-weight: 600;
+      color: #4b2c82;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>Data Subject Request</h1>
-  <p>Click the button below to manage your Data Subject Requests securely.</p>
-  <a
-    class="dsr-link"
-    href="https://privacy-central.securiti.ai/dsr-embed/52029378-3e61-4f3d-9058-7d507a8ce9b2"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Open Data Subject Request Portal
-  </a>
-  <p style="margin-top: 3rem;">
-    <a href="index.html">← Back to Home</a>
-  </p>
+  <h1>Data Subject Request Portal</h1>
+
+  <!-- Embedded iframe from Securiti.ai (now whitelisted) -->
+  <iframe
+    src="https://privacy-central.securiti.ai/dsr-embed/72659348-4a9b-4798-84d8-490c9bcb6b18"
+    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+    loading="lazy"
+  ></iframe>
+
+  <br />
+  <a class="back-link" href="index.html">← Back to Home</a>
 </body>
 </html>
