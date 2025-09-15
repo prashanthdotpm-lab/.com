@@ -1,85 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Pacchi Prashanth's Sector Sites — Home</title>
-<style>
-  :root{
-    --bg1:#4b2c82; --bg2:#3a74d1; --bg3:#5a3d99;
-    --accent:#ffd369; --text:#0f1222; --card:#ffffff; --muted:#6a6f85;
-    --ring: rgba(74, 144, 226, .35);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f6f8ff;color:var(--text)}
-  .navbar{
-    position:sticky;top:0;z-index:50;
-    background:linear-gradient(90deg,var(--bg1),var(--bg2));
-    padding:12px 18px;display:flex;align-items:center;gap:12px;color:#fff
-  }
-  .navbar a{
-    color:#fff;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px;transition:.2s ease;
-  }
-  .navbar a:hover{background-color:rgba(255,255,255,.12)}
-  .spacer{flex:1}
-  .actions{display:flex;gap:8px;flex-wrap:wrap}
-  .wrap{max-width:1100px;margin:0 auto;padding:18px}
-  .hero{border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);background:#000}
-  .carousel{position:relative;height:360px;overflow:hidden}
-  .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:clamp(24px,4vw,40px);opacity:0;transition:opacity 900ms ease}
-  .slide.show{opacity:1}
-  .slide .banner{
-    width:100%;height:100%;
-    background:linear-gradient(135deg,var(--bg1),var(--bg2));
-    display:flex;align-items:center;justify-content:center;position:relative;
-  }
-  .slide .banner:after{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(800px 300px at 80% 0%, rgba(255,255,255,.15), transparent 60%);
-  }
-  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
-  @media (min-width:900px){.cards{grid-template-columns:repeat(4,1fr)}}
-  .card{
-    background:var(--card);border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(16,24,40,.06);
-    border:1px solid #eef0ff; display:flex;flex-direction:column;gap:10px
-  }
-  .card h3{margin:0 0 4px 0;font-size:18px}
-  .card p{margin:0;color:var(--muted);font-size:14px}
-  .card a.btn{align-self:flex-start;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff}
-  /* Modals */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
-  .modal.show{display:flex}
-  .sheet{width:min(560px,96vw);background:#fff;border-radius:16px;padding:18px 18px;box-shadow:0 18px 40px rgba(0,0,0,.25);position:relative}
-  .sheet h2{margin:0 0 10px 0}
-  .close{position:absolute;right:14px;top:10px;font-size:22px;cursor:pointer;color:#777}
-  form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  form .row2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-  @media (max-width:640px){form .row, form .row2{grid-template-columns:1fr}}
-  input,select,textarea{
-    width:100%; padding:10px 12px;border:1px solid #e3e8ff;border-radius:10px;outline:none;
-    font-size:14px;background:#fff; box-shadow:0 0 0 0 var(--ring);
-  }
-  textarea{min-height:96px;resize:vertical}
-  input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);border-color:#c9d9ff}
-  .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:#eef2ff;color:#334;cursor:pointer;font-weight:700;border:none}
-  .btn.primary{background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff}
-  .muted{color:var(--muted)}
-  footer{
-    padding:24px;
-    text-align:center;
-    color:#70768f;
-  }
-  footer a {
-    display: inline-block;
-    margin-top: 8px;
-    color: #3a74d1;
-    font-weight: 700;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pacchi Prashanth's Sector Sites — Home</title>
+  <style>
+    :root {
+      --bg1: #4b2c82; --bg2: #3a74d1; --bg3: #5a3d99;
+      --accent: #ffd369; --text: #0f1222; --card: #ffffff; --muted: #6a6f85;
+      --ring: rgba(74, 144, 226, .35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f8ff;
+      color: var(--text);
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, var(--bg1), var(--bg2));
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+    .navbar a:hover { background-color: rgba(255, 255, 255, .12); }
+    .spacer { flex: 1; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 18px; }
+    .hero {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+      background: #000;
+    }
+    .carousel {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(24px, 4vw, 40px);
+      opacity: 0;
+      transition: opacity 900ms ease;
+    }
+    .slide.show { opacity: 1; }
+    .banner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .banner:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px 300px at 80% 0%, rgba(255, 255, 255, .15), transparent 60%);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    @media (min-width:900px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, .06);
+      border: 1px solid #eef0ff;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card h3 { margin: 0 0 4px 0; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card a.btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: #fff;
+    }
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: #70768f;
+    }
+    .dsr-button {
+      margin-top: 10px;
+      padding: 12px 24px;
+      background: #4b2c82;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .dsr-button:hover {
+      background: #3a2370;
+    }
+  </style>
 </head>
 <body>
+
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="bank.html">Bank</a>
@@ -88,9 +133,9 @@
     <a href="govt.html">Govt</a>
     <div class="spacer"></div>
     <div class="actions">
-      <a href="#" onclick="openModal('loginModal')">Login</a>
-      <a href="#" onclick="openModal('registerModal')">Register</a>
-      <a href="#" onclick="openModal('contactModal')">Contact</a>
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+      <a href="#">Contact</a>
     </div>
   </nav>
 
@@ -135,119 +180,25 @@
     </section>
   </div>
 
-  <!-- Universal Modals (Login / Register / Contact) -->
-  <div id="loginModal" class="modal" role="dialog" aria-modal="true">
-    <div class="sheet">
-      <span class="close" onclick="closeModal('loginModal')">×</span>
-      <h2>Login</h2>
-      <form onsubmit="demoSubmit(event)">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <button class="btn primary" type="submit">Login</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="registerModal" class="modal" role="dialog" aria-modal="true">
-    <div class="sheet">
-      <span class="close" onclick="closeModal('registerModal')">×</span>
-      <h2>Register</h2>
-      <form onsubmit="demoSubmit(event)">
-        <div class="row">
-          <input placeholder="First Name" required />
-          <input placeholder="Last Name" required />
-        </div>
-        <div class="row">
-          <input type="tel" placeholder="Phone" required />
-          <input type="email" placeholder="Email" required />
-        </div>
-        <div class="row">
-          <select id="countryHome" onchange="toggleIDs('Home')" required>
-            <option value="">Country</option>
-            <option>KSA</option><option>UAE</option><option>Qatar</option><option>Other</option>
-          </select>
-          <div></div>
-        </div>
-        <div id="ksaIdHome" style="display:none"><input placeholder="KSA ID (Iqama)" /></div>
-        <div id="uaeIdHome" style="display:none"><input placeholder="UAE ID" /></div>
-        <div id="qatarIdHome" style="display:none"><input placeholder="Qatar ID" /></div>
-
-        <div class="row">
-          <input type="password" placeholder="Password" id="pwdHome" required />
-          <input type="password" placeholder="Confirm Password" id="cpwdHome" required oninput="matchPwd('Home')" />
-        </div>
-        <small id="pmHome" class="muted"></small><br/>
-        <button class="btn primary" type="submit">Create Account</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="contactModal" class="modal" role="dialog" aria-modal="true">
-    <div class="sheet">
-      <span class="close" onclick="closeModal('contactModal')">×</span>
-      <h2>Contact Us</h2>
-      <form onsubmit="demoSubmit(event)">
-        <div class="row">
-          <input placeholder="Full Name" required />
-          <input type="email" placeholder="Email" required />
-        </div>
-        <input placeholder="Subject" required />
-        <textarea placeholder="Message" required></textarea>
-        <button class="btn primary" type="submit">Send Message</button>
-      </form>
-    </div>
-  </div>
-
-<footer>
-  © 2025 Pacchi Prashanth’s Sector Sites • Demo only
-  <br /><br />
-  <button
-    onclick="window.location.href='dsr.html'"
-    style="padding:10px 20px; border:none; border-radius:8px; background:#4b2c82; color:#fff; font-weight:700; cursor:pointer;"
-  >
-    Data Subject Request
-  </button>
-</footer>
-
+  <footer>
+    © 2025 Pacchi Prashanth’s Sector Sites • Demo only
+    <br /><br />
+    <button class="dsr-button" onclick="window.location.href='dsr.html'">
+      Data Subject Request
+    </button>
+  </footer>
 
 <script>
-  // Carousel (auto-rotate every 5s)
   (function(){
-    const slides=[...document.querySelectorAll('.slide')];
-    let i=0; setInterval(()=>{slides[i].classList.remove('show'); i=(i+1)%slides.length; slides[i].classList.add('show');},5000);
+    const slides = [...document.querySelectorAll('.slide')];
+    let i = 0;
+    setInterval(() => {
+      slides[i].classList.remove('show');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('show');
+    }, 5000);
   })();
-
-  function openModal(id){ document.getElementById(id).classList.add('show'); }
-  function closeModal(id){ document.getElementById(id).classList.remove('show'); }
-  window.addEventListener('click',e=>{
-    const m=e.target.closest('.sheet');
-    const modal=e.target.classList?.contains('modal')?e.target:null;
-    if(!m && modal){ modal.classList.remove('show'); }
-  });
-
-  function toggleIDs(suffix){
-    const c=document.getElementById('country'+suffix).value;
-    ['ksa','uae','qatar'].forEach(k=>document.getElementById(k+'Id'+suffix).style.display='none');
-    if(c==='KSA') document.getElementById('ksaId'+suffix).style.display='block';
-    else if(c==='UAE') document.getElementById('uaeId'+suffix).style.display='block';
-    else if(c==='Qatar') document.getElementById('qatarId'+suffix).style.display='block';
-  }
-
-  function matchPwd(suffix){
-    const p=document.getElementById('pwd'+suffix), cp=document.getElementById('cpwd'+suffix), m=document.getElementById('pm'+suffix);
-    if(!p||!cp||!m) return;
-    if(cp.value && p.value!==cp.value){
-      m.textContent='Passwords do not match';
-      m.style.color='#c00';
-    } else {
-      m.textContent='';
-    }
-  }
-
-  function demoSubmit(e){
-    e.preventDefault();
-    alert('Submitted (demo).');
-  }
 </script>
+
 </body>
 </html>
