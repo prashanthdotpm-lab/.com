@@ -3,94 +3,208 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Styled Consent Form</title>
+<title>BluNest Registration</title>
 <style>
+  /* Reset & Base */
+  * {
+    box-sizing: border-box;
+  }
   body, html {
-    margin: 0; padding: 0; height: 100%;
-    font-family: Arial, sans-serif;
+    margin: 0; padding: 0; height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: #fff;
     display: flex;
-    height: 100vh;
+    color: #333;
   }
+
+  /* Left Panel with background image */
   .left-panel {
     flex: 1;
-    background-image: url('57232f41-3928-4832-9cf6-71eb8dbfab01.png'); /* Replace with your image path */
-    background-size: cover;
+    background-image: url('57232f41-3928-4832-9cf6-71eb8dbfab01.png'); /* original coin image */
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
   }
-  /* Optional overlay for subtle shading */
+  /* Optional overlay for warm tone effect */
   .left-panel::before {
     content: "";
     position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(255, 255, 255, 0.3);
+    inset: 0;
+    background: rgba(255, 205, 109, 0.3); /* subtle warm overlay */
+    pointer-events: none;
   }
+
+  /* Right panel */
   .right-panel {
-    flex: 1.2;
+    flex: 1;
+    max-width: 600px;
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
   }
+
+  /* BluNest Logo style */
   .logo {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 28px;
-    color: #0b1d80; /* BluNest blue */
-    margin-bottom: 20px;
+    color: #0b1d80; /* BluNest Blue */
+    margin-bottom: 32px;
   }
-  .progress-bar {
-    width: 100%;
-    height: 8px;
+
+  /* Steps Navigation Bar */
+  .steps {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    user-select: none;
+  }
+  .step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    cursor: default;
+  }
+  .step:not(:last-child)::after {
+    content: "";
+    flex: 1;
+    height: 3px;
     background: #ddd;
-    border-radius: 4px;
-    margin: 20px 0 40px 0;
-    overflow: hidden;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 2px;
   }
-  .progress-bar-inner {
-    width: 33%; /* adjust per step */
-    height: 100%;
-    background: #008000; /* green */
-  }
-  h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  p.subtext {
-    color: #666;
+
+  /* Step icons */
+  .step-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ddd;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
     font-size: 14px;
-    margin-top: 0;
+    position: relative;
   }
+
+  /* Active and completed steps */
+  .step.active .step-icon {
+    background: #0b1d80;
+    color: white;
+  }
+  .step.completed .step-icon {
+    background: #0b1d80;
+    color: white;
+  }
+  /* Active step label */
+  .step.active .step-label {
+    font-weight: 700;
+    color: #0b1d80;
+  }
+  /* Inactive step label */
+  .step-label {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  /* Form heading */
+  h2 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+  }
+  .subtext {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 32px;
+  }
+
+  /* Form styles */
   form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 28px;
   }
-  input[type="text"], input[type="email"], input[type="password"] {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
     width: 100%;
-    box-sizing: border-box;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
   }
-  .form-footer {
+  input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="tel"]:focus {
+    outline: none;
+    border-color: #0b1d80;
+  }
+
+  /* Full width input - for last row */
+  .full-width {
     grid-column: span 2;
-    margin-top: 30px;
+  }
+
+  /* Buttons container */
+  .buttons {
+    grid-column: span 2;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin-top: 36px;
   }
   button {
     background-color: #0b1d80;
     color: white;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 28px;
     border: none;
-    padding: 12px 24px;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
+    transition: background-color 0.3s ease;
   }
   button:hover {
-    background-color: #08306b;
+    background-color: #091750;
+  }
+
+  /* Responsive */
+  @media (max-width: 850px) {
+    body, html {
+      flex-direction: column;
+      height: auto;
+    }
+    .left-panel {
+      flex: none;
+      height: 240px;
+      width: 100%;
+      position: relative;
+    }
+    .right-panel {
+      max-width: 100%;
+      padding: 24px 36px;
+      flex: none;
+    }
+    form {
+      grid-template-columns: 1fr;
+    }
+    .full-width {
+      grid-column: span 1;
+    }
+    .buttons {
+      justify-content: center;
+    }
   }
 </style>
 </head>
@@ -100,20 +214,44 @@
 
 <div class="right-panel">
   <div class="logo">BluNest</div>
-  <div class="progress-bar"><div class="progress-bar-inner"></div></div>
-  
+
+  <!-- Steps navigation -->
+  <div class="steps">
+    <div class="step completed">
+      <div class="step-icon">1</div>
+      <div class="step-label">Account<br><small>Account Details</small></div>
+    </div>
+    <div class="step active">
+      <div class="step-icon">2</div>
+      <div class="step-label">Personal<br><small>Setup Profile</small></div>
+    </div>
+    <div class="step">
+      <div class="step-icon">3</div>
+      <div class="step-label">Verify<br><small>Confirm OTP</small></div>
+    </div>
+  </div>
+
   <h2>Account Information</h2>
   <p class="subtext">Enter Your Account Details</p>
 
   <form>
-    <input type="text" placeholder="First Name" value="test" />
-    <input type="text" placeholder="Last Name" value="test" />
-    <input type="password" placeholder="Create Password" />
-    <input type="password" placeholder="Confirm Password" />
-    <input type="text" placeholder="Referrer Code" style="grid-column: span 2;" />
-    
-    <div class="form-footer">
-      <button type="button">← PREVIOUS</button>
+    <label for="firstname">First Name</label>
+    <input type="text" id="firstname" placeholder="Enter first name" value="test" />
+
+    <label for="lastname">Last Name</label>
+    <input type="text" id="lastname" placeholder="Enter last name" value="test" />
+
+    <label for="password">Create Password</label>
+    <input type="password" id="password" placeholder="Create Password" />
+
+    <label for="confirmpassword">Confirm Password</label>
+    <input type="password" id="confirmpassword" placeholder="Confirm Password" />
+
+    <label for="referralcode" class="full-width">Referrer Code (optional)</label>
+    <input type="text" id="referralcode" placeholder="Referrer Code" class="full-width" />
+
+    <div class="buttons">
+      <button type="button" disabled>← PREVIOUS</button>
       <button type="submit">NEXT →</button>
     </div>
   </form>
