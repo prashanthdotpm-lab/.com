@@ -1,292 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BluNest Registration Demo</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
-    background-color: #f08c4a; /* warm orange */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    background: white;
-    max-width: 600px;
-    width: 100%;
-    padding: 30px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  h1 {
-    color: #001f7b;
-    margin-bottom: 5px;
-  }
-  .steps {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  .step {
-    flex: 1;
-    text-align: center;
-    color: gray;
-    position: relative;
-  }
-  .step.active {
-    color: #001f7b;
-  }
-  .step.active::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    width: 40px;
-    height: 4px;
-    background: #001f7b;
-    transform: translateX(-50%);
-    border-radius: 2px;
-  }
-  .progress-bar {
-    height: 5px;
-    background: #eee;
-    border-radius: 2px;
-    margin-bottom: 30px;
-    overflow: hidden;
-  }
-  .progress {
-    height: 5px;
-    background: #0a6e1c;
-    width: 33%;
-    transition: width 0.3s ease;
-  }
-  label {
-    display: block;
-    margin-bottom: 6px;
-    color: #444;
-    font-weight: 600;
-  }
-  input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
-    width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  .password-requirements {
-    font-size: 12px;
-    margin-top: -15px;
-    margin-bottom: 15px;
-    color: #666;
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-  button {
-    background: #001f7b;
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  button:disabled {
-    background: #888;
-    cursor: not-allowed;
-  }
-  .hidden {
-    display: none;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stanbic Consent Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Video background */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
+
+    /* Form container */
+    .form-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff6f00; /* Orange theme */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6f00;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e65c00;
+    }
+
+    .password-requirements {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .otp-section {
+      text-align: center;
+    }
+
+    .otp-section input {
+      width: 50px;
+      margin: 5px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>BluNest</h1>
-  
-  <div class="steps">
-    <div class="step active" id="step-account">Account Details</div>
-    <div class="step" id="step-personal">Setup Profile</div>
-    <div class="step" id="step-verify">Confirm OTP</div>
-  </div>
-  
-  <div class="progress-bar"><div class="progress" id="progress"></div></div>
-  
-  <!-- Step 1: Account Details -->
-  <form id="form-account" class="form-step">
-    <h2>Account Information</h2>
-    <p>Enter Your Account Details</p>
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" required placeholder="test@test.com" />
-    
-    <label for="phone">Mobile Phone Number</label>
-    <input type="tel" id="phone" required placeholder="22123123123" />
-    
-    <div class="buttons" style="justify-content: flex-end;">
-      <button type="button" id="next-to-personal">Next →</button>
-    </div>
-  </form>
-  
-  <!-- Step 2: Personal Profile -->
-  <form id="form-personal" class="form-step hidden">
-    <h2>Account Information</h2>
-    <p>Enter Your Account Details</p>
-    
-    <label for="firstname">First Name</label>
-    <input type="text" id="firstname" required placeholder="test" />
-    
-    <label for="lastname">Last Name</label>
-    <input type="text" id="lastname" required placeholder="test" />
-    
-    <label for="password">Create Password</label>
-    <input type="password" id="password" required placeholder="••••••••" />
-    
-    <ul class="password-requirements">
-      <li>Mix letters (A-Z, a-z) and numbers (0-9)</li>
-      <li>Add at least one special character (., @, #, $, !, %)</li>
-      <li>Avoid easily guessable info (name, birthdate, common words)</li>
-      <li>Password must be at least 8 characters long</li>
-    </ul>
-    
-    <label for="confirm-password">Confirm Password</label>
-    <input type="password" id="confirm-password" required placeholder="••••••••" />
-    
-    <label for="referrer">Referrer Code (optional)</label>
-    <input type="text" id="referrer" placeholder="Referrer Code" />
-    
-    <div class="buttons">
-      <button type="button" id="back-to-account">← Previous</button>
-      <button type="button" id="next-to-verify">Next →</button>
-    </div>
-  </form>
-  
-  <!-- Step 3: Verify OTP -->
-  <form id="form-verify" class="form-step hidden">
-    <h2>Verify</h2>
-    <p>Confirm OTP</p>
-    
-    <label for="otp">OTP Code</label>
-    <input type="text" id="otp" required placeholder="Enter OTP" maxlength="6" />
-    
-    <div class="buttons">
-      <button type="button" id="back-to-personal">← Previous</button>
-      <button type="submit" id="submit-btn">Submit</button>
-    </div>
-  </form>
-</div>
+  <!-- Fullscreen video background -->
+  <video autoplay muted loop id="background-video">
+    <source src="https://cdn.pixabay.com/vimeo/25717/Abstract%20Red%20Fabric%20Flowing%20-%20Free%20Stock%20Video%20Background%20Loop%20-%20Pixabay.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-<script>
-  // Step management
-  const stepAccount = document.getElementById('step-account');
-  const stepPersonal = document.getElementById('step-personal');
-  const stepVerify = document.getElementById('step-verify');
-  
-  const progress = document.getElementById('progress');
-  
-  const formAccount = document.getElementById('form-account');
-  const formPersonal = document.getElementById('form-personal');
-  const formVerify = document.getElementById('form-verify');
-  
-  const nextToPersonal = document.getElementById('next-to-personal');
-  const backToAccount = document.getElementById('back-to-account');
-  const nextToVerify = document.getElementById('next-to-verify');
-  const backToPersonal = document.getElementById('back-to-personal');
-  
-  function showStep(step) {
-    formAccount.classList.add('hidden');
-    formPersonal.classList.add('hidden');
-    formVerify.classList.add('hidden');
-    stepAccount.classList.remove('active');
-    stepPersonal.classList.remove('active');
-    stepVerify.classList.remove('active');
-    
-    if(step === 1) {
-      formAccount.classList.remove('hidden');
-      stepAccount.classList.add('active');
-      progress.style.width = '33%';
-    } else if(step === 2) {
-      formPersonal.classList.remove('hidden');
-      stepPersonal.classList.add('active');
-      progress.style.width = '66%';
-    } else if(step === 3) {
-      formVerify.classList.remove('hidden');
-      stepVerify.classList.add('active');
-      progress.style.width = '100%';
+  <!-- Form container -->
+  <div class="form-container">
+
+    <!-- Account Information -->
+    <div class="form-box" id="account-info">
+      <h2>Account Information</h2>
+      <p>Enter Your Account Details</p>
+      <form id="account-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" value="test@test.com" required>
+        <label for="phone">Mobile Phone Number</label>
+        <input type="text" id="phone" value="22123123123" required>
+        <button type="button" onclick="nextForm('personal-info')">Next</button>
+      </form>
+    </div>
+
+    <!-- Personal Profile -->
+    <div class="form-box" id="personal-info" style="display:none;">
+      <h2>Personal Profile</h2>
+      <form id="personal-form">
+        <label for="first">First Name</label>
+        <input type="text" id="first" value="test" required>
+        <label for="last">Last Name</label>
+        <input type="text" id="last" value="test" required>
+        <label for="password">Create Password</label>
+        <input type="password" id="password" required>
+        <div class="password-requirements">
+          Mix letters (A-Z, a-z) and numbers (0-9)<br>
+          Add at least one special character (., @, #, $, !, %)<br>
+          Avoid easily guessable info<br>
+          Password must be at least 8 characters long
+        </div>
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" required>
+        <label for="referrer">Referrer Code</label>
+        <input type="text" id="referrer">
+        <button type="button" onclick="nextForm('verify-otp')">Next</button>
+      </form>
+    </div>
+
+    <!-- OTP Verification -->
+    <div class="form-box" id="verify-otp" style="display:none;">
+      <h2>Verify</h2>
+      <p>Confirm OTP</p>
+      <div class="otp-section">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+      </div>
+      <button type="button" onclick="alert('OTP Verified!')">Verify</button>
+    </div>
+
+  </div>
+
+  <script>
+    function nextForm(nextId) {
+      document.getElementById('account-info').style.display = 'none';
+      document.getElementById('personal-info').style.display = 'none';
+      document.getElementById('verify-otp').style.display = 'none';
+      document.getElementById(nextId).style.display = 'block';
     }
-  }
-  
-  // Initial display
-  showStep(1);
-  
-  nextToPersonal.onclick = () => {
-    // Basic validation
-    if (!formAccount.email.checkValidity() || !formAccount.phone.checkValidity()) {
-      alert('Please enter a valid email and phone number.');
-      return;
-    }
-    showStep(2);
-  };
-  
-  backToAccount.onclick = () => {
-    showStep(1);
-  };
-  
-  nextToVerify.onclick = () => {
-    // Validate personal fields
-    const fname = formPersonal.firstname.value.trim();
-    const lname = formPersonal.lastname.value.trim();
-    const pwd = formPersonal.password.value;
-    const cpwd = formPersonal['confirm-password'].value;
-    
-    if (!fname || !lname) {
-      alert('Please enter your first and last name.');
-      return;
-    }
-    
-    // Password validation regex: 
-    // At least one letter, one number, one special character, min 8 chars
-    const pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[.,@#$!%]).{8,}$/;
-    if (!pwdRegex.test(pwd)) {
-      alert('Password does not meet the requirements.');
-      return;
-    }
-    
-    if (pwd !== cpwd) {
-      alert('Passwords do not match.');
-      return;
-    }
-    
-    showStep(3);
-  };
-  
-  backToPersonal.onclick = () => {
-    showStep(2);
-  };
-  
-  formVerify.onsubmit = (e) => {
-    e.preventDefault();
-    const otp = formVerify.otp.value.trim();
-    if (otp.length !== 6 || isNaN(otp)) {
-      alert('Please enter a valid 6-digit OTP.');
-      return;
-    }
-    alert('Form submitted successfully!');
-    // Here you can add real submission logic
-  };
-</script>
+  </script>
 
 </body>
 </html>
