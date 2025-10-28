@@ -3,35 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stanbic BluNest – Universal Consent Demo</title>
+  <title>BluNest by Stanbic IBTC – Consent Demo</title>
 
-  <!-- Styles -->
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f5f7fa;
-      color: #333;
+      font-family: "Public Sans", sans-serif;
+      background-color: #F8F7FA;
       margin: 0;
+      color: rgba(51, 48, 60, 0.87);
     }
     header {
-      background: #00529B;
-      color: #fff;
       text-align: center;
-      padding: 20px;
+      background: linear-gradient(120deg, #004B8D, #0076D6);
+      color: white;
+      padding: 25px 15px;
+      position: relative;
     }
-    header img {
+    header img.logo {
       height: 60px;
+      vertical-align: middle;
+    }
+    header img.loader {
+      height: 40px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    h1 {
+      margin-top: 10px;
+      font-weight: 600;
     }
     main {
-      max-width: 600px;
+      max-width: 620px;
       margin: 40px auto;
       background: #fff;
-      padding: 30px;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 30px 35px;
     }
-    h2 { color: #00529B; margin-bottom: 5px; }
-    p.sub { color: #666; margin-top: 0; }
+    h2 { color: #004B8D; }
+    p.sub { color: #666; font-size: 14px; }
     label { display: block; margin-top: 15px; font-weight: 500; }
     input {
       width: 100%;
@@ -41,49 +54,57 @@
       border-radius: 4px;
       font-size: 15px;
     }
-    input.error { border-color: #e63946; }
+    input.error { border-color: #E63946; }
     small.error-text {
-      color: #e63946;
+      color: #E63946;
       font-size: 12px;
       display: none;
     }
-    button {
-      background: #00529B;
+    .btn {
+      background: #004B8D;
       color: #fff;
       border: none;
       padding: 12px 18px;
-      border-radius: 4px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 20px;
+      margin-top: 25px;
+      transition: background 0.2s;
     }
-    button:hover { background: #003f7d; }
-    .form-step { display: none; animation: fadeIn 0.3s ease-in-out; }
+    .btn:hover { background: #003f7d; }
+    .form-step { display: none; animation: fadeIn 0.4s ease-in-out; }
     .form-step.active { display: block; }
     .form-nav {
-      margin-top: 25px;
       display: flex;
       justify-content: space-between;
+      margin-top: 25px;
     }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
+    .form-nav .btn.secondary {
+      background: #E8EFF8;
+      color: #004B8D;
     }
     footer {
       text-align: center;
-      padding: 20px;
       color: #777;
       font-size: 13px;
+      padding: 25px 10px;
     }
     #confirmation { text-align: center; }
     .consent-section {
-      background: #eef4fa;
-      padding: 15px;
+      background: #f1f8ff;
+      padding: 18px;
       border-left: 4px solid #00529B;
       margin-top: 20px;
+      border-radius: 4px;
     }
-    #manageConsentBtn { background: #00AEEF; }
-    .hidden { display: none; }
+    #manageConsentBtn {
+      background: #00AEEF;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 
   <!-- Securiti.ai Universal Consent SDK -->
@@ -100,8 +121,9 @@
 
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Stanbic_IBTC_logo.png" alt="Stanbic Logo" />
-    <h1>BluNest Registration Demo</h1>
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Stanbic_IBTC_logo.png" alt="Stanbic Logo">
+    <img class="loader" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading Animation">
+    <h1>BluNest Registration & Consent Demo</h1>
   </header>
 
   <main>
@@ -109,7 +131,7 @@
       <!-- Step 1 -->
       <section class="form-step active" data-step="1">
         <h2>Account Information</h2>
-        <p class="sub">Enter Your Account Details</p>
+        <p class="sub">Enter your account details to get started.</p>
         <label>Email
           <input type="email" id="email" placeholder="test@test.com" required />
           <small class="error-text">Enter a valid email.</small>
@@ -118,15 +140,13 @@
           <input type="tel" id="phone" placeholder="08012345678" required />
           <small class="error-text">Enter a valid phone number.</small>
         </label>
-        <div class="form-nav">
-          <button type="button" id="next1">Next</button>
-        </div>
+        <button type="button" class="btn" id="next1">Next →</button>
       </section>
 
       <!-- Step 2 -->
       <section class="form-step" data-step="2">
         <h2>Personal Information</h2>
-        <p class="sub">Enter Your Details</p>
+        <p class="sub">Enter your personal details.</p>
         <label>First Name
           <input type="text" id="firstName" required />
           <small class="error-text">First name is required.</small>
@@ -139,7 +159,7 @@
           <input type="password" id="password" required />
           <small class="error-text">Password must meet requirements.</small>
         </label>
-        <small style="font-size:12px;color:#666;">Password must be 8+ chars, include a number and special character.</small>
+        <small style="font-size:12px;color:#666;">Min 8 chars, include number + special char.</small>
         <label>Confirm Password
           <input type="password" id="confirmPassword" required />
           <small class="error-text">Passwords must match.</small>
@@ -148,87 +168,90 @@
           <input type="text" id="referrer" />
         </label>
         <div class="form-nav">
-          <button type="button" class="prev">Back</button>
-          <button type="button" id="next2">Next</button>
+          <button type="button" class="btn secondary prev">← Back</button>
+          <button type="button" class="btn" id="next2">Next →</button>
         </div>
       </section>
 
       <!-- Step 3 -->
       <section class="form-step" data-step="3">
         <h2>Verify Account</h2>
-        <p class="sub">Confirm OTP sent to your email or phone</p>
+        <p class="sub">Confirm OTP sent to your phone or email.</p>
         <label>OTP Code
           <input type="text" id="otp" maxlength="6" placeholder="Enter 6-digit code" required />
-          <small class="error-text">Enter a 6-digit OTP.</small>
+          <small class="error-text">Enter a valid OTP.</small>
         </label>
         <div class="form-nav">
-          <button type="button" class="prev">Back</button>
-          <button type="button" id="next3">Verify</button>
+          <button type="button" class="btn secondary prev">← Back</button>
+          <button type="button" class="btn" id="next3">Verify →</button>
         </div>
       </section>
 
       <!-- Step 4 -->
       <section class="form-step" data-step="4">
         <h2>Setup Profile</h2>
-        <p class="sub">Manage Consent and Complete Registration</p>
+        <p class="sub">Manage consent and complete registration.</p>
         <div class="consent-section">
           <p><strong>Consent Preferences</strong></p>
-          <p>Manage consent for marketing, data usage, and personalization.</p>
-          <button type="button" id="manageConsentBtn">Manage Consent Preferences</button>
+          <p>Manage how your data is used for marketing and personalization.</p>
+          <button type="button" class="btn" id="manageConsentBtn">Manage Consent Preferences</button>
         </div>
         <div class="form-nav">
-          <button type="button" class="prev">Back</button>
-          <button type="submit">Finish</button>
+          <button type="button" class="btn secondary prev">← Back</button>
+          <button type="submit" class="btn">Finish →</button>
         </div>
       </section>
     </form>
 
-    <div id="confirmation" class="hidden">
+    <div id="confirmation" class="form-step">
       <h2>✅ Registration Complete!</h2>
-      <p>Thank you for registering. Your consent preferences have been saved.</p>
+      <p>Thank you for registering with BluNest. Your consent preferences have been saved.</p>
     </div>
   </main>
 
   <footer>
-    <small>© 2025 Stanbic IBTC Asset Management | Demo by prashanthdotpm-lab</small>
+    <small>© 2025 Stanbic IBTC Asset Management | Demo powered by prashanthdotpm-lab</small>
   </footer>
 
   <script>
-    // Consent integration
+    // Consent Manager Integration
     window.addEventListener("DOMContentLoaded", () => {
-      if (window.setConsentBannerParams) window.setConsentBannerParams({ uuid: "DEMO_USER_001" });
+      if (window.setConsentBannerParams) window.setConsentBannerParams({ uuid: "STANBIC_DEMO_USER" });
       document.getElementById("manageConsentBtn").addEventListener("click", () => {
         if (window.showConsentManager) window.showConsentManager();
         else alert("Consent Manager not ready yet.");
       });
     });
 
-    // Form Logic
+    // Step Navigation Logic
     const steps = document.querySelectorAll(".form-step");
     let current = 0;
     const showStep = (i) => steps.forEach((s, idx) => s.classList.toggle("active", i === idx));
 
-    const validateStep1 = () => {
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    const phonePattern = /^\\d{10,15}$/;
+    const pwPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+
+    function validateStep1() {
       const email = document.getElementById("email");
       const phone = document.getElementById("phone");
       let valid = true;
-      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      const phonePattern = /^\\d{10,15}$/;
 
-      if (!emailPattern.test(email.value.trim())) { email.classList.add("error"); email.nextElementSibling.style.display = "block"; valid = false; }
+      if (!emailPattern.test(email.value)) { email.classList.add("error"); email.nextElementSibling.style.display = "block"; valid = false; }
       else { email.classList.remove("error"); email.nextElementSibling.style.display = "none"; }
-      if (!phonePattern.test(phone.value.trim())) { phone.classList.add("error"); phone.nextElementSibling.style.display = "block"; valid = false; }
-      else { phone.classList.remove("error"); phone.nextElementSibling.style.display = "none"; }
-      return valid;
-    };
 
-    const validateStep2 = () => {
+      if (!phonePattern.test(phone.value)) { phone.classList.add("error"); phone.nextElementSibling.style.display = "block"; valid = false; }
+      else { phone.classList.remove("error"); phone.nextElementSibling.style.display = "none"; }
+
+      return valid;
+    }
+
+    function validateStep2() {
       const fn = document.getElementById("firstName");
       const ln = document.getElementById("lastName");
       const pw = document.getElementById("password");
       const cpw = document.getElementById("confirmPassword");
       let valid = true;
-      const pwPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
 
       [fn, ln].forEach(f => {
         if (!f.value.trim()) { f.classList.add("error"); f.nextElementSibling.style.display = "block"; valid = false; }
@@ -238,28 +261,32 @@
       if (!pwPattern.test(pw.value)) { pw.classList.add("error"); pw.nextElementSibling.style.display = "block"; valid = false; }
       else { pw.classList.remove("error"); pw.nextElementSibling.style.display = "none"; }
 
-      if (pw.value !== cpw.value || !cpw.value) { cpw.classList.add("error"); cpw.nextElementSibling.style.display = "block"; valid = false; }
+      if (pw.value !== cpw.value) { cpw.classList.add("error"); cpw.nextElementSibling.style.display = "block"; valid = false; }
       else { cpw.classList.remove("error"); cpw.nextElementSibling.style.display = "none"; }
 
       return valid;
-    };
+    }
 
-    const validateStep3 = () => {
+    function validateStep3() {
       const otp = document.getElementById("otp");
-      if (otp.value.trim().length !== 6) { otp.classList.add("error"); otp.nextElementSibling.style.display = "block"; return false; }
-      otp.classList.remove("error"); otp.nextElementSibling.style.display = "none"; return true;
-    };
+      if (otp.value.trim().length !== 6) {
+        otp.classList.add("error");
+        otp.nextElementSibling.style.display = "block";
+        return false;
+      }
+      otp.classList.remove("error");
+      otp.nextElementSibling.style.display = "none";
+      return true;
+    }
 
-    document.getElementById("next1").onclick = () => { if (validateStep1()) { current++; showStep(current); } };
-    document.getElementById("next2").onclick = () => { if (validateStep2()) { current++; showStep(current); } };
-    document.getElementById("next3").onclick = () => { if (validateStep3()) { current++; showStep(current); } };
-
-    document.querySelectorAll(".prev").forEach(btn => btn.onclick = () => { if (current > 0) { current--; showStep(current); } });
+    document.getElementById("next1").onclick = () => { if (validateStep1()) showStep(++current); };
+    document.getElementById("next2").onclick = () => { if (validateStep2()) showStep(++current); };
+    document.getElementById("next3").onclick = () => { if (validateStep3()) showStep(++current); };
+    document.querySelectorAll(".prev").forEach(b => b.onclick = () => { if (current > 0) showStep(--current); });
 
     document.getElementById("registrationForm").onsubmit = (e) => {
       e.preventDefault();
-      document.getElementById("registrationForm").classList.add("hidden");
-      document.getElementById("confirmation").classList.remove("hidden");
+      showStep(4);
     };
   </script>
 </body>
