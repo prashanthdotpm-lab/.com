@@ -18,13 +18,14 @@
       font-size: 28px;
       color: #4b2c82;
     }
-    iframe {
+    .notice-container {
       width: 80%;
-      height: 1000px;
-      border: none;
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: #fff;
       border-radius: 12px;
-      margin-top: 2rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      padding: 1rem;
     }
     .back-link {
       display: inline-block;
@@ -41,14 +42,25 @@
 <body>
   <h1>Privacy Notice</h1>
 
-  <!-- Embedded Privacy Notice from Securiti.ai -->
-  <iframe
-    src="https://privacy-central.securiti.ai/notice-embed/13df7cd0-81a8-456c-a6af-9dbe7af7c52b"
-    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-    loading="lazy"
-  ></iframe>
+  <div class="notice-container" id="securiti-privacy-notice">
+    <!-- 🔹 The notice will load here -->
+  </div>
 
-  <br />
+  <!-- 🔹 Embed script provided by Securiti.ai -->
+  <script src="https://privacy-central.securiti.ai/loader.js"
+          data-embed-id="13df7cd0-81a8-456c-a6af-9dbe7af7c52b"></script>
+
   <a class="back-link" href="index.html">← Back to Home</a>
+
+  <!-- ✅ Optional fallback (if script fails to load) -->
+  <noscript>
+    <p>
+      JavaScript is required to view the Privacy Notice.  
+      You can also open it directly:
+      <a href="https://privacy-central.securiti.ai/notice/13df7cd0-81a8-456c-a6af-9dbe7af7c52b" target="_blank">
+        View Privacy Notice →
+      </a>
+    </p>
+  </noscript>
 </body>
 </html>
