@@ -117,7 +117,7 @@
       color: #70768f;
     }
     .dsr-button {
-      margin-top: 10px;
+      margin: 10px 6px 0 6px;
       padding: 12px 24px;
       background: #4b2c82;
       color: white;
@@ -127,6 +127,14 @@
       cursor: pointer;
     }
     .dsr-button:hover { background: #3a2370; }
+
+    .privacy-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
 
     /* 🔹 Style for Stanbic demo link */
     .ucm-demo-link {
@@ -154,7 +162,6 @@
       <a href="#">Login</a>
       <a href="#">Register</a>
       <a href="#">Contact</a>
-      <!-- 🔹 New Stanbic UCM Demo link -->
       <a href="stanbic-consent-demo.html" class="ucm-demo-link">Stanbic UCM Demo</a>
     </div>
   </nav>
@@ -215,13 +222,11 @@
   <footer>
     © 2025 Pacchi Prashanth’s Sector Sites • Demo only
     <br /><br />
-    <button class="dsr-button" onclick="window.location.href='dsr.html'">
-      Data Subject Request
-    </button>
-    <br /><br />
-    <button class="dsr-button" style="background:#3a74d1" onclick="window.location.href='privacy-notice.html'">
-      Privacy Notice
-    </button>
+    <div class="privacy-buttons">
+      <button class="dsr-button" onclick="window.location.href='dsr.html'">Data Subject Request</button>
+      <button class="dsr-button" style="background:#3a74d1" onclick="window.location.href='privacy-notice.html'">New Privacy Notice</button>
+      <button class="dsr-button" style="background:#6a11cb" onclick="window.location.href='privacy-old.html'">Old Privacy Notice</button>
+    </div>
   </footer>
 
   <script>
