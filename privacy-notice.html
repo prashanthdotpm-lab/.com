@@ -1,141 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Privacy Notice — Pacchi Prashanth’s Sector Sites" />
-  <title>Privacy Notice — Pacchi Prashanth’s Sector Sites</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Notice | Carhub</title>
+
+  <!-- Google Fonts for sleek typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg1: #4b2c82; --bg2: #3a74d1; --text: #0f1222;
-      --card: #ffffff; --muted: #6a6f85;
+      --primary: #0077ff;
+      --bg: #f9fafc;
+      --sidebar-bg: #fff;
+      --text: #222;
+      --muted: #777;
+      --border: #e2e6ef;
     }
-    * { box-sizing: border-box; }
-    body {
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f6f8ff;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background-color: var(--bg);
       color: var(--text);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-    .navbar {
+
+    header {
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+      padding: 16px 32px;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--primary);
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: linear-gradient(90deg, var(--bg1), var(--bg2));
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #fff;
+      z-index: 100;
     }
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 10px;
-      border-radius: 10px;
-      transition: .2s ease;
-    }
-    .navbar a:hover { background-color: rgba(255,255,255,0.12); }
-    .spacer { flex: 1; }
 
     main {
-      flex: 1;
       display: flex;
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px;
+      flex: 1;
+      padding: 40px 5%;
+      gap: 32px;
     }
 
     /* Sidebar */
     .sidebar {
-      flex: 0 0 250px;
-      background: var(--card);
+      width: 260px;
+      background: var(--sidebar-bg);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-      padding: 16px;
-      height: fit-content;
+      padding: 24px;
       position: sticky;
-      top: 80px;
-      align-self: flex-start;
+      top: 100px;
+      height: fit-content;
     }
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: var(--bg1);
-      border-bottom: 2px solid #e0e3ff;
+
+    .sidebar h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
       padding-bottom: 6px;
+      color: var(--text);
     }
+
     .sidebar a {
       display: block;
-      color: #0077dd;
-      text-decoration: none;
       font-size: 15px;
-      margin: 6px 0;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 6px 0;
       transition: color .2s;
     }
+
     .sidebar a:hover {
-      color: var(--bg2);
+      color: #004ecb;
       text-decoration: underline;
     }
 
-    /* Content area */
-    .content-area {
+    /* Content */
+    .content {
       flex: 1;
-      background: var(--card);
+      background: #fff;
+      border: 1px solid var(--border);
       border-radius: 12px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-      padding: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+
     iframe {
       width: 100%;
-      height: 800px;
+      height: 1000px;
       border: none;
       border-radius: 8px;
     }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 30px;
       color: var(--muted);
+      font-size: 14px;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       main {
         flex-direction: column;
       }
       .sidebar {
-        position: static;
         width: 100%;
+        position: static;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="bank.html">Bank</a>
-    <a href="retail.html">Retail</a>
-    <a href="telco.html">Telco</a>
-    <a href="govt.html">Govt</a>
-    <div class="spacer"></div>
-    <a href="stanbic-consent-demo.html" style="background:#ffd369;color:#000;border-radius:6px;padding:8px 12px;font-weight:bold;text-decoration:none;">Stanbic UCM Demo</a>
-  </nav>
+  <header>
+    Carhub Privacy Notice
+  </header>
 
   <main>
     <aside class="sidebar">
-      <h2>Contents</h2>
+      <h3>Contents</h3>
       <a href="#intro">Introduction</a>
-      <a href="#full">Full Privacy Policy</a>
+      <a href="#policy">Full Privacy Policy</a>
       <a href="#changes">Policy Updates</a>
       <a href="#contact">Contact & Complaints</a>
-      <hr>
+      <hr style="margin:12px 0;border:none;border-top:1px solid var(--border)">
       <a href="#criminal">Criminal Convictions</a>
       <a href="#ai">AI & Automated Decision-making</a>
       <a href="#cookies">Cookies</a>
@@ -145,9 +146,9 @@
       <a href="#rights">Your Rights</a>
     </aside>
 
-    <section class="content-area">
+    <section class="content">
       <iframe 
-        src="https://privacy-central.securiti.ai/notice-embed/c5519ce7-ade1-49ea-8f4a-79af466f5e1d"
+        src="https://privacy-central.securiti.ai/notice-embed/c5519ce7-ade1-49ea-8f4a-79af466f5e1d" 
         title="Privacy Notice"
         loading="lazy"
         allowfullscreen>
@@ -156,7 +157,7 @@
   </main>
 
   <footer>
-    © 2025 Pacchi Prashanth’s Sector Sites • Privacy Notice Page
+    © 2025 Carhub | All rights reserved
   </footer>
 
 </body>
