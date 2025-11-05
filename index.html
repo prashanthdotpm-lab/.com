@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Pacchi Prashanth's Sector Sites — Explore Banking, Retail, Telco, and Government demos." />
   <title>Pacchi Prashanth's Sector Sites — Home</title>
   <style>
     :root {
@@ -55,7 +56,7 @@
     .slide {
       position: absolute;
       inset: 0;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       color: #fff;
@@ -64,7 +65,10 @@
       opacity: 0;
       transition: opacity 900ms ease;
     }
-    .slide.show { opacity: 1; }
+    .slide.show {
+      display: flex;
+      opacity: 1;
+    }
     .banner {
       width: 100%;
       height: 100%;
@@ -79,6 +83,11 @@
       position: absolute;
       inset: 0;
       background: radial-gradient(800px 300px at 80% 0%, rgba(255, 255, 255, .15), transparent 60%);
+    }
+    .banner div {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
     .cards {
       display: grid;
@@ -151,7 +160,7 @@
 </head>
 <body>
 
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="bank.html">Bank</a>
     <a href="retail.html">Retail</a>
@@ -162,12 +171,12 @@
       <a href="#">Login</a>
       <a href="#">Register</a>
       <a href="#">Contact</a>
-      <a href="stanbic-consent-demo.html" class="ucm-demo-link">Stanbic UCM Demo</a>
+      <a href="stanbic-consent-demo.html" class="ucm-demo-link" rel="noopener noreferrer">Stanbic UCM Demo</a>
     </div>
   </nav>
 
-  <div class="wrap">
-    <section class="hero">
+  <main class="wrap">
+    <section class="hero" aria-label="Sector site carousel">
       <div class="carousel" id="carousel">
         <div class="slide show">
           <div class="banner"><div>Welcome to Pacchi Prashanth’s Sector Sites</div></div>
@@ -195,7 +204,7 @@
       </div>
     </section>
 
-    <section class="cards">
+    <section class="cards" aria-label="Sector cards">
       <div class="card">
         <h3>Bank</h3>
         <p>Apply for credit cards, loans, or open a new account in minutes.</p>
@@ -217,7 +226,7 @@
         <a class="btn" href="govt.html">Explore Govt →</a>
       </div>
     </section>
-  </div>
+  </main>
 
   <footer>
     © 2025 Pacchi Prashanth’s Sector Sites • Demo only
@@ -230,12 +239,14 @@
   </footer>
 
   <script>
-    (function(){
+    (function() {
       const slides = [...document.querySelectorAll('.slide')];
       let i = 0;
       setInterval(() => {
         slides[i].classList.remove('show');
+        slides[i].style.display = 'none';
         i = (i + 1) % slides.length;
+        slides[i].style.display = 'flex';
         slides[i].classList.add('show');
       }, 5000);
     })();
