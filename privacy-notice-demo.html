@@ -87,7 +87,21 @@
         .full-width__title { font-size: 3rem; margin: 0; }
 
         .block-container { padding: 50px 0; }
-        .block-container__inner { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .block-container__inner { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align:center; }
+
+        .privacy-button {
+            display: inline-block;
+            background-color: var(--mazda-red);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .privacy-button:hover {
+            background-color: #a30000;
+        }
 
         .footer {
             background-color: var(--dark-gray);
@@ -180,12 +194,8 @@
             <!-- Privacy Content -->
             <section class="block-container block-container--alt">
                 <div class="block-container__inner">
-                    <iframe 
-                        src="https://privacy-central.securiti.ai/notice-embed/78645d51-ec14-4cb4-bfa7-26ee80da2f89" 
-                        style="border: none; width: 100%; height: 800px;"
-                        title="Privacy Notice"
-                        sandbox="allow-scripts allow-same-origin allow-popups">
-                    </iframe>
+                    <p>To view our full privacy notice, please click the button below:</p>
+                    <a href="https://privacy-central.securiti.ai/notice-embed/78645d51-ec14-4cb4-bfa7-26ee80da2f89" target="_blank" class="privacy-button">View Privacy Notice</a>
                 </div>
             </section>
         </div>
