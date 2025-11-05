@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Notice | Carhub</title>
 
-  <!-- Google Fonts for sleek typography -->
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #0077ff;
       --bg: #f9fafc;
-      --sidebar-bg: #fff;
       --text: #222;
-      --muted: #777;
       --border: #e2e6ef;
     }
 
@@ -47,54 +44,19 @@
 
     main {
       display: flex;
+      justify-content: center;
       flex: 1;
       padding: 40px 5%;
-      gap: 32px;
     }
 
-    /* Sidebar */
-    .sidebar {
-      width: 260px;
-      background: var(--sidebar-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      position: sticky;
-      top: 100px;
-      height: fit-content;
-    }
-
-    .sidebar h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
-      color: var(--text);
-    }
-
-    .sidebar a {
-      display: block;
-      font-size: 15px;
-      color: var(--primary);
-      text-decoration: none;
-      padding: 6px 0;
-      transition: color .2s;
-    }
-
-    .sidebar a:hover {
-      color: #004ecb;
-      text-decoration: underline;
-    }
-
-    /* Content */
     .content {
-      flex: 1;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      max-width: 1000px;
+      width: 100%;
     }
 
     iframe {
@@ -107,17 +69,13 @@
     footer {
       text-align: center;
       padding: 30px;
-      color: var(--muted);
+      color: #777;
       font-size: 14px;
     }
 
     @media (max-width: 900px) {
       main {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-        position: static;
+        padding: 20px;
       }
     }
   </style>
@@ -130,22 +88,6 @@
   </header>
 
   <main>
-    <aside class="sidebar">
-      <h3>Contents</h3>
-      <a href="#intro">Introduction</a>
-      <a href="#policy">Full Privacy Policy</a>
-      <a href="#changes">Policy Updates</a>
-      <a href="#contact">Contact & Complaints</a>
-      <hr style="margin:12px 0;border:none;border-top:1px solid var(--border)">
-      <a href="#criminal">Criminal Convictions</a>
-      <a href="#ai">AI & Automated Decision-making</a>
-      <a href="#cookies">Cookies</a>
-      <a href="#ukdpa">UK DPA</a>
-      <a href="#retention">Data Retention</a>
-      <a href="#security">Data Security</a>
-      <a href="#rights">Your Rights</a>
-    </aside>
-
     <section class="content">
       <iframe 
         src="https://privacy-central.securiti.ai/notice-embed/c5519ce7-ade1-49ea-8f4a-79af466f5e1d" 
