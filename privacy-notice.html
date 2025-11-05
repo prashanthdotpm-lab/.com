@@ -3,16 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Notice | Carhub</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Privacy Notice</title>
 
   <style>
     :root {
-      --primary: #0077ff;
-      --bg: #f9fafc;
-      --text: #222;
-      --border: #e2e6ef;
+      --bg: #f8f9fc;
     }
 
     * {
@@ -22,85 +17,45 @@
     }
 
     body {
-      font-family: 'Work Sans', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      background: var(--bg);
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background: #fff;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-      padding: 16px 32px;
-      font-weight: 600;
-      font-size: 20px;
-      color: var(--primary);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    main {
-      display: flex;
+      align-items: center;
       justify-content: center;
-      flex: 1;
-      padding: 40px 5%;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    .content {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      max-width: 1000px;
+    .container {
       width: 100%;
+      max-width: 1200px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
     }
 
     iframe {
       width: 100%;
-      height: 1000px;
+      height: 100vh;
       border: none;
-      border-radius: 8px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #777;
-      font-size: 14px;
+      display: block;
     }
 
     @media (max-width: 900px) {
-      main {
-        padding: 20px;
+      iframe {
+        height: 120vh;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <header>
-    Carhub Privacy Notice
-  </header>
-
-  <main>
-    <section class="content">
-      <iframe 
-        src="https://privacy-central.securiti.ai/notice-embed/c5519ce7-ade1-49ea-8f4a-79af466f5e1d" 
-        title="Privacy Notice"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Carhub | All rights reserved
-  </footer>
-
+  <div class="container">
+    <iframe 
+      src="https://privacy-central.securiti.ai/notice-embed/c5519ce7-ade1-49ea-8f4a-79af466f5e1d"
+      title="Privacy Notice"
+      loading="lazy">
+    </iframe>
+  </div>
 </body>
 </html>
