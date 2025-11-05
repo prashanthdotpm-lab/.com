@@ -1,257 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Pacchi Prashanth's Sector Sites — Explore Banking, Retail, Telco, and Government demos." />
-  <title>Pacchi Prashanth's Sector Sites — Home</title>
-  <style>
-    :root {
-      --bg1: #4b2c82; --bg2: #3a74d1; --bg3: #5a3d99;
-      --accent: #ffd369; --text: #0f1222; --card: #ffffff; --muted: #6a6f85;
-      --ring: rgba(74, 144, 226, .35);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f6f8ff;
-      color: var(--text);
-    }
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: linear-gradient(90deg, var(--bg1), var(--bg2));
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #fff;
-    }
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 10px;
-      border-radius: 10px;
-      transition: .2s ease;
-    }
-    .navbar a:hover { background-color: rgba(255, 255, 255, .12); }
-    .spacer { flex: 1; }
-    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Pacchi Prashanth's Sector Sites — Explore Banking, Retail, Telco, and Government demos." />
+  <title>Pacchi Prashanth's Sector Sites — Home</title>
+  <style>
+    :root {
+      --bg1:#4b2c82; --bg2:#3a74d1; --accent:#ffd369;
+      --card:#fff; --muted:#6a6f85; --ring:rgba(74,144,226,.35);
+      --text:#0f1222;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#f6f8ff;
+      color:var(--text);
+    }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 18px; }
-    .hero {
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-      background: #000;
-    }
-    .carousel {
-      position: relative;
-      height: 360px;
-      overflow: hidden;
-    }
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: clamp(24px, 4vw, 40px);
-      opacity: 0;
-      transition: opacity 900ms ease;
-    }
-    .slide.show {
-      display: flex;
-      opacity: 1;
-    }
-    .banner {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .banner:after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(800px 300px at 80% 0%, rgba(255, 255, 255, .15), transparent 60%);
-    }
-    .banner div {
-      position: relative;
-      z-index: 1;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-    @media (min-width:900px) { .cards { grid-template-columns: repeat(4, 1fr); } }
-    .card {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 8px 24px rgba(16, 24, 40, .06);
-      border: 1px solid #eef0ff;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .card h3 { margin: 0 0 4px 0; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); font-size: 14px; }
-    .card a.btn {
-      align-self: flex-start;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .card a.btn:hover { opacity: 0.85; }
+    /* Navbar */
+    .navbar {
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:linear-gradient(90deg,var(--bg1),var(--bg2));
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#fff;
+    }
+    .navbar a {
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:10px;
+      transition:.2s;
+    }
+    .navbar a:hover { background-color:rgba(255,255,255,.12); }
+    .spacer { flex:1; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
 
-    footer {
-      padding: 24px;
-      text-align: center;
-      color: #70768f;
-    }
-    .dsr-button {
-      margin: 10px 6px 0 6px;
-      padding: 12px 24px;
-      background: #4b2c82;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .dsr-button:hover { background: #3a2370; }
+    /* Layout */
+    .wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:18px;
+    }
 
-    .privacy-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-    }
+    /* Hero Banner (carousel style) */
+    .hero {
+      height:220px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#4b2c82,#3a74d1);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:clamp(22px,3.5vw,36px);
+      font-weight:800;
+      box-shadow:0 8px 28px rgba(0,0,0,.1);
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+    }
+    .hero:after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(700px 260px at 80% 0%,rgba(255,255,255,.18),transparent 60%);
+    }
+    .hero div { position:relative; z-index:2; }
 
-    /* 🔹 Style for Stanbic demo link */
-    .ucm-demo-link {
-      background: #ffd369;
-      color: #000;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 8px 12px;
-      transition: background 0.2s;
-    }
-    .ucm-demo-link:hover { background: #ffe89d; }
-  </style>
+    /* Cards */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:20px;
+    }
+    @media (max-width:900px) {
+      .grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:600px) {
+      .grid { grid-template-columns:1fr; }
+    }
+
+    .card {
+      background:var(--card);
+      border-radius:16px;
+      padding:16px;
+      border:1px solid #eef0ff;
+      box-shadow:0 8px 24px rgba(16,24,40,.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      justify-content:space-between;
+    }
+    .card h3 { margin:0 0 6px 0; }
+    .muted { color:var(--muted); font-size:14px; }
+    .btn {
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:linear-gradient(135deg,#4b2c82,#3a74d1);
+      color:#fff;
+      cursor:pointer;
+      font-weight:700;
+      border:none;
+      text-decoration:none;
+      text-align:center;
+    }
+    .btn:hover { opacity:0.9; }
+
+    /* Footer */
+    footer {
+      padding:24px;
+      text-align:center;
+      color:#70768f;
+    }
+    .dsr-button {
+      margin:10px 6px 0 6px;
+      padding:12px 24px;
+      background:#4b2c82;
+      color:white;
+      font-weight:bold;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    .dsr-button:hover { background:#3a2370; }
+    .privacy-buttons {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    /* UCM demo link */
+    .ucm-demo-link {
+      background:#ffd369;
+      color:#000;
+      border-radius:6px;
+      font-weight:bold;
+      text-decoration:none;
+      padding:8px 12px;
+      transition:background 0.2s;
+    }
+    .ucm-demo-link:hover { background:#ffe89d; }
+  </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation">
+    <a href="index.html">Home</a>
+    <a href="bank.html">Bank</a>
+    <a href="retail.html">Retail</a>
+    <a href="telco.html">Telco</a>
+    <a href="govt.html">Govt</a>
+    <div class="spacer"></div>
+    <div class="actions">
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+      <a href="#">Contact</a>
+      <a href="stanbic-consent-demo.html" class="ucm-demo-link" rel="noopener noreferrer">Stanbic UCM Demo</a>
+    </div>
+  </nav>
 
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="bank.html">Bank</a>
-    <a href="retail.html">Retail</a>
-    <a href="telco.html">Telco</a>
-    <a href="govt.html">Govt</a>
-    <div class="spacer"></div>
-    <div class="actions">
-      <a href="#">Login</a>
-      <a href="#">Register</a>
-      <a href="#">Contact</a>
-      <a href="stanbic-consent-demo.html" class="ucm-demo-link" rel="noopener noreferrer">Stanbic UCM Demo</a>
-    </div>
-  </nav>
+  <!-- Hero -->
+  <div class="wrap">
+    <div class="hero">
+      <div>Welcome to Pacchi Prashanth’s Sector Sites</div>
+    </div>
 
-  <main class="wrap">
-    <section class="hero" aria-label="Sector site carousel">
-      <div class="carousel" id="carousel">
-        <div class="slide show">
-          <div class="banner"><div>Welcome to Pacchi Prashanth’s Sector Sites</div></div>
-        </div>
-        <div class="slide">
-          <div class="banner" style="background:linear-gradient(135deg,#3b0df6,#95c9ff)">
-            <div>Bank • Cards • Loans • Accounts</div>
-          </div>
-          </div>
-        <div class="slide">
-          <div class="banner" style="background:linear-gradient(135deg,#6a11cb,#2575fc)">
-            <div>Retail • Offers • Careers</div>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="banner" style="background:linear-gradient(135deg,#4b2c82,#2a5298)">
-            <div>Telco • Plans • Upgrades</div>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="banner" style="background:linear-gradient(135deg,#522fa0,#3a74d1)">
-            <div>Govt • Services • Payments</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Sector cards -->
+    <div class="grid">
+      <div class="card">
+        <h3>Bank</h3>
+        <p class="muted">Apply for credit cards, loans, or open a new account in minutes.</p>
+        <a class="btn" href="bank.html">Explore Bank →</a>
+      </div>
+      <div class="card">
+        <h3>Retail</h3>
+        <p class="muted">Discover jobs and loyalty programs with a modern retail experience.</p>
+        <a class="btn" href="retail.html">Explore Retail →</a>
+      </div>
+      <div class="card">
+        <h3>Telco</h3>
+        <p class="muted">Get a new connection or upgrade your plan seamlessly.</p>
+        <a class="btn" href="telco.html">Explore Telco →</a>
+      </div>
+      <div class="card">
+        <h3>Government</h3>
+        <p class="muted">Visa renewal, bill payments, and citizen services in one place.</p>
+        <a class="btn" href="govt.html">Explore Govt →</a>
+      </div>
+    </div>
+  </div>
 
-    <section class="cards" aria-label="Sector cards">
-      <div class="card">
-        <h3>Bank</h3>
-        <p>Apply for credit cards, loans, or open a new account in minutes.</p>
-        <a class="btn" href="bank.html">Explore Bank →</a>
-      </div>
-      <div class="card">
-        <h3>Retail</h3>
-        <p>Discover jobs and loyalty programs with a modern retail experience.</p>
-        <a class="btn" href="retail.html">Explore Retail →</a>
-      </div>
-      <div class="card">
-        <h3>Telco</h3>
-        <p>Get a new connection or upgrade your plan seamlessly.</p>
-        <a class="btn" href="telco.html">Explore Telco →</a>
-      </div>
-      <div class="card">
-        <h3>Government</h3>
-        <p>Visa renewal, bill payments, and citizen services in one place.</p>
-        <a class="btn" href="govt.html">Explore Govt →</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Pacchi Prashanth’s Sector Sites • Demo only
-    <br /><br />
-    <div class="privacy-buttons">
-      <button class="dsr-button" onclick="window.location.href='dsr.html'">Data Subject Request</button>
-      <button class="dsr-button" style="background:#3a74d1" onclick="window.location.href='privacy-notice.html'">New Privacy Notice</button>
-      <button class="dsr-button" style="background:#6a11cb" onclick="window.location.href='privacy-old.html'">Old Privacy Notice</button>
-      <button class="dsr-button" style="background:#cc0000" onclick="window.location.href='privacy-notice-demo.html'">Mazda Privacy Demo</button>
-    </div>
-  </footer>
-
-  <script>
-    (function() {
-      const slides = [...document.querySelectorAll('.slide')];
-      let i = 0;
-      setInterval(() => {
-        slides[i].classList.remove('show');
-        slides[i].style.display = 'none';
-        i = (i + 1) % slides.length;
-        slides[i].style.display = 'flex';
-        slides[i].classList.add('show');
-      }, 5000);
-    })();
-  </script>
-
+  <!-- Footer -->
+  <footer>
+    © 2025 Pacchi Prashanth’s Sector Sites • Demo only
+    <br><br>
+    <div class="privacy-buttons">
+      <button class="dsr-button" onclick="window.location.href='dsr.html'">Data Subject Request</button>
+      <button class="dsr-button" style="background:#3a74d1" onclick="window.location.href='privacy-notice.html'">New Privacy Notice</button>
+      <button class="dsr-button" style="background:#6a11cb" onclick="window.location.href='privacy-old.html'">Old Privacy Notice</button>
+      <button class="dsr-button" style="background:#cc0000" onclick="window.location.href='privacy-notice-demo.html'">Mazda Privacy Demo</button>
+    </div>
+  </footer>
 </body>
 </html>
