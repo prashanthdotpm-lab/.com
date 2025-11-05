@@ -1,0 +1,615 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Notice | Demo</title>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+        /* Base Variables (In a production environment, this would likely be handled by a compiled CSS file) */
+        :root {
+            --mazda-red: #cc0000;
+            --dark-gray: #2b2b2b;
+            --light-gray-bg: #f9f9f9;
+            --text-color: #101010;
+        }
+
+        /* --- Global Reset/Base Styles --- */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        a {
+            color: var(--dark-gray);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--mazda-red);
+        }
+        .page-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .content-container {
+            min-height: 80vh;
+        }
+        h1, h2, h3 {
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+        .whitecolor { color: #fff !important; }
+
+        /* --- Header Styles (Simplified Demo) --- */
+        .header-global {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-global__inner-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1200px; /* Max width to simulate content constraint */
+            margin: 0 auto;
+        }
+        .header-global__logo {
+            max-height: 40px; /* Placeholder size for logo */
+        }
+        .header-global__menu__lower {
+            display: none; /* Hide for simplicity */
+        }
+        .header-global__menu__upper {
+            /* Keep upper menu visible to show context links */
+        }
+        .header-global__nav__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .header-global__nav__list-item a {
+            padding: 10px 15px;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        /* --- Hero/Banner Section --- */
+        .full-width {
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            min-height: 300px; /* Placeholder height */
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+        }
+        .full-width__inner-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .full-width::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+        .full-width__title {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /* --- Content/Accordion Section --- */
+        .block-container {
+            padding: 50px 0;
+        }
+        .block-container__inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .accordion {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .accordion__item {
+            border-bottom: 1px solid #ddd;
+        }
+        .accordion__item:first-child {
+            border-top: 1px solid #ddd;
+        }
+        .accordion__item-title {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 20px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            position: relative;
+            transition: color 0.3s;
+        }
+        .accordion__item-title:hover {
+            color: var(--mazda-red);
+        }
+        .accordion__item-title::after {
+            content: "+";
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        .accordion__item-title.active::after {
+            content: "-";
+            transform: rotate(0deg);
+        }
+        .accordion__item-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion__item-content.open {
+            max-height: 2000px; /* Arbitrarily large value for smooth transition */
+            transition: max-height 0.5s ease-in;
+        }
+        .accordion__item-content__container {
+            padding: 0 0 20px 0;
+        }
+        .wysiwyg p {
+            margin: 0 0 15px 0;
+            text-align: justify;
+        }
+        .wysiwyg table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .wysiwyg th, .wysiwyg td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: normal;
+        }
+        .wysiwyg strong {
+            font-weight: 700;
+        }
+        .wysiwyg ol, .wysiwyg ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .wysiwyg li {
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        /* --- Footer Styles --- */
+        .footer {
+            background-color: var(--dark-gray);
+            color: #fff;
+            padding: 40px 20px;
+        }
+        .footer__inner-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .logo-footer2 img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .footer-tel {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .footer-tel a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-tel a:hover {
+            color: var(--mazda-red) !important;
+        }
+        .footer__social {
+            margin-bottom: 20px;
+        }
+        .footer__social a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+        .footer__social a:hover {
+            color: var(--mazda-red);
+        }
+        .footer__nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .footer__nav-list-item {
+            margin: 5px 15px;
+            font-size: 0.9rem;
+        }
+        .footer__nav-list-item a {
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .footer__nav-list-item a:hover {
+            color: var(--mazda-red);
+        }
+        .footer__copyright {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        /* --- Floating Icons (Critical Styling) --- */
+        .floating-icons {
+            position: fixed;
+            right: 0px; /* LTR position */
+            bottom: 44%;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            z-index: 9999999999;
+        }
+
+        .floating-icons .icon {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: var(--dark-gray);
+            border-radius: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            pointer-events: auto;
+            text-decoration: none;
+        }
+
+        .floating-icons .icon:hover {
+            background-color: #e7e7e7;
+            color: var(--dark-gray); /* Change icon color on hover */
+        }
+
+        .floating-icons .icon i {
+            font-size: 24px;
+        }
+
+        .floating-icons .icon span {
+            position: absolute;
+            top: 0;
+            right: calc(100% + 0px); /* Positions the text to the left of the icon in LTR (default) */
+            background-color: #e7e7e7;
+            color: #000;
+            padding: 0 20px;
+            border-radius: 0;
+            opacity: 0;
+            visibility: hidden;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            line-height: 50px;
+            height: 50px;
+            pointer-events: none; /* Crucial: ensures text doesn't block interaction */
+        }
+        
+        .floating-icons .icon:hover span {
+            opacity: 1;
+            visibility: visible;
+            right: 50px; /* Slide the text right next to the icon (adjust as needed) */
+        }
+
+        .floating-icons a:hover {
+            color: var(--dark-gray);
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1080px) {
+            .floating-icons {display:none;}
+            .full-width {min-height: 200px; padding: 50px 0;}
+            .full-width__title {font-size: 2rem;}
+            .header-global__nav__list {display: none;}
+            .footer__nav {flex-direction: column;}
+            .footer__nav-list-item {margin: 5px 0;}
+        }
+
+        /* --- Custom CSS from Original for Demo Purposes --- */
+        .footer-tel {text-align: right; width: 100%; z-index: 1;position: relative;}
+        .footer-tel a:hover{color:#fff !important;}
+        .is-rtl .footer-tel {text-align: left !important}
+        .privacyaccordion .wysiwyg p {line-height: normal;margin:0 0 20px 0;text-align: justify;}
+        .privacyaccordion .accordion__item-content__container {padding: 0px 0;}
+        .privacyaccordion .wysiwyg a {color: #000000;}
+        @media (max-width: 959px){.privacyaccordion .wysiwyg {padding: 0px 0px;}
+        .privacyaccordion .wysiwyg p {text-align: left;}
+        }
+    </style>
+</head>
+
+<body class="privacyaccordion">
+    <div class="floating-icons ltr">
+        <a href="#test-drive-placeholder" class="icon">
+            <i class="fas fa-car"></i>
+            <span>Test Drive</span>
+        </a>
+        <a href="#locations-placeholder" class="icon">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Locations</span>
+        </a>
+        <a href="#book-a-service-placeholder" class="icon">
+            <i class="fas fa-tools"></i>
+            <span>Book A Service</span>
+        </a>
+        <a href="tel:80062932" class="icon phonedesktop">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+        </a>
+        <a href="mailto:crm.motors@galadaribrothers.com" class="icon">
+            <i class="fas fa-envelope"></i>
+            <span>Email Us</span>
+        </a>
+    </div>
+    <div class="page-container">
+        <div class="content-container">
+            <header class="header-global">
+                <div class="header-global__inner-container">
+                    <div class="header-global__inner-wrapper__left">
+                        <a class="header-global__logo-link" href="#">
+                            <img src="https://mazda-uae.com/media/px4lj4mz/logo.png" class="header-global__logo" alt="Mazda Logo" />
+                        </a>
+                    </div>
+                    <div class="header-global__inner-wrapper__right">
+                        <div class="header-global__menu__upper">
+                            <nav class="header-global__nav">
+                                <ul class="header-global__nav__list">
+                                    <li class="header-global__nav__list-item"><a href="#">Lease</a></li>
+                                    <li class="header-global__nav__list-item"><a href="#">Locations</a></li>
+                                    <li class="header-global__nav__list-item"><a href="#">E-Brochure</a></li>
+                                </ul>
+                                <ul class="header-global__nav__list--lang">
+                                    <li class="header-global__nav__list-item"><span class="active">en</span></li>
+                                    <li class="header-global__nav__list-item"><a href="#">ar</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="full-width full-width--medium videoalign full-width--light" style="background-image:url('https://mazda-uae.com/media/kukbwang/usa-whymazda-spirit-view-models.jpg'); background-color:#999999;">
+                <div class="full-width__inner-wrapper">
+                    <h1 class="full-width__title whitecolor">Privacy Notice</h1>
+                </div>
+            </section>
+
+            <section class="block-container block-container--alt">
+                <div class="block-container__inner">
+                    <ul class="accordion" id="privacy-accordion">
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Introduction</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>We are committed to protect and respect your right to privacy. This Privacy Notice ("Notice") governs the collection and use of personal data by **Demo Automotive Co. Ltd. LLC** (Galadari Automobiles Co. Ltd. LLC in the original). This Notice is applicable to **Demo Holdings Co. LLC** (parent company) as well as Demo Automotive's other subsidiaries that may also collect and process your personal data, either as controllers or processors. This Notice describes how and why we use any personal data you provide to us, as well as information we might obtain from other sources.</p>
+                                        <p>In this Notice, references to "our," "us," or "we" refer to Demo Automotive Co. Ltd. LLC. Any references to "you" or "your" refers to the relevant individual who is the subject of the personal data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Who are we?</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>Demo Automotive Co. Ltd. LLC, is the data controller for the purposes of any applicable data protection laws.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Definitions covered in this Notice</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>When we refer to "<strong>processing</strong>" your "<strong>personal data</strong>" in this Notice, we qualify this as any action done with or in connection with your personal data (this includes gathering, storing, and deleting such personal data). Any information that can be used to locate or (in)directly identify you is considered as “personal data”. Examples of personal data are: birth date, age, gender, nationality, passport, marital status, signature, country of residence, place of birth, photo, family details, voice recordings, religion, spoken languages, emergency contact information, insurance information, driver's license number.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">What types of personal data do we collect from you?</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>We process different categories of personal data further described below.</p>
+                                        <ol>
+                                            <li><strong>Contact Details</strong>: Your address, email address, and phone number.</li>
+                                            <li><strong>Identification Data</strong>: Your name, title, copy of your passport, Emirates ID, driver’s license, etc.</li>
+                                            <li><strong>Sensitive personal data</strong>: Your health data, biometric data, or a copy of your photo.</li>
+                                            <li><strong>Web Data</strong>: Data collected via our websites such as cookies, user activity records, IP addresses, and social media profiles.</li>
+                                            <li><strong>Financial Data</strong>: Your bank and card information, bank statements, and salary details.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">For what purposes do we process your personal data?</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <table border="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="44%"><strong>Description of Processing</strong></td>
+                                                    <td width="32%"><strong>Category of Personal Data</strong></td>
+                                                    <td width="22%"><strong>Legal Basis</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="44%">To offer our products and services (sales, rentals, maintenance, etc.)</td>
+                                                    <td width="32%">Contact, Identification, and Financial Data</td>
+                                                    <td width="22%">Consent, Performance of Contract</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="44%">For marketing and analytical purposes, including loyalty programs.</td>
+                                                    <td width="32%">Contact, Identification, Web, and Financial Data</td>
+                                                    <td width="22%">Consent</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="44%">To fulfil our legal obligations and defend legal claims.</td>
+                                                    <td width="32%">All Categories</td>
+                                                    <td width="22%">Legal obligation</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Your rights</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>You have certain rights that you can exercise. Please send an email to <a href="mailto:dpo@galadaribrothers.com">dpo@galadaribrothers.com</a> to exercise your rights. The following rights may be applicable to you, depending on the jurisdiction where your personal data is processed:</p>
+                                        <table border="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="301"><strong>Data Privacy Right</strong></td>
+                                                    <td width="301"><strong>What does it mean?</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="301"><strong>Right to access your data</strong></td>
+                                                    <td width="301">Request a summary or a copy of your personal data.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="301"><strong>Right to have your data updated or deleted</strong></td>
+                                                    <td width="301">Request amendment of inaccurate data or deletion of unneeded/prohibited data.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="301"><strong>Right to revoke consent</strong></td>
+                                                    <td width="301">You have the right to revoke your consent at any point.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Contact Us</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>If you have any questions or concerns about this Notice, please contact us at <a href="mailto:dpo@galadaribrothers.com">dpo@galadaribrothers.com</a><strong>.</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="accordion__item">
+                            <button class="accordion__item-title icon-plus gray">Updates to the Notice</button>
+                            <div class="accordion__item-content">
+                                <div class="accordion__item-content__container">
+                                    <div class="wysiwyg">
+                                        <p>This Notice may be updated on a regular basis to reflect new developments. We reserve the right to update, add, or remove portions of this Notice at any time. You are also advised to revisit this Notice periodically for updates.</p>
+                                        <p><strong>Date of Publication – 25th March 2024 (DEMO)</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="logo-footer2">
+                <img src="https://mazda-uae.com/media/wjkkrhgt/brought-to-you-by-galadari-white.png" alt="Brought to you by Galadari" style="max-width:150px;">
+            </div>
+            <div class="footer__inner-wrapper">
+                <div class="footer-tel"><a href="tel:80062932">800MAZDA (62932)</a></div>
+                <div class="footer__social">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:crm.motors@galadaribrothers.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                </div>
+                <ul class="footer__nav">
+                    <li class="footer__nav-list-item"><a href="#">Terms &amp; Conditions</a></li>
+                    <li class="footer__nav-list-item"><a href="#">Privacy Notice</a></li>
+                    <li class="footer__nav-list-item"><a href="#">Cookie Policy</a></li>
+                    <li class="footer__nav-list-item"><a href="#">Sitemap</a></li>
+                </ul>
+                <div class="logo-footer1">
+                    <img alt="mazda" class="footer__logo-slogan" src="https://mazda-uae.com/media/ikkn2blw/logo.png" style="max-width:80px;"/>
+                </div>
+                <p class="footer__copyright">&copy; 2025 MAZDAUAE.COM</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript to handle the accordion functionality
+        $(document).ready(function() {
+            // Find all accordion titles and attach a click handler
+            $(".accordion__item-title").click(function() {
+                const content = $(this).next(".accordion__item-content");
+                const isActive = $(this).hasClass("active");
+
+                // Close all currently open accordion items
+                $(".accordion__item-title").removeClass("active");
+                $(".accordion__item-content").removeClass("open").css('max-height', '0');
+
+                // If the clicked item was not already active, open it
+                if (!isActive) {
+                    $(this).addClass("active");
+                    content.addClass("open");
+                    // Set max-height to scroll height to enable smooth transition
+                    content.css('max-height', content.get(0).scrollHeight + 'px');
+                }
+            });
+        });
+
+        // Small script to prevent link navigation on placeholder links in the demo
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
