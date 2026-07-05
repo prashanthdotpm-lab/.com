@@ -212,8 +212,8 @@
       <button class="dsr-button" style="background:#cc0000" onclick="window.location.href='privacy-notice-demo.html'">Mazda Privacy Demo</button>
     </div>
   </footer>
-  <!-- ========================= -->
-<!-- PrivacyVerse Cookie Banner -->
+<!-- ========================= -->
+<!-- PrivacyVerse Enterprise Cookie Banner -->
 <!-- ========================= -->
 
 <div id="cookieBanner">
@@ -221,43 +221,29 @@
 <div class="cookie-window">
 
 <div class="cookie-title">
-
-🍪 Your Privacy Matters
-
+🍪 Privacy & Cookie Preferences
 </div>
 
 <p>
 
-We use cookies and similar technologies to improve your browsing experience,
-remember your preferences,
-measure website performance,
-deliver personalized content,
-and support secure authentication.
+We use cookies and similar technologies to improve your browsing experience, analyze website traffic, personalize content, enhance security, remember your preferences, and support our digital services.
 
-You can accept all cookies,
-reject optional cookies,
-or customize your preferences.
+You can accept all cookies, reject optional cookies, or manage your cookie preferences at any time. For more information, please review our Privacy Notice and Cookie Notice.
 
 </p>
 
 <div class="cookie-buttons">
 
 <button class="acceptBtn" onclick="acceptCookies()">
-
-Accept All
-
+✅ Accept All
 </button>
 
 <button class="rejectBtn" onclick="rejectCookies()">
-
-Reject Optional
-
+❌ Reject All
 </button>
 
 <button class="manageBtn" onclick="showPreferences()">
-
-Customize
-
+⚙️ Cookie Preferences
 </button>
 
 </div>
@@ -266,86 +252,114 @@ Customize
 
 </div>
 
-<!-- Cookie Preferences -->
+<!-- ========================= -->
+<!-- Cookie Preference Center -->
+<!-- ========================= -->
 
 <div id="cookiePreferences">
 
 <div class="prefWindow">
 
-<h2>Privacy Preferences</h2>
+<h2>Cookie Preferences Center</h2>
 
 <p>
 
-Select the cookie categories you wish to allow.
+Manage your consent preferences below. Strictly Necessary cookies are always enabled because they are required for the website to function properly.
+
+You may enable or disable the remaining categories at any time.
 
 </p>
 
-<label><input type="checkbox" checked disabled> Strictly Necessary</label>
+<hr>
 
-<label><input type="checkbox" checked> Functional</label>
+<label><input type="checkbox" checked disabled> <strong>Strictly Necessary Cookies</strong></label>
 
-<label><input type="checkbox" checked> Analytics</label>
+<label><input type="checkbox" checked> Functional Cookies</label>
 
-<label><input type="checkbox"> Marketing</label>
+<label><input type="checkbox" checked> Analytics Cookies</label>
 
-<label><input type="checkbox"> Advertising</label>
+<label><input type="checkbox"> Performance Cookies</label>
 
-<label><input type="checkbox"> Personalization</label>
+<label><input type="checkbox"> Marketing Cookies</label>
 
-<label><input type="checkbox"> Social Media</label>
+<label><input type="checkbox"> Advertising Cookies</label>
 
-<label><input type="checkbox"> Performance</label>
+<label><input type="checkbox"> Personalization Cookies</label>
 
-<label><input type="checkbox"> Live Chat</label>
+<label><input type="checkbox"> Preference Cookies</label>
 
-<label><input type="checkbox"> Embedded Videos</label>
+<label><input type="checkbox"> Social Media Cookies</label>
 
-<label><input type="checkbox"> Maps</label>
+<label><input type="checkbox"> Embedded Video Cookies</label>
 
-<label><input type="checkbox"> Surveys</label>
+<label><input type="checkbox"> Google Maps Cookies</label>
 
-<label><input type="checkbox"> AI Recommendations</label>
+<label><input type="checkbox"> Live Chat Cookies</label>
 
-<label><input type="checkbox"> Fraud Detection</label>
+<label><input type="checkbox"> Customer Support Cookies</label>
 
-<label><input type="checkbox"> Security</label>
+<label><input type="checkbox"> AI Recommendation Cookies</label>
 
-<label><input type="checkbox"> Device Recognition</label>
+<label><input type="checkbox"> AI Personalization Cookies</label>
 
-<label><input type="checkbox"> Session Replay</label>
+<label><input type="checkbox"> Fraud Detection Cookies</label>
 
-<label><input type="checkbox"> Heatmaps</label>
+<label><input type="checkbox"> Security Cookies</label>
 
-<label><input type="checkbox"> CRM Integration</label>
+<label><input type="checkbox"> Device Recognition Cookies</label>
 
-<label><input type="checkbox"> Email Campaigns</label>
+<label><input type="checkbox"> Authentication Cookies</label>
 
-<label><input type="checkbox"> Affiliate Marketing</label>
+<label><input type="checkbox"> Session Cookies</label>
 
-<label><input type="checkbox"> Payment Services</label>
+<label><input type="checkbox"> Session Replay Cookies</label>
 
-<label><input type="checkbox"> Accessibility</label>
+<label><input type="checkbox"> Heatmap Cookies</label>
 
-<label><input type="checkbox"> A/B Testing</label>
+<label><input type="checkbox"> A/B Testing Cookies</label>
 
-<label><input type="checkbox"> Customer Support</label>
+<label><input type="checkbox"> Accessibility Cookies</label>
 
-<label><input type="checkbox"> Recommendation Engine</label>
+<label><input type="checkbox"> CRM Integration Cookies</label>
 
-<label><input type="checkbox"> Mobile Experience</label>
+<label><input type="checkbox"> Email Campaign Cookies</label>
 
-<label><input type="checkbox"> Cross-device Tracking</label>
+<label><input type="checkbox"> Affiliate Marketing Cookies</label>
 
-<label><input type="checkbox"> Location Services</label>
+<label><input type="checkbox"> Payment Service Cookies</label>
 
-<label><input type="checkbox"> AI Personalization</label>
+<label><input type="checkbox"> Shopping Cart Cookies</label>
 
-<br><br>
+<label><input type="checkbox"> Wishlist Cookies</label>
+
+<label><input type="checkbox"> Loyalty Program Cookies</label>
+
+<label><input type="checkbox"> Survey & Feedback Cookies</label>
+
+<label><input type="checkbox"> Mobile Experience Cookies</label>
+
+<label><input type="checkbox"> Cross-device Tracking Cookies</label>
+
+<label><input type="checkbox"> Geolocation Cookies</label>
+
+<label><input type="checkbox"> Search Optimization Cookies</label>
+
+<label><input type="checkbox"> Recommendation Engine Cookies</label>
+
+<label><input type="checkbox"> Cloud Performance Cookies</label>
+
+<label><input type="checkbox"> CDN Optimization Cookies</label>
+
+<label><input type="checkbox"> Third-Party Integrations</label>
+
+<hr>
 
 <button class="acceptBtn" onclick="savePreferences()">
+💾 Save Preferences
+</button>
 
-Save Preferences
-
+<button class="rejectBtn" onclick="closePreferences()">
+Close
 </button>
 
 </div>
@@ -357,20 +371,14 @@ Save Preferences
 #cookieBanner{
 
 position:fixed;
-
 bottom:20px;
-
 right:20px;
-
-width:460px;
-
-background:white;
-
-border-radius:20px;
-
+width:480px;
+background:#ffffff;
+border-radius:18px;
 box-shadow:0 20px 60px rgba(0,0,0,.25);
-
 z-index:99999;
+font-family:Inter,sans-serif;
 
 }
 
@@ -383,19 +391,23 @@ padding:25px;
 .cookie-title{
 
 font-size:24px;
-
 font-weight:700;
-
 margin-bottom:15px;
+color:#0f172a;
+
+}
+
+.cookie-window p{
+
+line-height:1.7;
+color:#555;
 
 }
 
 .cookie-buttons{
 
 display:flex;
-
 gap:10px;
-
 margin-top:20px;
 
 }
@@ -403,84 +415,102 @@ margin-top:20px;
 .cookie-buttons button{
 
 flex:1;
-
 padding:14px;
-
 border:none;
-
 border-radius:10px;
-
 font-weight:700;
-
 cursor:pointer;
+transition:.3s;
 
 }
 
 .acceptBtn{
 
 background:#2563eb;
-
 color:white;
+
+}
+
+.acceptBtn:hover{
+
+background:#1d4ed8;
 
 }
 
 .rejectBtn{
 
 background:#ef4444;
-
 color:white;
+
+}
+
+.rejectBtn:hover{
+
+background:#dc2626;
 
 }
 
 .manageBtn{
 
 background:#10b981;
-
 color:white;
+
+}
+
+.manageBtn:hover{
+
+background:#059669;
 
 }
 
 #cookiePreferences{
 
 display:none;
-
 position:fixed;
-
 top:50%;
-
 left:50%;
-
 transform:translate(-50%,-50%);
-
-width:650px;
-
-max-height:80vh;
-
+width:720px;
+max-width:95%;
+max-height:85vh;
 overflow:auto;
-
 background:white;
-
 border-radius:20px;
-
-box-shadow:0 20px 60px rgba(0,0,0,.3);
-
+box-shadow:0 25px 70px rgba(0,0,0,.35);
 z-index:999999;
 
 }
 
 .prefWindow{
 
-padding:30px;
+padding:35px;
+
+}
+
+.prefWindow h2{
+
+margin-bottom:15px;
+
+}
+
+.prefWindow p{
+
+margin-bottom:20px;
+line-height:1.6;
 
 }
 
 .prefWindow label{
 
 display:block;
-
 padding:8px 0;
+font-size:15px;
 
-font-size:16px;
+}
+
+.prefWindow hr{
+
+margin:20px 0;
 
 }
 
@@ -516,6 +546,12 @@ document.getElementById("cookiePreferences").style.display="block";
 
 }
 
+function closePreferences(){
+
+document.getElementById("cookiePreferences").style.display="none";
+
+}
+
 function savePreferences(){
 
 localStorage.setItem("pvConsent","custom");
@@ -524,7 +560,7 @@ document.getElementById("cookiePreferences").style.display="none";
 
 document.getElementById("cookieBanner").style.display="none";
 
-alert("Preferences Saved");
+alert("Your cookie preferences have been saved successfully.");
 
 }
 
