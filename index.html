@@ -212,5 +212,322 @@
       <button class="dsr-button" style="background:#cc0000" onclick="window.location.href='privacy-notice-demo.html'">Mazda Privacy Demo</button>
     </div>
   </footer>
+  <!-- ========================= -->
+<!-- PrivacyVerse Cookie Banner -->
+<!-- ========================= -->
+
+<div id="cookieBanner">
+
+<div class="cookie-window">
+
+<div class="cookie-title">
+
+🍪 Your Privacy Matters
+
+</div>
+
+<p>
+
+We use cookies and similar technologies to improve your browsing experience,
+remember your preferences,
+measure website performance,
+deliver personalized content,
+and support secure authentication.
+
+You can accept all cookies,
+reject optional cookies,
+or customize your preferences.
+
+</p>
+
+<div class="cookie-buttons">
+
+<button class="acceptBtn" onclick="acceptCookies()">
+
+Accept All
+
+</button>
+
+<button class="rejectBtn" onclick="rejectCookies()">
+
+Reject Optional
+
+</button>
+
+<button class="manageBtn" onclick="showPreferences()">
+
+Customize
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Cookie Preferences -->
+
+<div id="cookiePreferences">
+
+<div class="prefWindow">
+
+<h2>Privacy Preferences</h2>
+
+<p>
+
+Select the cookie categories you wish to allow.
+
+</p>
+
+<label><input type="checkbox" checked disabled> Strictly Necessary</label>
+
+<label><input type="checkbox" checked> Functional</label>
+
+<label><input type="checkbox" checked> Analytics</label>
+
+<label><input type="checkbox"> Marketing</label>
+
+<label><input type="checkbox"> Advertising</label>
+
+<label><input type="checkbox"> Personalization</label>
+
+<label><input type="checkbox"> Social Media</label>
+
+<label><input type="checkbox"> Performance</label>
+
+<label><input type="checkbox"> Live Chat</label>
+
+<label><input type="checkbox"> Embedded Videos</label>
+
+<label><input type="checkbox"> Maps</label>
+
+<label><input type="checkbox"> Surveys</label>
+
+<label><input type="checkbox"> AI Recommendations</label>
+
+<label><input type="checkbox"> Fraud Detection</label>
+
+<label><input type="checkbox"> Security</label>
+
+<label><input type="checkbox"> Device Recognition</label>
+
+<label><input type="checkbox"> Session Replay</label>
+
+<label><input type="checkbox"> Heatmaps</label>
+
+<label><input type="checkbox"> CRM Integration</label>
+
+<label><input type="checkbox"> Email Campaigns</label>
+
+<label><input type="checkbox"> Affiliate Marketing</label>
+
+<label><input type="checkbox"> Payment Services</label>
+
+<label><input type="checkbox"> Accessibility</label>
+
+<label><input type="checkbox"> A/B Testing</label>
+
+<label><input type="checkbox"> Customer Support</label>
+
+<label><input type="checkbox"> Recommendation Engine</label>
+
+<label><input type="checkbox"> Mobile Experience</label>
+
+<label><input type="checkbox"> Cross-device Tracking</label>
+
+<label><input type="checkbox"> Location Services</label>
+
+<label><input type="checkbox"> AI Personalization</label>
+
+<br><br>
+
+<button class="acceptBtn" onclick="savePreferences()">
+
+Save Preferences
+
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+#cookieBanner{
+
+position:fixed;
+
+bottom:20px;
+
+right:20px;
+
+width:460px;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+z-index:99999;
+
+}
+
+.cookie-window{
+
+padding:25px;
+
+}
+
+.cookie-title{
+
+font-size:24px;
+
+font-weight:700;
+
+margin-bottom:15px;
+
+}
+
+.cookie-buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.cookie-buttons button{
+
+flex:1;
+
+padding:14px;
+
+border:none;
+
+border-radius:10px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.acceptBtn{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+.rejectBtn{
+
+background:#ef4444;
+
+color:white;
+
+}
+
+.manageBtn{
+
+background:#10b981;
+
+color:white;
+
+}
+
+#cookiePreferences{
+
+display:none;
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:650px;
+
+max-height:80vh;
+
+overflow:auto;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.3);
+
+z-index:999999;
+
+}
+
+.prefWindow{
+
+padding:30px;
+
+}
+
+.prefWindow label{
+
+display:block;
+
+padding:8px 0;
+
+font-size:16px;
+
+}
+
+</style>
+
+<script>
+
+if(localStorage.getItem("pvConsent")){
+
+document.getElementById("cookieBanner").style.display="none";
+
+}
+
+function acceptCookies(){
+
+localStorage.setItem("pvConsent","accepted");
+
+document.getElementById("cookieBanner").style.display="none";
+
+}
+
+function rejectCookies(){
+
+localStorage.setItem("pvConsent","rejected");
+
+document.getElementById("cookieBanner").style.display="none";
+
+}
+
+function showPreferences(){
+
+document.getElementById("cookiePreferences").style.display="block";
+
+}
+
+function savePreferences(){
+
+localStorage.setItem("pvConsent","custom");
+
+document.getElementById("cookiePreferences").style.display="none";
+
+document.getElementById("cookieBanner").style.display="none";
+
+alert("Preferences Saved");
+
+}
+
+</script>
 </body>
 </html>
