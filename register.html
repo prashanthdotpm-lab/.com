@@ -15,7 +15,8 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Register — Pacchi Prashanth's Sector Sites</title>
+  <meta name="description" content="Create your Sector Sites account — Universal Consent Module demo" />
+  <title>Create Account — Sector Sites</title>
   <style>
     :root {
       --bg1:#4b2c82; --bg2:#3a74d1; --accent:#ffd369;
@@ -221,21 +222,21 @@
   <div class="wrap">
     <div class="card">
       <div id="formPanel">
-        <h1>New to Sector Sites? Register!</h1>
-        <p class="subtitle">Or sign up using email — Universal Consent Module demo form</p>
+        <h1>Create your Sector Sites account</h1>
+        <p class="subtitle">Join the Unified Digital Services Platform — Universal Consent Module demo</p>
 
         <form id="registerForm" novalidate>
           <div class="row">
             <div class="form-group">
               <label for="firstName">First name <span style="color:var(--error)">*</span></label>
-              <input type="text" id="firstName" placeholder="Your first name" />
-              <div class="hint">Alphabets only, minimum 2 characters</div>
+              <input type="text" id="firstName" placeholder="Enter first name" autocomplete="given-name" />
+              <div class="hint">Letters only, minimum 2 characters</div>
               <div class="error-msg" id="firstNameError">First name is required (min 2 letters)</div>
             </div>
             <div class="form-group">
               <label for="lastName">Last name <span style="color:var(--error)">*</span></label>
-              <input type="text" id="lastName" placeholder="Your last name" />
-              <div class="hint">Alphabets only, minimum 3 characters</div>
+              <input type="text" id="lastName" placeholder="Enter last name" autocomplete="family-name" />
+              <div class="hint">Letters only, minimum 3 characters</div>
               <div class="error-msg" id="lastNameError">Last name is required (min 3 letters)</div>
             </div>
           </div>
@@ -244,7 +245,7 @@
             <div class="form-group">
               <label for="gender">Gender <span class="optional">(Optional)</span></label>
               <select id="gender">
-                <option value="">Select your gender</option>
+                <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -260,7 +261,7 @@
           <div class="form-group">
             <label for="nationality">Nationality <span class="optional">(Optional)</span></label>
             <select id="nationality">
-              <option value="">Select your nationality</option>
+              <option value="">Select nationality</option>
               <option value="SA">Saudi Arabia</option>
               <option value="AE">United Arab Emirates</option>
               <option value="IN">India</option>
@@ -282,7 +283,7 @@
             <div class="mobile-wrap">
               <div class="country-code">
                 <span id="flagEmoji">🇸🇦</span>
-                <select id="countryCode">
+                <select id="countryCode" aria-label="Country code">
                   <option value="+966" data-flag="🇸🇦" selected>+966</option>
                   <option value="+971" data-flag="🇦🇪">+971</option>
                   <option value="+91" data-flag="🇮🇳">+91</option>
@@ -294,56 +295,56 @@
               </div>
               <input type="tel" id="mobile" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric" />
             </div>
-            <div class="hint">Must start with '5' and be exactly 9 digits (KSA style)</div>
-            <div class="error-msg" id="mobileError">Must start with 5 and be exactly 9 digits</div>
+            <div class="hint">Must start with 5 and contain exactly 9 digits</div>
+            <div class="error-msg" id="mobileError">Valid mobile number required (starts with 5, 9 digits)</div>
           </div>
 
           <div class="form-group">
             <label for="email">Email address <span style="color:var(--error)">*</span></label>
-            <input type="email" id="email" placeholder="name@example.com" />
-            <div class="hint">Enter a valid email address, e.g. name@example.com</div>
-            <div class="error-msg" id="emailError">You need to provide a valid email address</div>
+            <input type="email" id="email" placeholder="you@company.com" autocomplete="email" />
+            <div class="hint">Use a valid email format</div>
+            <div class="error-msg" id="emailError">A valid email address is required</div>
           </div>
 
           <div class="form-group">
-            <label for="password">New password <span style="color:var(--error)">*</span></label>
-            <input type="password" id="password" placeholder="Create a password" />
-            <div class="hint">Min 6 characters, at least one letter and one digit</div>
-            <div class="error-msg" id="passwordError">Password requirements not met</div>
+            <label for="password">Password <span style="color:var(--error)">*</span></label>
+            <input type="password" id="password" placeholder="Create a secure password" autocomplete="new-password" />
+            <div class="hint">At least 6 characters, one letter and one number</div>
+            <div class="error-msg" id="passwordError">Password does not meet requirements</div>
           </div>
 
           <div class="form-group">
-            <label for="confirmPassword">Confirm new password <span style="color:var(--error)">*</span></label>
-            <input type="password" id="confirmPassword" placeholder="Re-enter password" />
-            <div class="error-msg" id="confirmPasswordError">Passwords do not match</div>
+            <label for="confirmPassword">Confirm password <span style="color:var(--error)">*</span></label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
+            <div class="error-msg" id="confirmPasswordError">Passwords must match</div>
           </div>
 
           <div class="consent-box">
             <label>
               <input type="checkbox" id="marketingConsent" />
-              <span>By creating an account, you consent to receiving messages and offers from Sector Sites / extra.com style communications.</span>
+              <span>I agree to receive product updates, service notices, and relevant offers from Sector Sites.</span>
             </label>
           </div>
 
           <p class="terms">
-            By clicking the “Register” button, you confirm that you accept our
-            <a href="privacy-notice.html">Terms and conditions</a> and
-            <a href="privacy-notice.html">Privacy Policy</a>.
+            By creating an account you confirm that you accept our
+            <a href="privacy-notice.html">Terms of Use</a> and
+            <a href="privacy-notice.html">Privacy Notice</a>.
           </p>
 
-          <button type="submit" class="btn">Register</button>
+          <button type="submit" class="btn">Create account</button>
         </form>
 
         <p class="login-link">
-          Already have an account? <a href="login.html">Sign in</a>
+          Already registered? <a href="login.html">Sign in</a>
         </p>
       </div>
 
       <div class="success-panel" id="successPanel">
         <div class="icon">✓</div>
-        <h2>Registration successful!</h2>
-        <p>Thank you for registering. This is a demo form for the Universal Consent Module.<br>
-           Your consent preferences can be managed via the privacy / DSR pages.</p>
+        <h2>Account created</h2>
+        <p>Welcome to Sector Sites. This registration is part of the Universal Consent Module demo.<br>
+           You can manage consent preferences from the Privacy and DSR pages.</p>
         <a href="index.html" class="btn" style="text-decoration:none;display:inline-block;width:auto;padding:12px 28px;">Go to Home</a>
       </div>
     </div>
@@ -354,14 +355,14 @@
   </footer>
 
   <script>
-    document.getElementById('countryCode').addEventListener('change', function() {
+    document.getElementById('countryCode').addEventListener('change', function () {
       var opt = this.options[this.selectedIndex];
       document.getElementById('flagEmoji').textContent = opt.getAttribute('data-flag') || '🏳️';
     });
 
     function showError(id, show, msg) {
       var el = document.getElementById(id);
-      var input = document.getElementById(id.replace('Error',''));
+      var input = document.getElementById(id.replace('Error', ''));
       if (show) {
         if (msg) el.textContent = msg;
         el.classList.add('show');
@@ -372,20 +373,22 @@
       }
     }
 
-    function alphaOnly(v) { return /^[A-Za-z\s]+$/.test(v.trim()); }
+    function alphaOnly(v) {
+      return /^[A-Za-z\s]+$/.test(v.trim());
+    }
 
     function validate() {
       var ok = true;
 
       var firstName = document.getElementById('firstName').value.trim();
       if (!firstName || firstName.length < 2 || !alphaOnly(firstName)) {
-        showError('firstNameError', true, 'First name required — alphabets only, min 2 characters');
+        showError('firstNameError', true, 'First name required — letters only, min 2 characters');
         ok = false;
       } else showError('firstNameError', false);
 
       var lastName = document.getElementById('lastName').value.trim();
       if (!lastName || lastName.length < 3 || !alphaOnly(lastName)) {
-        showError('lastNameError', true, 'Last name required — alphabets only, min 3 characters');
+        showError('lastNameError', true, 'Last name required — letters only, min 3 characters');
         ok = false;
       } else showError('lastNameError', false);
 
@@ -397,49 +400,51 @@
 
       var email = document.getElementById('email').value.trim();
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError('emailError', true, 'You need to provide a valid email address');
+        showError('emailError', true, 'A valid email address is required');
         ok = false;
       } else showError('emailError', false);
 
       var password = document.getElementById('password').value;
       if (!password) {
-        showError('passwordError', true, 'This value is required');
+        showError('passwordError', true, 'Password is required');
         ok = false;
       } else if (password.length < 6) {
-        showError('passwordError', true, 'This value is too short. It should have 6 characters or more');
+        showError('passwordError', true, 'Password must be at least 6 characters');
         ok = false;
       } else if (!/\d/.test(password)) {
-        showError('passwordError', true, 'This value must contain at least one digit (0-9)');
+        showError('passwordError', true, 'Password must contain at least one number');
         ok = false;
       } else if (!/[A-Za-z]/.test(password)) {
-        showError('passwordError', true, 'This value must contain at least one Alphabet letter');
+        showError('passwordError', true, 'Password must contain at least one letter');
         ok = false;
       } else showError('passwordError', false);
 
       var confirm = document.getElementById('confirmPassword').value;
       if (!confirm) {
-        showError('confirmPasswordError', true, 'You need to provide confirm password');
+        showError('confirmPasswordError', true, 'Please confirm your password');
         ok = false;
       } else if (confirm !== password) {
-        showError('confirmPasswordError', true, 'Password and password confirmation do not match');
+        showError('confirmPasswordError', true, 'Passwords do not match');
         ok = false;
       } else showError('confirmPasswordError', false);
 
       return ok;
     }
 
-    ['firstName','lastName','mobile','email','password','confirmPassword'].forEach(function(id) {
-      document.getElementById(id).addEventListener('input', function() {
+    ['firstName', 'lastName', 'mobile', 'email', 'password', 'confirmPassword'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', function () {
         showError(id + 'Error', false);
       });
     });
 
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validate()) return;
+
       document.getElementById('formPanel').style.display = 'none';
       document.getElementById('successPanel').classList.add('show');
-      console.log('UCM Demo Registration payload:', {
+
+      console.log('Sector Sites UCM registration payload:', {
         firstName: document.getElementById('firstName').value.trim(),
         lastName: document.getElementById('lastName').value.trim(),
         gender: document.getElementById('gender').value,
@@ -448,7 +453,8 @@
         countryCode: document.getElementById('countryCode').value,
         mobile: document.getElementById('mobile').value.trim(),
         email: document.getElementById('email').value.trim(),
-        marketingConsent: document.getElementById('marketingConsent').checked
+        marketingConsent: document.getElementById('marketingConsent').checked,
+        purpose: 'Sector Sites Universal Consent Module demo'
       });
     });
   </script>
