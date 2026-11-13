@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader.js';
+    s.setAttribute('data-tenant-uuid', '3e61d758-a84b-40e6-a67c-a4ff905b2341');
+    s.setAttribute('data-domain-uuid', '5b2d4452-e4cf-4d3a-b325-f2ba4cd3acb8');
+    s.setAttribute('data-backend-url', 'https://app.securiti.ai');
+    s.setAttribute('data-skip-css', 'false');
+    s.defer = true;
+    (document.head || document.body).appendChild(s);
+  })()
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us — Pacchi Prashanth's Sector Sites</title>
+  <style>
+    :root { --bg1:#4b2c82; --bg2:#3a74d1; --card:#fff; --muted:#6a6f85; --ring:rgba(74,144,226,.35); --text:#0f1222; --error:#c62828; --success:#2e7d32; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#f6f8ff; color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
+    .navbar { position:sticky; top:0; z-index:50; background:linear-gradient(90deg,var(--bg1),var(--bg2)); padding:12px 18px; display:flex; align-items:center; gap:12px; color:#fff; }
+    .navbar a { color:#fff; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px; }
+    .navbar a:hover { background-color:rgba(255,255,255,.12); }
+    .spacer { flex:1; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .ucm-demo-link { background:#ffd369; color:#000; border-radius:6px; font-weight:bold; text-decoration:none; padding:8px 12px; }
+    .wrap { max-width:640px; margin:0 auto; padding:28px 18px 40px; flex:1; }
+    .card { background:var(--card); border-radius:20px; padding:28px 24px; border:1px solid #eef0ff; box-shadow:0 12px 36px rgba(16,24,40,.08); }
+    .card h1 { font-size:1.55rem; margin-bottom:6px; background:linear-gradient(135deg,var(--bg1),var(--bg2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .subtitle { color:var(--muted); font-size:14px; margin-bottom:22px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-weight:600; font-size:14px; margin-bottom:6px; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; padding:11px 13px; border:1.5px solid #d8dce8; border-radius:10px; font-size:15px; font-family:inherit; }
+    .form-group textarea { min-height:120px; resize:vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--bg2); box-shadow:0 0 0 3px var(--ring); }
+    .form-group input.error, .form-group select.error, .form-group textarea.error { border-color:var(--error); }
+    .error-msg { font-size:12px; color:var(--error); margin-top:4px; display:none; }
+    .error-msg.show { display:block; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:480px) { .row { grid-template-columns:1fr; } }
+    .btn { display:block; width:100%; padding:13px 16px; border-radius:12px; background:linear-gradient(135deg,var(--bg1),var(--bg2)); color:#fff; font-weight:700; font-size:16px; border:none; cursor:pointer; }
+    .btn:hover { opacity:.92; }
+    .success-panel { display:none; text-align:center; padding:30px 10px; }
+    .success-panel.show { display:block; }
+    .success-panel .icon { width:64px; height:64px; background:#e8f5e9; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:28px; }
+    .success-panel h2 { color:var(--success); margin-bottom:8px; }
+    .success-panel p { color:var(--muted); font-size:14px; margin-bottom:20px; }
+    .info-box { background:#f8f9ff; border:1px solid #e0e4f5; border-radius:12px; padding:16px; margin-bottom:22px; font-size:14px; line-height:1.55; color:#3a3f55; }
+    footer { padding:20px; text-align:center; color:#70768f; font-size:13px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="bank.html">Bank</a>
+    <a href="retail.html">Retail</a>
+    <a href="telco.html">Telco</a>
+    <a href="govt.html">Govt</a>
+    <div class="spacer"></div>
+    <div class="actions">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="contactus.html">Contact</a>
+      <a href="stanbic-consent-demo.html" class="ucm-demo-link">Stanbic UCM Demo</a>
+    </div>
+  </nav>
+  <div class="wrap">
+    <div class="card">
+      <div id="formPanel">
+        <h1>Contact Us</h1>
+        <p class="subtitle">Have a question about the demo or Universal Consent Module? Send us a message.</p>
+        <div class="info-box"><strong>Demo site only.</strong> This form is for demonstration (UCM / privacy workflows). Messages are not sent to a real inbox.</div>
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="form-group">
+              <label for="name">Full name *</label>
+              <input type="text" id="name" placeholder="Your full name" />
+              <div class="error-msg" id="nameError">Please enter your name (min 2 characters)</div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address *</label>
+              <input type="email" id="email" placeholder="name@example.com" />
+              <div class="error-msg" id="emailError">Please enter a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject">
+              <option value="">Select a subject</option>
+              <option value="general">General enquiry</option>
+              <option value="ucm">Universal Consent Module demo</option>
+              <option value="privacy">Privacy / DSR question</option>
+              <option value="support">Technical support</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-msg" id="subjectError">Please select a subject</div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" placeholder="Write your message here..."></textarea>
+            <div class="error-msg" id="messageError">Please enter a message (min 10 characters)</div>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+      <div class="success-panel" id="successPanel">
+        <div class="icon">✓</div>
+        <h2>Message sent (demo)</h2>
+        <p>Thank you. This is a demonstration form only.</p>
+        <a href="index.html" class="btn" style="text-decoration:none;display:inline-block;width:auto;padding:12px 28px;">Back to Home</a>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 Pacchi Prashanth’s Sector Sites • Demo only</footer>
+  <script>
+    function showError(id, show) {
+      document.getElementById(id).classList.toggle('show', show);
+      var input = document.getElementById(id.replace('Error',''));
+      if (input) input.classList.toggle('error', show);
+    }
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var ok = true;
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var subject = document.getElementById('subject').value;
+      var message = document.getElementById('message').value.trim();
+      if (!name || name.length < 2) { showError('nameError', true); ok = false; } else showError('nameError', false);
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('emailError', true); ok = false; } else showError('emailError', false);
+      if (!subject) { showError('subjectError', true); ok = false; } else showError('subjectError', false);
+      if (!message || message.length < 10) { showError('messageError', true); ok = false; } else showError('messageError', false);
+      if (!ok) return;
+      document.getElementById('formPanel').style.display = 'none';
+      document.getElementById('successPanel').classList.add('show');
+    });
+  </script>
+</body>
+</html>
