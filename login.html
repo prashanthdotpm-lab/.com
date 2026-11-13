@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader.js';
+    s.setAttribute('data-tenant-uuid', '3e61d758-a84b-40e6-a67c-a4ff905b2341');
+    s.setAttribute('data-domain-uuid', '5b2d4452-e4cf-4d3a-b325-f2ba4cd3acb8');
+    s.setAttribute('data-backend-url', 'https://app.securiti.ai');
+    s.setAttribute('data-skip-css', 'false');
+    s.defer = true;
+    (document.head || document.body).appendChild(s);
+  })()
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Pacchi Prashanth's Sector Sites</title>
+  <style>
+    :root { --bg1:#4b2c82; --bg2:#3a74d1; --card:#fff; --muted:#6a6f85; --ring:rgba(74,144,226,.35); --text:#0f1222; --error:#c62828; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#f6f8ff; color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
+    .navbar { position:sticky; top:0; z-index:50; background:linear-gradient(90deg,var(--bg1),var(--bg2)); padding:12px 18px; display:flex; align-items:center; gap:12px; color:#fff; }
+    .navbar a { color:#fff; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px; }
+    .navbar a:hover { background-color:rgba(255,255,255,.12); }
+    .spacer { flex:1; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .ucm-demo-link { background:#ffd369; color:#000; border-radius:6px; font-weight:bold; text-decoration:none; padding:8px 12px; }
+    .wrap { max-width:440px; margin:0 auto; padding:40px 18px; flex:1; display:flex; align-items:center; }
+    .card { background:var(--card); border-radius:20px; padding:32px 28px; border:1px solid #eef0ff; box-shadow:0 12px 36px rgba(16,24,40,.08); width:100%; }
+    .card h1 { font-size:1.5rem; margin-bottom:6px; background:linear-gradient(135deg,var(--bg1),var(--bg2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .subtitle { color:var(--muted); font-size:14px; margin-bottom:24px; }
+    .form-group { margin-bottom:18px; }
+    .form-group label { display:block; font-weight:600; font-size:14px; margin-bottom:6px; }
+    .form-group input { width:100%; padding:12px 14px; border:1.5px solid #d8dce8; border-radius:10px; font-size:15px; }
+    .form-group input:focus { outline:none; border-color:var(--bg2); box-shadow:0 0 0 3px var(--ring); }
+    .form-group input.error { border-color:var(--error); }
+    .error-msg { font-size:12px; color:var(--error); margin-top:4px; display:none; }
+    .error-msg.show { display:block; }
+    .btn { display:block; width:100%; padding:13px 16px; border-radius:12px; background:linear-gradient(135deg,var(--bg1),var(--bg2)); color:#fff; font-weight:700; font-size:16px; border:none; cursor:pointer; margin-top:8px; }
+    .btn:hover { opacity:.92; }
+    .links { display:flex; justify-content:space-between; margin-top:16px; font-size:13px; }
+    .links a { color:var(--bg2); font-weight:600; text-decoration:none; }
+    .register-link { text-align:center; margin-top:22px; font-size:14px; color:var(--muted); }
+    .register-link a { color:var(--bg2); font-weight:600; text-decoration:none; }
+    .demo-note { margin-top:20px; padding:12px 14px; background:#fff8e6; border:1px solid #ffe0a0; border-radius:10px; font-size:12.5px; color:#7a5c00; line-height:1.45; }
+    footer { padding:20px; text-align:center; color:#70768f; font-size:13px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="bank.html">Bank</a>
+    <a href="retail.html">Retail</a>
+    <a href="telco.html">Telco</a>
+    <a href="govt.html">Govt</a>
+    <div class="spacer"></div>
+    <div class="actions">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="contactus.html">Contact</a>
+      <a href="stanbic-consent-demo.html" class="ucm-demo-link">Stanbic UCM Demo</a>
+    </div>
+  </nav>
+  <div class="wrap">
+    <div class="card">
+      <h1>Welcome back</h1>
+      <p class="subtitle">Sign in to continue to Sector Sites</p>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="name@example.com" />
+          <div class="error-msg" id="emailError">Please enter a valid email</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Your password" />
+          <div class="error-msg" id="passwordError">Password is required</div>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="links">
+        <a href="#">Forgot password?</a>
+        <a href="register.html">Create account</a>
+      </div>
+      <p class="register-link">New here? <a href="register.html">Register now</a></p>
+      <div class="demo-note"><strong>Demo note:</strong> Front-end only. Any valid email + password will simulate a successful login.</div>
+    </div>
+  </div>
+  <footer>© 2025 Pacchi Prashanth’s Sector Sites • Demo only</footer>
+  <script>
+    function showError(id, show) {
+      document.getElementById(id).classList.toggle('show', show);
+      var input = document.getElementById(id.replace('Error',''));
+      if (input) input.classList.toggle('error', show);
+    }
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var ok = true;
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value;
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('emailError', true); ok = false; } else showError('emailError', false);
+      if (!password) { showError('passwordError', true); ok = false; } else showError('passwordError', false);
+      if (!ok) return;
+      alert('Login successful (demo).');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
