@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader.js';
+    s.setAttribute('data-tenant-uuid', '3e61d758-a84b-40e6-a67c-a4ff905b2341');
+    s.setAttribute('data-domain-uuid', '5b2d4452-e4cf-4d3a-b325-f2ba4cd3acb8');
+    s.setAttribute('data-backend-url', 'https://app.securiti.ai');
+    s.setAttribute('data-skip-css', 'false');
+    s.defer = true;
+    (document.head || document.body).appendChild(s);
+  })()
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register — Pacchi Prashanth's Sector Sites</title>
+  <style>
+    :root {
+      --bg1:#4b2c82; --bg2:#3a74d1; --accent:#ffd369;
+      --card:#fff; --muted:#6a6f85; --ring:rgba(74,144,226,.35);
+      --text:#0f1222; --error:#c62828; --success:#2e7d32;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#f6f8ff;
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    .navbar {
+      position:sticky; top:0; z-index:50;
+      background:linear-gradient(90deg,var(--bg1),var(--bg2));
+      padding:12px 18px;
+      display:flex; align-items:center; gap:12px; color:#fff;
+    }
+    .navbar a {
+      color:#fff; text-decoration:none; font-weight:600;
+      padding:8px 10px; border-radius:10px;
+    }
+    .navbar a:hover { background-color:rgba(255,255,255,.12); }
+    .spacer { flex:1; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .ucm-demo-link {
+      background:#ffd369; color:#000; border-radius:6px;
+      font-weight:bold; text-decoration:none; padding:8px 12px;
+    }
+    .wrap {
+      max-width:560px;
+      margin:0 auto;
+      padding:24px 18px 40px;
+      flex:1;
+    }
+    .card {
+      background:var(--card);
+      border-radius:20px;
+      padding:28px 24px;
+      border:1px solid #eef0ff;
+      box-shadow:0 12px 36px rgba(16,24,40,.08);
+    }
+    .card h1 {
+      font-size:1.55rem;
+      margin-bottom:6px;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .subtitle { color:var(--muted); font-size:14px; margin-bottom:22px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label {
+      display:block;
+      font-weight:600;
+      font-size:14px;
+      margin-bottom:6px;
+    }
+    .form-group label .optional {
+      font-weight:400;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .form-group input,
+    .form-group select {
+      width:100%;
+      padding:11px 13px;
+      border:1.5px solid #d8dce8;
+      border-radius:10px;
+      font-size:15px;
+      background:#fff;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline:none;
+      border-color:var(--bg2);
+      box-shadow:0 0 0 3px var(--ring);
+    }
+    .form-group input.error,
+    .form-group select.error { border-color:var(--error); }
+    .hint { font-size:12px; color:var(--muted); margin-top:4px; }
+    .error-msg {
+      font-size:12px;
+      color:var(--error);
+      margin-top:4px;
+      display:none;
+    }
+    .error-msg.show { display:block; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:480px) { .row { grid-template-columns:1fr; } }
+    .mobile-wrap { display:flex; gap:8px; align-items:stretch; }
+    .country-code {
+      flex:0 0 110px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:0 10px;
+      border:1.5px solid #d8dce8;
+      border-radius:10px;
+      background:#f8f9fc;
+      font-size:14px;
+      font-weight:600;
+    }
+    .country-code select {
+      border:none;
+      background:transparent;
+      padding:0;
+      font-size:14px;
+      width:100%;
+    }
+    .mobile-wrap input { flex:1; }
+    .consent-box {
+      background:#f8f9ff;
+      border:1px solid #e0e4f5;
+      border-radius:12px;
+      padding:14px 16px;
+      margin:18px 0 8px;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .consent-box label {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .consent-box input[type="checkbox"] {
+      width:18px; height:18px; margin-top:2px; flex-shrink:0;
+      accent-color:var(--bg1);
+    }
+    .terms {
+      font-size:12.5px;
+      color:var(--muted);
+      margin:14px 0 18px;
+      line-height:1.5;
+    }
+    .terms a { color:var(--bg2); font-weight:600; }
+    .btn {
+      display:block;
+      width:100%;
+      padding:13px 16px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#fff;
+      font-weight:700;
+      font-size:16px;
+      border:none;
+      cursor:pointer;
+    }
+    .btn:hover { opacity:.92; }
+    .login-link {
+      text-align:center;
+      margin-top:18px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .login-link a { color:var(--bg2); font-weight:600; text-decoration:none; }
+    .success-panel {
+      display:none;
+      text-align:center;
+      padding:30px 10px;
+    }
+    .success-panel.show { display:block; }
+    .success-panel .icon {
+      width:64px; height:64px;
+      background:#e8f5e9;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 16px;
+      font-size:28px;
+    }
+    .success-panel h2 { color:var(--success); margin-bottom:8px; }
+    .success-panel p { color:var(--muted); font-size:14px; margin-bottom:20px; }
+    footer {
+      padding:20px;
+      text-align:center;
+      color:#70768f;
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="bank.html">Bank</a>
+    <a href="retail.html">Retail</a>
+    <a href="telco.html">Telco</a>
+    <a href="govt.html">Govt</a>
+    <div class="spacer"></div>
+    <div class="actions">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="contactus.html">Contact</a>
+      <a href="stanbic-consent-demo.html" class="ucm-demo-link">Stanbic UCM Demo</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="card">
+      <div id="formPanel">
+        <h1>New to Sector Sites? Register!</h1>
+        <p class="subtitle">Or sign up using email — Universal Consent Module demo form</p>
+
+        <form id="registerForm" novalidate>
+          <div class="row">
+            <div class="form-group">
+              <label for="firstName">First name <span style="color:var(--error)">*</span></label>
+              <input type="text" id="firstName" placeholder="Your first name" />
+              <div class="hint">Alphabets only, minimum 2 characters</div>
+              <div class="error-msg" id="firstNameError">First name is required (min 2 letters)</div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name <span style="color:var(--error)">*</span></label>
+              <input type="text" id="lastName" placeholder="Your last name" />
+              <div class="hint">Alphabets only, minimum 3 characters</div>
+              <div class="error-msg" id="lastNameError">Last name is required (min 3 letters)</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="gender">Gender <span class="optional">(Optional)</span></label>
+              <select id="gender">
+                <option value="">Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not">Prefer not to say</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of birth <span class="optional">(Optional)</span></label>
+              <input type="date" id="dob" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nationality">Nationality <span class="optional">(Optional)</span></label>
+            <select id="nationality">
+              <option value="">Select your nationality</option>
+              <option value="SA">Saudi Arabia</option>
+              <option value="AE">United Arab Emirates</option>
+              <option value="IN">India</option>
+              <option value="EG">Egypt</option>
+              <option value="PK">Pakistan</option>
+              <option value="JO">Jordan</option>
+              <option value="KW">Kuwait</option>
+              <option value="BH">Bahrain</option>
+              <option value="OM">Oman</option>
+              <option value="QA">Qatar</option>
+              <option value="US">United States</option>
+              <option value="GB">United Kingdom</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobile number <span style="color:var(--error)">*</span></label>
+            <div class="mobile-wrap">
+              <div class="country-code">
+                <span id="flagEmoji">🇸🇦</span>
+                <select id="countryCode">
+                  <option value="+966" data-flag="🇸🇦" selected>+966</option>
+                  <option value="+971" data-flag="🇦🇪">+971</option>
+                  <option value="+91" data-flag="🇮🇳">+91</option>
+                  <option value="+20" data-flag="🇪🇬">+20</option>
+                  <option value="+92" data-flag="🇵🇰">+92</option>
+                  <option value="+1" data-flag="🇺🇸">+1</option>
+                  <option value="+44" data-flag="🇬🇧">+44</option>
+                </select>
+              </div>
+              <input type="tel" id="mobile" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric" />
+            </div>
+            <div class="hint">Must start with '5' and be exactly 9 digits (KSA style)</div>
+            <div class="error-msg" id="mobileError">Must start with 5 and be exactly 9 digits</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address <span style="color:var(--error)">*</span></label>
+            <input type="email" id="email" placeholder="name@example.com" />
+            <div class="hint">Enter a valid email address, e.g. name@example.com</div>
+            <div class="error-msg" id="emailError">You need to provide a valid email address</div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">New password <span style="color:var(--error)">*</span></label>
+            <input type="password" id="password" placeholder="Create a password" />
+            <div class="hint">Min 6 characters, at least one letter and one digit</div>
+            <div class="error-msg" id="passwordError">Password requirements not met</div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm new password <span style="color:var(--error)">*</span></label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter password" />
+            <div class="error-msg" id="confirmPasswordError">Passwords do not match</div>
+          </div>
+
+          <div class="consent-box">
+            <label>
+              <input type="checkbox" id="marketingConsent" />
+              <span>By creating an account, you consent to receiving messages and offers from Sector Sites / extra.com style communications.</span>
+            </label>
+          </div>
+
+          <p class="terms">
+            By clicking the “Register” button, you confirm that you accept our
+            <a href="privacy-notice.html">Terms and conditions</a> and
+            <a href="privacy-notice.html">Privacy Policy</a>.
+          </p>
+
+          <button type="submit" class="btn">Register</button>
+        </form>
+
+        <p class="login-link">
+          Already have an account? <a href="login.html">Sign in</a>
+        </p>
+      </div>
+
+      <div class="success-panel" id="successPanel">
+        <div class="icon">✓</div>
+        <h2>Registration successful!</h2>
+        <p>Thank you for registering. This is a demo form for the Universal Consent Module.<br>
+           Your consent preferences can be managed via the privacy / DSR pages.</p>
+        <a href="index.html" class="btn" style="text-decoration:none;display:inline-block;width:auto;padding:12px 28px;">Go to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Pacchi Prashanth’s Sector Sites • Demo only
+  </footer>
+
+  <script>
+    document.getElementById('countryCode').addEventListener('change', function() {
+      var opt = this.options[this.selectedIndex];
+      document.getElementById('flagEmoji').textContent = opt.getAttribute('data-flag') || '🏳️';
+    });
+
+    function showError(id, show, msg) {
+      var el = document.getElementById(id);
+      var input = document.getElementById(id.replace('Error',''));
+      if (show) {
+        if (msg) el.textContent = msg;
+        el.classList.add('show');
+        if (input) input.classList.add('error');
+      } else {
+        el.classList.remove('show');
+        if (input) input.classList.remove('error');
+      }
+    }
+
+    function alphaOnly(v) { return /^[A-Za-z\s]+$/.test(v.trim()); }
+
+    function validate() {
+      var ok = true;
+
+      var firstName = document.getElementById('firstName').value.trim();
+      if (!firstName || firstName.length < 2 || !alphaOnly(firstName)) {
+        showError('firstNameError', true, 'First name required — alphabets only, min 2 characters');
+        ok = false;
+      } else showError('firstNameError', false);
+
+      var lastName = document.getElementById('lastName').value.trim();
+      if (!lastName || lastName.length < 3 || !alphaOnly(lastName)) {
+        showError('lastNameError', true, 'Last name required — alphabets only, min 3 characters');
+        ok = false;
+      } else showError('lastNameError', false);
+
+      var mobile = document.getElementById('mobile').value.trim();
+      if (!mobile || !/^5\d{8}$/.test(mobile)) {
+        showError('mobileError', true, 'Must start with 5 and be exactly 9 digits');
+        ok = false;
+      } else showError('mobileError', false);
+
+      var email = document.getElementById('email').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('emailError', true, 'You need to provide a valid email address');
+        ok = false;
+      } else showError('emailError', false);
+
+      var password = document.getElementById('password').value;
+      if (!password) {
+        showError('passwordError', true, 'This value is required');
+        ok = false;
+      } else if (password.length < 6) {
+        showError('passwordError', true, 'This value is too short. It should have 6 characters or more');
+        ok = false;
+      } else if (!/\d/.test(password)) {
+        showError('passwordError', true, 'This value must contain at least one digit (0-9)');
+        ok = false;
+      } else if (!/[A-Za-z]/.test(password)) {
+        showError('passwordError', true, 'This value must contain at least one Alphabet letter');
+        ok = false;
+      } else showError('passwordError', false);
+
+      var confirm = document.getElementById('confirmPassword').value;
+      if (!confirm) {
+        showError('confirmPasswordError', true, 'You need to provide confirm password');
+        ok = false;
+      } else if (confirm !== password) {
+        showError('confirmPasswordError', true, 'Password and password confirmation do not match');
+        ok = false;
+      } else showError('confirmPasswordError', false);
+
+      return ok;
+    }
+
+    ['firstName','lastName','mobile','email','password','confirmPassword'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function() {
+        showError(id + 'Error', false);
+      });
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validate()) return;
+      document.getElementById('formPanel').style.display = 'none';
+      document.getElementById('successPanel').classList.add('show');
+      console.log('UCM Demo Registration payload:', {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        gender: document.getElementById('gender').value,
+        dob: document.getElementById('dob').value,
+        nationality: document.getElementById('nationality').value,
+        countryCode: document.getElementById('countryCode').value,
+        mobile: document.getElementById('mobile').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        marketingConsent: document.getElementById('marketingConsent').checked
+      });
+    });
+  </script>
+</body>
+</html>
