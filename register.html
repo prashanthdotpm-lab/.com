@@ -132,7 +132,8 @@
       width:100%;
     }
     .mobile-wrap input { flex:1; }
-    .consent-box {
+
+    .consent-section {
       background:#f8f9ff;
       border:1px solid #e0e4f5;
       border-radius:12px;
@@ -141,17 +142,73 @@
       font-size:13px;
       line-height:1.5;
     }
-    .consent-box label {
+    .consent-main {
       display:flex;
       gap:10px;
       align-items:flex-start;
       cursor:pointer;
       font-weight:500;
     }
-    .consent-box input[type="checkbox"] {
+    .consent-main input[type="checkbox"] {
       width:18px; height:18px; margin-top:2px; flex-shrink:0;
       accent-color:var(--bg1);
     }
+    .consent-toggle {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:10px;
+      padding:6px 0;
+      background:none;
+      border:none;
+      color:var(--bg2);
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+      font-family:inherit;
+    }
+    .consent-toggle:hover { text-decoration:underline; }
+    .consent-toggle .chevron {
+      display:inline-block;
+      transition:transform .2s ease;
+      font-size:11px;
+    }
+    .consent-toggle.expanded .chevron {
+      transform:rotate(180deg);
+    }
+    .consent-details {
+      display:none;
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid #e0e4f5;
+    }
+    .consent-details.open { display:block; }
+    .consent-details-title {
+      font-weight:600;
+      font-size:13px;
+      margin-bottom:4px;
+      color:var(--text);
+    }
+    .consent-details-note {
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .consent-channel {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:10px;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .consent-channel:last-child { margin-bottom:0; }
+    .consent-channel input[type="checkbox"] {
+      width:16px; height:16px; margin-top:2px; flex-shrink:0;
+      accent-color:var(--bg1);
+    }
+    .consent-channel span { font-size:13px; }
+
     .terms {
       font-size:12.5px;
       color:var(--muted);
@@ -319,11 +376,39 @@
             <div class="error-msg" id="confirmPasswordError">Passwords must match</div>
           </div>
 
-          <div class="consent-box">
-            <label>
+          <!-- Marketing Consent (expandable) -->
+          <div class="consent-section">
+            <label class="consent-main">
               <input type="checkbox" id="marketingConsent" />
               <span>I agree to receive product updates, service notices, and relevant offers from Sector Sites.</span>
             </label>
+
+            <button type="button" class="consent-toggle" id="consentToggle" aria-expanded="false">
+              <span class="chevron">▼</span>
+              <span id="toggleLabel">Show marketing preferences</span>
+            </button>
+
+            <div class="consent-details" id="consentDetails">
+              <div class="consent-details-title">Marketing Consent (Optional)</div>
+              <p class="consent-details-note">Consent is optional and can be withdrawn anytime.</p>
+
+              <label class="consent-channel">
+                <input type="checkbox" id="consentEmail" name="consentEmail" />
+                <span>I agree to receive marketing emails</span>
+              </label>
+              <label class="consent-channel">
+                <input type="checkbox" id="consentSms" name="consentSms" />
+                <span>I agree to receive SMS notifications</span>
+              </label>
+              <label class="consent-channel">
+                <input type="checkbox" id="consentPhone" name="consentPhone" />
+                <span>I agree to receive phone calls</span>
+              </label>
+              <label class="consent-channel">
+                <input type="checkbox" id="consentWhatsapp" name="consentWhatsapp" />
+                <span>I agree to receive WhatsApp updates</span>
+              </label>
+            </div>
           </div>
 
           <p class="terms">
@@ -358,6 +443,38 @@
     document.getElementById('countryCode').addEventListener('change', function () {
       var opt = this.options[this.selectedIndex];
       document.getElementById('flagEmoji').textContent = opt.getAttribute('data-flag') || '🏳️';
+    });
+
+    var toggleBtn = document.getElementById('consentToggle');
+    var details = document.getElementById('consentDetails');
+    var toggleLabel = document.getElementById('toggleLabel');
+    var mainConsent = document.getElementById('marketingConsent');
+    var channelIds = ['consentEmail', 'consentSms', 'consentPhone', 'consentWhatsapp'];
+
+    toggleBtn.addEventListener('click', function () {
+      var isOpen = details.classList.toggle('open');
+      toggleBtn.classList.toggle('expanded', isOpen);
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggleLabel.textContent = isOpen ? 'Hide marketing preferences' : 'Show marketing preferences';
+    });
+
+    mainConsent.addEventListener('change', function () {
+      channelIds.forEach(function (id) {
+        document.getElementById(id).checked = mainConsent.checked;
+      });
+    });
+
+    channelIds.forEach(function (id) {
+      document.getElementById(id).addEventListener('change', function () {
+        var allChecked = channelIds.every(function (cid) {
+          return document.getElementById(cid).checked;
+        });
+        var anyChecked = channelIds.some(function (cid) {
+          return document.getElementById(cid).checked;
+        });
+        mainConsent.checked = allChecked;
+        if (!anyChecked) mainConsent.checked = false;
+      });
     });
 
     function showError(id, show, msg) {
@@ -454,6 +571,10 @@
         mobile: document.getElementById('mobile').value.trim(),
         email: document.getElementById('email').value.trim(),
         marketingConsent: document.getElementById('marketingConsent').checked,
+        consentEmail: document.getElementById('consentEmail').checked,
+        consentSms: document.getElementById('consentSms').checked,
+        consentPhone: document.getElementById('consentPhone').checked,
+        consentWhatsapp: document.getElementById('consentWhatsapp').checked,
         purpose: 'Sector Sites Universal Consent Module demo'
       });
     });
