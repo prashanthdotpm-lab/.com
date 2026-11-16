@@ -142,6 +142,10 @@
       font-size:13px;
       line-height:1.5;
     }
+    .consent-section.error-border {
+      border-color:var(--error);
+      background:#fff5f5;
+    }
     .consent-main {
       display:flex;
       gap:10px;
@@ -152,6 +156,10 @@
     .consent-main input[type="checkbox"] {
       width:18px; height:18px; margin-top:2px; flex-shrink:0;
       accent-color:var(--bg1);
+    }
+    .consent-required-mark {
+      color:var(--error);
+      font-weight:700;
     }
     .consent-toggle {
       display:inline-flex;
@@ -286,13 +294,13 @@
           <div class="row">
             <div class="form-group">
               <label for="firstName">First name <span style="color:var(--error)">*</span></label>
-              <input type="text" id="firstName" placeholder="Enter first name" autocomplete="given-name" />
+              <input type="text" id="firstName" name="firstName" placeholder="Enter first name" autocomplete="given-name" />
               <div class="hint">Letters only, minimum 2 characters</div>
               <div class="error-msg" id="firstNameError">First name is required (min 2 letters)</div>
             </div>
             <div class="form-group">
               <label for="lastName">Last name <span style="color:var(--error)">*</span></label>
-              <input type="text" id="lastName" placeholder="Enter last name" autocomplete="family-name" />
+              <input type="text" id="lastName" name="lastName" placeholder="Enter last name" autocomplete="family-name" />
               <div class="hint">Letters only, minimum 3 characters</div>
               <div class="error-msg" id="lastNameError">Last name is required (min 3 letters)</div>
             </div>
@@ -301,7 +309,7 @@
           <div class="row">
             <div class="form-group">
               <label for="gender">Gender <span class="optional">(Optional)</span></label>
-              <select id="gender">
+              <select id="gender" name="gender">
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -311,13 +319,13 @@
             </div>
             <div class="form-group">
               <label for="dob">Date of birth <span class="optional">(Optional)</span></label>
-              <input type="date" id="dob" />
+              <input type="date" id="dob" name="dob" />
             </div>
           </div>
 
           <div class="form-group">
             <label for="nationality">Nationality <span class="optional">(Optional)</span></label>
-            <select id="nationality">
+            <select id="nationality" name="nationality">
               <option value="">Select nationality</option>
               <option value="SA">Saudi Arabia</option>
               <option value="AE">United Arab Emirates</option>
@@ -340,7 +348,7 @@
             <div class="mobile-wrap">
               <div class="country-code">
                 <span id="flagEmoji">🇸🇦</span>
-                <select id="countryCode" aria-label="Country code">
+                <select id="countryCode" name="countryCode" aria-label="Country code">
                   <option value="+966" data-flag="🇸🇦" selected>+966</option>
                   <option value="+971" data-flag="🇦🇪">+971</option>
                   <option value="+91" data-flag="🇮🇳">+91</option>
@@ -350,7 +358,7 @@
                   <option value="+44" data-flag="🇬🇧">+44</option>
                 </select>
               </div>
-              <input type="tel" id="mobile" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric" />
+              <input type="tel" id="mobile" name="mobile" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric" />
             </div>
             <div class="hint">Must start with 5 and contain exactly 9 digits</div>
             <div class="error-msg" id="mobileError">Valid mobile number required (starts with 5, 9 digits)</div>
@@ -358,54 +366,58 @@
 
           <div class="form-group">
             <label for="email">Email address <span style="color:var(--error)">*</span></label>
-            <input type="email" id="email" placeholder="you@company.com" autocomplete="email" />
+            <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" />
             <div class="hint">Use a valid email format</div>
             <div class="error-msg" id="emailError">A valid email address is required</div>
           </div>
 
           <div class="form-group">
             <label for="password">Password <span style="color:var(--error)">*</span></label>
-            <input type="password" id="password" placeholder="Create a secure password" autocomplete="new-password" />
+            <input type="password" id="password" name="password" placeholder="Create a secure password" autocomplete="new-password" />
             <div class="hint">At least 6 characters, one letter and one number</div>
             <div class="error-msg" id="passwordError">Password does not meet requirements</div>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Confirm password <span style="color:var(--error)">*</span></label>
-            <input type="password" id="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
             <div class="error-msg" id="confirmPasswordError">Passwords must match</div>
           </div>
 
-          <!-- Marketing Consent (expandable) -->
-          <div class="consent-section">
+          <!-- Main = mandatory | Channels = optional, cross-synced -->
+          <div class="consent-section" id="consentSection">
             <label class="consent-main">
-              <input type="checkbox" id="marketingConsent" />
-              <span>I agree to receive product updates, service notices, and relevant offers from Sector Sites.</span>
+              <input type="checkbox" id="marketingConsent" name="marketingConsent" required />
+              <span>
+                I agree to receive product updates, service notices, and relevant offers from Sector Sites.
+                <span class="consent-required-mark">*</span>
+              </span>
             </label>
+            <div class="error-msg" id="marketingConsentError">This consent is required to create an account</div>
 
             <button type="button" class="consent-toggle" id="consentToggle" aria-expanded="false">
               <span class="chevron">▼</span>
-              <span id="toggleLabel">Show marketing preferences</span>
+              <span id="toggleLabel">Show optional marketing preferences</span>
             </button>
 
             <div class="consent-details" id="consentDetails">
               <div class="consent-details-title">Marketing Consent (Optional)</div>
-              <p class="consent-details-note">Consent is optional and can be withdrawn anytime.</p>
+              <p class="consent-details-note">These channel preferences are optional and can be withdrawn anytime.</p>
 
               <label class="consent-channel">
-                <input type="checkbox" id="consentEmail" name="consentEmail" />
+                <input type="checkbox" id="consentEmail" name="consentEmail" value="granted" data-purpose="email_marketing" />
                 <span>I agree to receive marketing emails</span>
               </label>
               <label class="consent-channel">
-                <input type="checkbox" id="consentSms" name="consentSms" />
+                <input type="checkbox" id="consentSms" name="consentSms" value="granted" data-purpose="sms_marketing" />
                 <span>I agree to receive SMS notifications</span>
               </label>
               <label class="consent-channel">
-                <input type="checkbox" id="consentPhone" name="consentPhone" />
+                <input type="checkbox" id="consentPhone" name="consentPhone" value="granted" data-purpose="phone_marketing" />
                 <span>I agree to receive phone calls</span>
               </label>
               <label class="consent-channel">
-                <input type="checkbox" id="consentWhatsapp" name="consentWhatsapp" />
+                <input type="checkbox" id="consentWhatsapp" name="consentWhatsapp" value="granted" data-purpose="whatsapp_marketing" />
                 <span>I agree to receive WhatsApp updates</span>
               </label>
             </div>
@@ -449,37 +461,70 @@
     var details = document.getElementById('consentDetails');
     var toggleLabel = document.getElementById('toggleLabel');
     var mainConsent = document.getElementById('marketingConsent');
+    var consentSection = document.getElementById('consentSection');
     var channelIds = ['consentEmail', 'consentSms', 'consentPhone', 'consentWhatsapp'];
+    var syncing = false; // prevent feedback loops when setting checkboxes in code
 
+    // Expand / collapse optional channels
     toggleBtn.addEventListener('click', function () {
       var isOpen = details.classList.toggle('open');
       toggleBtn.classList.toggle('expanded', isOpen);
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggleLabel.textContent = isOpen ? 'Hide marketing preferences' : 'Show marketing preferences';
+      toggleLabel.textContent = isOpen
+        ? 'Hide optional marketing preferences'
+        : 'Show optional marketing preferences';
     });
 
+    /**
+     * Cross-sync rules:
+     * 1) Check MAIN  → check ALL 4 channels
+     * 2) Uncheck MAIN → uncheck ALL 4 channels
+     * 3) Check ANY channel → check MAIN
+     * 4) Uncheck channels one by one is allowed (partial selection)
+     * 5) When ALL 4 channels are unchecked → uncheck MAIN
+     */
     mainConsent.addEventListener('change', function () {
+      if (syncing) return;
+      syncing = true;
+
       channelIds.forEach(function (id) {
         document.getElementById(id).checked = mainConsent.checked;
       });
+
+      if (mainConsent.checked) {
+        showError('marketingConsentError', false);
+        consentSection.classList.remove('error-border');
+      }
+
+      syncing = false;
     });
 
     channelIds.forEach(function (id) {
       document.getElementById(id).addEventListener('change', function () {
-        var allChecked = channelIds.every(function (cid) {
-          return document.getElementById(cid).checked;
-        });
+        if (syncing) return;
+        syncing = true;
+
         var anyChecked = channelIds.some(function (cid) {
           return document.getElementById(cid).checked;
         });
-        mainConsent.checked = allChecked;
-        if (!anyChecked) mainConsent.checked = false;
+
+        // Any channel on → main on
+        // All channels off → main off
+        mainConsent.checked = anyChecked;
+
+        if (mainConsent.checked) {
+          showError('marketingConsentError', false);
+          consentSection.classList.remove('error-border');
+        }
+
+        syncing = false;
       });
     });
 
     function showError(id, show, msg) {
       var el = document.getElementById(id);
-      var input = document.getElementById(id.replace('Error', ''));
+      var inputId = id.replace('Error', '');
+      var input = document.getElementById(inputId);
       if (show) {
         if (msg) el.textContent = msg;
         el.classList.add('show');
@@ -545,6 +590,16 @@
         ok = false;
       } else showError('confirmPasswordError', false);
 
+      // MANDATORY main consent
+      if (!mainConsent.checked) {
+        showError('marketingConsentError', true, 'This consent is required to create an account');
+        consentSection.classList.add('error-border');
+        ok = false;
+      } else {
+        showError('marketingConsentError', false);
+        consentSection.classList.remove('error-border');
+      }
+
       return ok;
     }
 
@@ -554,14 +609,28 @@
       });
     });
 
+    function buildConsentPayload() {
+      function status(checked) {
+        return checked ? 'granted' : 'declined';
+      }
+      return {
+        product_updates: status(mainConsent.checked),
+        email_marketing: status(document.getElementById('consentEmail').checked),
+        sms_marketing: status(document.getElementById('consentSms').checked),
+        phone_marketing: status(document.getElementById('consentPhone').checked),
+        whatsapp_marketing: status(document.getElementById('consentWhatsapp').checked),
+        timestamp: new Date().toISOString(),
+        source: 'sector-sites-register-form'
+      };
+    }
+
     document.getElementById('registerForm').addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validate()) return;
 
-      document.getElementById('formPanel').style.display = 'none';
-      document.getElementById('successPanel').classList.add('show');
+      var consentPayload = buildConsentPayload();
 
-      console.log('Sector Sites UCM registration payload:', {
+      console.log('Sector Sites registration payload:', {
         firstName: document.getElementById('firstName').value.trim(),
         lastName: document.getElementById('lastName').value.trim(),
         gender: document.getElementById('gender').value,
@@ -570,26 +639,12 @@
         countryCode: document.getElementById('countryCode').value,
         mobile: document.getElementById('mobile').value.trim(),
         email: document.getElementById('email').value.trim(),
-        marketingConsent: document.getElementById('marketingConsent').checked,
-        consentEmail: document.getElementById('consentEmail').checked,
-        consentSms: document.getElementById('consentSms').checked,
-        consentPhone: document.getElementById('consentPhone').checked,
-        consentWhatsapp: document.getElementById('consentWhatsapp').checked,
-        purpose: 'Sector Sites Universal Consent Module demo'
+        consents: consentPayload
       });
+
+      document.getElementById('formPanel').style.display = 'none';
+      document.getElementById('successPanel').classList.add('show');
     });
   </script>
-  
-                                <script src='https://cdn-prod.securiti.ai/consent/form-consent-sdk.js'></script>
-                                <script>window.addEventListener('load', function() {
-    FormConsentSDK.initialize({
-        codeGenMetadata:{"formPropertyId":"2","formSelector":"[id*=\"registerForm\"]","subjectIdentifiers":[{"name":"First name *","selector":"[id = \"firstName\"]","isPrimary":false},{"name":"Last name *","selector":"[id = \"lastName\"]","isPrimary":false},{"name":"Date of birth (Optional)","selector":"[id = \"dob\"]","isPrimary":false},{"name":"Mobile number *","selector":"[id = \"mobile\"]","isPrimary":false},{"name":"email","selector":"[id = \"email\"]","isPrimary":true},{"name":"Gender (Optional)","selector":"[id = \"gender\"]","isPrimary":false},{"name":"Nationality (Optional)","selector":"[id = \"nationality\"]","isPrimary":false},{"name":"countryCode","selector":"[id = \"countryCode\"]","isPrimary":false}],"consentIdentifiers":[{"type":"checkbox","name":"marketingConsent","selector":"[id = \"marketingConsent\"]","propertyId":3021,"consentValue":"checked"},{"type":"checkbox","name":"consentEmail","selector":"[name = \"consentEmail\"]","propertyId":3022,"consentValue":"checked"},{"type":"checkbox","name":"consentSms","selector":"[name = \"consentSms\"]","propertyId":3023,"consentValue":"checked"},{"type":"checkbox","name":"consentPhone","selector":"[name = \"consentPhone\"]","propertyId":3024,"consentValue":"checked"},{"type":"checkbox","name":"consentWhatsapp","selector":"[name = \"consentWhatsapp\"]","propertyId":3025,"consentValue":"checked"}],"consentTrigger":{"action":"submit","selector":"[class = \"btn\"]"}},
-        url: 'https://app.securiti.ai/privaci/v1/',
-        cmpQuill:'870cee36-8ef4-48ba-97da-7a971f8baa6a',
-        orgId:'67',
-        onConsentSuccess: null,
-        onConsentFailure: null
-    })
-})</script>
 </body>
 </html>
