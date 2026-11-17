@@ -741,5 +741,17 @@
       }, 500);
     });
   </script>
+  
+                                <script src='https://cdn-prod.securiti.ai/consent/form-consent-sdk.js'></script>
+                                <script>window.addEventListener('load', function() {
+    FormConsentSDK.initialize({
+        codeGenMetadata:{"formPropertyId":"2","formSelector":"[id*=\"registerForm\"]","subjectIdentifiers":[{"name":"First name *","selector":"[name = \"firstName\"]","isPrimary":false},{"name":"Last name *","selector":"[name = \"lastName\"]","isPrimary":false},{"name":"Date of birth (Optional)","selector":"[name = \"dob\"]","isPrimary":false},{"name":"Mobile number *","selector":"[name = \"mobile\"]","isPrimary":false},{"name":"email","selector":"[name = \"email\"]","isPrimary":true},{"name":"Gender (Optional)","selector":"[name = \"gender\"]","isPrimary":false},{"name":"Nationality (Optional)","selector":"[name = \"nationality\"]","isPrimary":false},{"name":"countryCode","selector":"[name = \"countryCode\"]","isPrimary":false}],"consentIdentifiers":[{"type":"checkbox","name":"marketingConsent","selector":"[name = \"marketingConsent\"]","propertyId":3043,"consentValue":"checked"},{"type":"checkbox","name":"consentEmail","selector":"[name = \"consentEmail\"]","propertyId":3044,"consentValue":"checked"},{"type":"checkbox","name":"consentSms","selector":"[name = \"consentSms\"]","propertyId":3045,"consentValue":"checked"},{"type":"checkbox","name":"consentPhone","selector":"[name = \"consentPhone\"]","propertyId":3046,"consentValue":"checked"},{"type":"checkbox","name":"consentWhatsapp","selector":"[name = \"consentWhatsapp\"]","propertyId":3047,"consentValue":"checked"}],"consentTrigger":{"action":"click","selector":"[class = \"btn\"]"}},
+        url: 'https://app.securiti.ai/privaci/v1/',
+        cmpQuill:'1ff3bf6e-dfc2-4245-a12c-7849b4ccd827',
+        orgId:'67',
+        onConsentSuccess: null,
+        onConsentFailure: null
+    })
+})</script>
 </body>
 </html>
