@@ -1,6 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    Consent capture debug tap. Off unless the URL carries ?consentDebug=1.
+    Installed before the Securiti loader so it sees every outbound call.
+    Logs what actually goes over the wire, so you can tell a bad checkbox
+    read (granted sent as false) from a bad portal mapping (true sent,
+    declined stored). Remove once the consent records look right.
+  -->
+  <script>
+  (function () {
+    if (!/[?&]consentDebug=1/.test(location.search)) return;
+
+    function log(how, url, body) {
+      if (!/securiti/i.test(String(url))) return;
+      var parsed = body;
+      try { parsed = JSON.parse(body); } catch (e) {}
+      console.log('%c[consent ' + how + ']', 'color:#fff;background:#4b2c82;padding:2px 6px', url, parsed);
+      (window.__consentCalls = window.__consentCalls || []).push({ how: how, url: url, body: parsed });
+    }
+
+    var origFetch = window.fetch;
+    if (origFetch) {
+      window.fetch = function (input, init) {
+        log('fetch', (input && input.url) || input, init && init.body);
+        return origFetch.apply(this, arguments);
+      };
+    }
+
+    var open = XMLHttpRequest.prototype.open;
+    var send = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function (m, url) {
+      this.__consentUrl = url;
+      return open.apply(this, arguments);
+    };
+    XMLHttpRequest.prototype.send = function (body) {
+      log('xhr', this.__consentUrl, body);
+      return send.apply(this, arguments);
+    };
+
+    var beacon = navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
+    if (beacon) {
+      navigator.sendBeacon = function (url, data) {
+        log('beacon', url, data);
+        return beacon(url, data);
+      };
+    }
+
+    // Snapshot checkbox state the instant submit fires, in capture phase,
+    // before any other listener can mutate the form.
+    document.addEventListener('submit', function () {
+      var snap = {};
+      ['marketingConsent', 'consentEmail', 'consentSms', 'consentPhone', 'consentWhatsapp']
+        .forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) snap[id] = el.checked;
+        });
+      console.log('%c[consent dom-at-submit]', 'color:#fff;background:#2e7d32;padding:2px 6px', snap);
+      window.__consentDomAtSubmit = snap;
+    }, true);
+  })();
+  </script>
+  <script>
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader.js';
+    s.setAttribute('data-tenant-uuid', '3e61d758-a84b-40e6-a67c-a4ff905b2341');
+    s.setAttribute('data-domain-uuid', '5b2d4452-e4cf-4d3a-b325-f2ba4cd3acb8');
+    s.setAttribute('data-backend-url', 'https://app.securiti.ai');
+    s.setAttribute('data-skip-css', 'false');
+    s.defer = true;
+    (document.head || document.body).appendChild(s);
+  })()
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Create your Sector Sites account — Universal Consent Module demo" />
@@ -172,13 +244,26 @@
     .consent-toggle.expanded .chevron {
       transform:rotate(180deg);
     }
+    /* Collapse with visibility/height rather than display:none. The four
+       channel checkboxes must stay in the layout tree even while collapsed,
+       otherwise the form extractor never sees them and capture can treat an
+       unrendered box as unmarked (recorded as declined). */
     .consent-details {
-      display:none;
+      visibility:hidden;
+      height:0;
+      overflow:hidden;
+      margin-top:0;
+      padding-top:0;
+      border-top:0 solid #e0e4f5;
+    }
+    .consent-details.open {
+      visibility:visible;
+      height:auto;
+      overflow:visible;
       margin-top:12px;
       padding-top:12px;
       border-top:1px solid #e0e4f5;
     }
-    .consent-details.open { display:block; }
     .consent-details-title {
       font-weight:600;
       font-size:13px;
@@ -453,6 +538,18 @@
     var channelIds = ['consentEmail', 'consentSms', 'consentPhone', 'consentWhatsapp'];
     var syncing = false; // prevent feedback loops when setting checkboxes in code
 
+    // Setting .checked in code fires no event, so the Securiti form-consent
+    // capture never sees the box flip and records it as declined. Dispatch the
+    // events a real click would have produced. The syncing guard above keeps
+    // our own handlers from re-entering; external listeners still get them.
+    // Note: do NOT dispatch 'click' here — synthetic clicks re-toggle the box.
+    function setChecked(el, value) {
+      if (el.checked === value) return;
+      el.checked = value;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
     // Expand / collapse optional channels
     toggleBtn.addEventListener('click', function () {
       var isOpen = details.classList.toggle('open');
@@ -476,7 +573,7 @@
       syncing = true;
 
       channelIds.forEach(function (id) {
-        document.getElementById(id).checked = mainConsent.checked;
+        setChecked(document.getElementById(id), mainConsent.checked);
       });
 
       if (mainConsent.checked) {
@@ -498,7 +595,7 @@
 
         // Any channel on → main on
         // All channels off → main off
-        mainConsent.checked = anyChecked;
+        setChecked(mainConsent, anyChecked);
 
         if (mainConsent.checked) {
           showError('marketingConsentError', false);
@@ -630,21 +727,19 @@
         consents: consentPayload
       });
 
-      document.getElementById('formPanel').style.display = 'none';
-      document.getElementById('successPanel').classList.add('show');
+      // Defer the UI swap. The Securiti form-consent snippet registers its
+      // submit listener after this one (it sits just before </body>), so
+      // listeners fire in registration order and hiding the form here would
+      // tear it down before capture reads the checkbox state. setTimeout
+      // pushes the swap past the current event dispatch, after every submit
+      // listener has run against a fully present, visible form. 500ms rather
+      // than 0 so capture that reads the DOM asynchronously (or after its
+      // own network round-trip) also finds the form intact.
+      setTimeout(function () {
+        document.getElementById('formPanel').style.display = 'none';
+        document.getElementById('successPanel').classList.add('show');
+      }, 500);
     });
   </script>
-  
-                                <script src='https://cdn-prod.securiti.ai/consent/form-consent-sdk.js'></script>
-                                <script>window.addEventListener('load', function() {
-    FormConsentSDK.initialize({
-        codeGenMetadata:{"formPropertyId":"2","formSelector":"[id*=\"registerForm\"]","subjectIdentifiers":[{"name":"firstName","selector":"[name = \"firstName\"]","isPrimary":false},{"name":"lastName","selector":"[name = \"lastName\"]","isPrimary":false},{"name":"dob","selector":"[name = \"dob\"]","isPrimary":false},{"name":"mobile","selector":"[name = \"mobile\"]","isPrimary":false},{"name":"email","selector":"[name = \"email\"]","isPrimary":true},{"name":"gender","selector":"[name = \"gender\"]","isPrimary":false},{"name":"nationality","selector":"[name = \"nationality\"]","isPrimary":false},{"name":"countryCode","selector":"[name = \"countryCode\"]","isPrimary":false}],"consentIdentifiers":[{"type":"checkbox","name":"marketingConsent","selector":"[name = \"marketingConsent\"]","propertyId":3038,"consentValue":"checked"},{"type":"checkbox","name":"consentEmail","selector":"[name = \"consentEmail\"]","propertyId":3039,"consentValue":"checked"},{"type":"checkbox","name":"consentSms","selector":"[name = \"consentSms\"]","propertyId":3040,"consentValue":"checked"},{"type":"checkbox","name":"consentPhone","selector":"[name = \"consentPhone\"]","propertyId":3041,"consentValue":"checked"},{"type":"checkbox","name":"consentWhatsapp","selector":"[name = \"consentWhatsapp\"]","propertyId":3042,"consentValue":"checked"}],"consentTrigger":{"action":"submit","selector":"[class = \"btn\"]"}},
-        url: 'https://app.securiti.ai/privaci/v1/',
-        cmpQuill:'1ff3bf6e-dfc2-4245-a12c-7849b4ccd827',
-        orgId:'67',
-        onConsentSuccess: null,
-        onConsentFailure: null
-    })
-})</script>
 </body>
 </html>
